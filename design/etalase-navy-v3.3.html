@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_ds/modernist-ca20c87b-c736-4792-aab5-f1592031601b/styles.css">
+<script src="_ds/modernist-ca20c87b-c736-4792-aab5-f1592031601b/_ds_bundle.js"></script>
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#ECF0F6;color:#0A1D3A;font:400 1.0625rem/1.6 Archivo,system-ui,sans-serif;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+a{color:#0E2A55;text-decoration:none}
+a:hover{color:#071A36}
+:focus-visible{outline:2px solid #C0392B;outline-offset:3px;border-radius:8px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</helmet>
+
+<div style="background:#ECF0F6;color:#0A1D3A;font:400 1.0625rem/1.6 Archivo,system-ui,sans-serif;min-height:100vh">
+
+  <sc-if value="{{ showTicker }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#071A36;color:#B9C6DC;height:36px;font:600 .7rem/36px Archivo,sans-serif;letter-spacing:.16em;text-transform:uppercase;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 16px">{{ tickerText }}</div>
+  </sc-if>
+
+  <header style="background:#ECF0F6">
+    <div style="max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+      <span style="display:inline-flex;align-items:center;gap:10px">
+        <span style="position:relative;width:30px;height:30px;border-radius:999px;background:#0E2A55;color:#ffffff;display:grid;place-items:center;font:700 1rem/1 Archivo,sans-serif;font-stretch:115%">o<span style="position:absolute;right:-1px;bottom:3px;width:9px;height:9px;border-radius:999px;background:#C0392B"></span></span>
+        <span style="font:700 1.04rem/1 Archivo,sans-serif;font-stretch:112%;letter-spacing:-.01em">overtimeboo</span>
+      </span>
+      <nav style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:600 .74rem/1 Archivo,sans-serif;letter-spacing:.02em">
+        <a href="#katalog" style="padding:9px 14px;border-radius:999px;color:#56637A;transition:background .14s,color .14s" style-hover="background:#E1E8F2;color:#0A1D3A">Katalog</a>
+        <a href="#cara" style="padding:9px 14px;border-radius:999px;color:#56637A;transition:background .14s,color .14s" style-hover="background:#E1E8F2;color:#0A1D3A">Cara pakai</a>
+        <a href="#kategori" style="padding:9px 14px;border-radius:999px;color:#56637A;transition:background .14s,color .14s" style-hover="background:#E1E8F2;color:#0A1D3A">Kategori</a>
+        <a href="#faq" style="padding:9px 14px;border-radius:999px;color:#56637A;transition:background .14s,color .14s" style-hover="background:#E1E8F2;color:#0A1D3A">FAQ</a>
+        <a href="https://lynk.id/" style="display:inline-flex;align-items:center;gap:10px;background:#0E2A55;color:#ffffff;border-radius:999px;padding:6px 7px 6px 16px;font:600 .76rem/1 Archivo,sans-serif;transition:background .14s" style-hover="background:#071A36">lynk.id<span style="width:26px;height:26px;border-radius:999px;background:#ffffff;color:#0E2A55;display:grid;place-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></span></a>
+      </nav>
+    </div>
+  </header>
+
+  <div style="max-width:1200px;margin:0 auto;padding:8px 24px 0">
+    <section style="background:#0E2A55;color:#ffffff;border-radius:26px;padding:clamp(24px,3.4vw,40px)">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:18px;padding-bottom:clamp(26px,4vw,46px)">
+        <span style="display:inline-flex;align-items:center;gap:9px;background:#173A6B;border-radius:999px;padding:8px 16px;font:600 .68rem/1 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#ffffff;white-space:nowrap">bank soal ·  digital · praktis</span>
+        <span style="flex:none;width:40px;height:40px;border-radius:999px;background:#173A6B;color:#ffffff;display:grid;place-items:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></span>
+      </div>
+      <h1 style="font:800 clamp(2.5rem,6.6vw,5.2rem)/1.06 Archivo,sans-serif;font-stretch:115%;letter-spacing:-.035em;margin:0;max-width:19ch;text-wrap:pretty">Bank soal komplit<br>sama pembahasannya <span style="display: inline-block; border: 2px solid rgb(192, 57, 43); border-radius: 999px; padding: 0px 0.3em 0.03em; line-height: 0.92; background-color: rgb(192, 57, 43); width: 298px; height: 63px;">lengkap.</span></h1>
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:22px 40px;padding:clamp(26px,4vw,44px) 0 clamp(24px,3.4vw,38px)">
+        <p style="color:#B9C6DC;margin:0;max-width:44ch;font-size:1.02rem">Soal, kunci, dan pembahasan tiap nomor. Format PDF, sekali unduh langsung bisa dibaca kapan saja.</p>
+        <a href="#katalog" style="display:inline-flex;align-items:center;gap:12px;background:#ffffff;color:#0E2A55;border-radius:999px;padding:7px 22px 7px 8px;font:600 .86rem/1 Archivo,sans-serif;white-space:nowrap;transition:background .14s" style-hover="background:#ECF0F6"><span style="width:32px;height:32px;border-radius:999px;background:#0E2A55;color:#ffffff;display:grid;place-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></span>Lihat katalog</a>
+      </div>
+      <div style="border-top:1px solid #23406E;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))">
+        <div style="padding:22px 14px 0 0">
+          <span style="width:30px;height:30px;border-radius:999px;background:#173A6B;color:#ffffff;display:grid;place-items:center;margin-bottom:14px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v5h6"></path><path d="M9 13h6"></path><path d="M9 17h4"></path></svg></span>
+          <div style="font:800 clamp(2rem,5vw,3.6rem)/1 Archivo,sans-serif;font-stretch:115%;font-variant-numeric:tabular-nums;letter-spacing:-.04em">15</div>
+          <div style="margin-top:8px;font:600 .7rem/1.3 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#B9C6DC">Produk</div>
+        </div>
+        <div style="padding:22px 14px 0 22px;border-left:1px solid #23406E">
+          <span style="width:30px;height:30px;border-radius:999px;background:#173A6B;color:#ffffff;display:grid;place-items:center;margin-bottom:14px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 2.2a2 2 0 0 0-1.6 0L2.6 6.1a1 1 0 0 0 0 1.8l8.6 3.9a2 2 0 0 0 1.6 0l8.6-3.9a1 1 0 0 0 0-1.8Z"></path><path d="m6.1 11.5-3.5 1.6a1 1 0 0 0 0 1.8l8.6 3.9a2 2 0 0 0 1.6 0l8.6-3.9a1 1 0 0 0 0-1.8l-3.5-1.6"></path></svg></span>
+          <div style="font:800 clamp(2rem,5vw,3.6rem)/1 Archivo,sans-serif;font-stretch:115%;font-variant-numeric:tabular-nums;letter-spacing:-.04em">4</div>
+          <div style="margin-top:8px;font:600 .7rem/1.3 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#B9C6DC">Kategori</div>
+        </div>
+        <div style="padding:22px 0 0 22px;border-left:1px solid #23406E">
+          <span style="width:30px;height:30px;border-radius:999px;background:#173A6B;color:#ffffff;display:grid;place-items:center;margin-bottom:14px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 5.5 12 8c0-2.5 2-5 4.5-5a2.5 2.5 0 0 1 0 5"></path></svg></span>
+          <div style="font:800 clamp(2rem,5vw,3.6rem)/1 Archivo,sans-serif;font-stretch:115%;font-variant-numeric:tabular-nums;letter-spacing:-.04em">1</div>
+          <div style="margin-top:8px;font:600 .7rem/1.3 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#B9C6DC">Preview gratis</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="katalog" style="max-width:1200px;margin:0 auto;padding:0 24px">
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:clamp(44px,6vw,72px) 0 0;font:600 .72rem/1 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#56637A">
+      <span>Katalog</span>
+      <span style="font-variant-numeric:tabular-nums">{{ statusText }}</span>
+    </div>
+    <h2 style="font:700 clamp(1.7rem,3.6vw,2.5rem)/1.06 Archivo,sans-serif;font-stretch:112%;letter-spacing:-.03em;margin:16px 0 22px;max-width:24ch">Pilih materi yang sedang kamu kejar</h2>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+      <button type="button" aria-pressed="{{ c.semua.p }}" onClick="{{ f.semua }}" style="font:600 .8rem/1 Archivo,sans-serif;white-space:nowrap;padding:12px 20px;border-radius:999px;border:0;background:{{ c.semua.bg }};color:{{ c.semua.fg }};cursor:pointer;transition:background .14s,color .14s" style-hover="opacity:.88">Semua</button>
+      <button type="button" aria-pressed="{{ c.pcpm.p }}" onClick="{{ f.pcpm }}" style="font:600 .8rem/1 Archivo,sans-serif;white-space:nowrap;padding:12px 20px;border-radius:999px;border:0;background:{{ c.pcpm.bg }};color:{{ c.pcpm.fg }};cursor:pointer;transition:background .14s,color .14s" style-hover="opacity:.88">PCPM</button>
+      <button type="button" aria-pressed="{{ c.career.p }}" onClick="{{ f.career }}" style="font:600 .8rem/1 Archivo,sans-serif;white-space:nowrap;padding:12px 20px;border-radius:999px;border:0;background:{{ c.career.bg }};color:{{ c.career.fg }};cursor:pointer;transition:background .14s,color .14s" style-hover="opacity:.88">Karier</button>
+      <button type="button" aria-pressed="{{ c.bundle.p }}" onClick="{{ f.bundle }}" style="font:600 .8rem/1 Archivo,sans-serif;white-space:nowrap;padding:12px 20px;border-radius:999px;border:0;background:{{ c.bundle.bg }};color:{{ c.bundle.fg }};cursor:pointer;transition:background .14s,color .14s" style-hover="opacity:.88">Bundle</button>
+      <button type="button" aria-pressed="{{ c.gratis.p }}" onClick="{{ f.gratis }}" style="font:600 .8rem/1 Archivo,sans-serif;white-space:nowrap;padding:12px 20px;border-radius:999px;border:0;background:{{ c.gratis.bg }};color:{{ c.gratis.fg }};cursor:pointer;transition:background .14s,color .14s" style-hover="opacity:.88">Gratis</button>
+    </div>
+
+    <sc-if value="{{ showFeature }}" hint-placeholder-val="{{ true }}">
+      <article style="background:#0E2A55;color:#ffffff;border-radius:26px;padding:clamp(24px,3.4vw,38px);margin-bottom:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(22px,3vw,44px)">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;background:#173A6B;border-radius:999px;padding:8px 15px;font:600 .66rem/1 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#ffffff">Bundle · hemat</span>
+          <h3 style="font:700 clamp(1.6rem,3.2vw,2.4rem)/1.06 Archivo,sans-serif;font-stretch:112%;letter-spacing:-.03em;margin:0 0 16px;max-width:20ch;overflow-wrap:break-word">Bundle Lengkap PCPM BI — 5 Paket + 2 Modul</h3>
+          <p style="color:#B9C6DC;margin:0;max-width:42ch;font-size:.98rem">200 soal tanpa pengulangan, plus 2 modul belajar sebagai bonus. Satu file per paket, watermark per pembeli.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:flex-end;gap:14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#173A6B;border-radius:999px;padding:10px 18px">
+            <span style="font:800 clamp(1.5rem,3vw,2rem)/1 Archivo,sans-serif;font-stretch:112%;font-variant-numeric:tabular-nums;letter-spacing:-.035em">Rp45.000</span>
+            <span style="background:#ffffff;color:#0E2A55;border-radius:999px;padding:7px 14px;font:600 .68rem/1 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap">Hemat Rp5.000</span>
+          </div>
+          <a href="#" style="display:flex;align-items:center;gap:12px;background:#ffffff;color:#0E2A55;border-radius:999px;padding:8px;font:600 .92rem/1 Archivo,sans-serif;transition:background .14s" style-hover="background:#ECF0F6"><span style="flex:none;width:36px;height:36px;border-radius:999px;background:#0E2A55;color:#ffffff;display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></span><span style="flex:1;text-align:center;padding-right:36px">Checkout</span></a>
+        </div>
+      </article>
+    </sc-if>
+
+    <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+
+      <sc-if value="{{ showGratis }}" hint-placeholder-val="{{ true }}">
+        <article style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:26px;padding:20px;display:flex;flex-direction:column;gap:16px;transition:border-color .14s,transform .14s" style-hover="border-color:#0E2A55;transform:translateY(-3px)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="background:#FBE9E6;color:#C0392B;border-radius:999px;padding:7px 14px;font:600 .66rem/1 Archivo,sans-serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">Gratis</span>
+            <span style="font:600 .72rem/1 Archivo,sans-serif;color:#8A96AC;font-variant-numeric:tabular-nums">00</span>
+          </div>
+          <h3 style="font:700 1.18rem/1.26 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.02em;margin:0;overflow-wrap:break-word">Preview Gratis — 20 Soal PCPM BI</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:10px 18px;font:500 .84rem/1 Archivo,sans-serif;color:#56637A">
+            <span style="display:inline-flex;align-items:center;gap:8px"><span style="flex:none;width:26px;height:26px;border-radius:999px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v5h6"></path><path d="M9 13h6"></path><path d="M9 17h4"></path></svg></span>20 soal</span>
+            <span style="display:inline-flex;align-items:center;gap:8px"><span style="flex:none;width:26px;height:26px;border-radius:999px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg></span>PDF</span>
+          </div>
+          <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:#F4F7FB;border-radius:999px;padding:9px 9px 9px 18px">
+              <span style="font:800 1.24rem/1 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.03em;color:#C0392B">Gratis</span>
+              <span style="background:#FFFFFF;color:#56637A;border-radius:999px;padding:7px 13px;font:600 .66rem/1 Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap">TPU &amp; kebanksentralan</span>
+            </div>
+            <a href="#" style="display:flex;align-items:center;gap:10px;background:#FFFFFF;color:#0E2A55;border:1.5px solid #0E2A55;border-radius:999px;padding:6px;font:600 .88rem/1 Archivo,sans-serif;transition:background .14s,color .14s" style-hover="background:#0E2A55;color:#ffffff"><span style="flex:none;width:32px;height:32px;border-radius:999px;background:#0E2A55;color:#ffffff;display:grid;place-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg></span><span style="flex:1;text-align:center;padding-right:32px">Ambil gratis</span></a>
+          </div>
+        </article>
+      </sc-if>
+
+      <sc-for list="{{ paket }}" as="p" hint-placeholder-count="5">
+        <article style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:26px;padding:20px;display:flex;flex-direction:column;gap:16px;transition:border-color .14s,transform .14s" style-hover="border-color:#0E2A55;transform:translateY(-3px)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="background:#F4F7FB;color:#56637A;border-radius:999px;padding:7px 14px;font:600 .66rem/1 Archivo,sans-serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">PCPM</span>
+            <span style="font:600 .72rem/1 Archivo,sans-serif;color:#8A96AC;font-variant-numeric:tabular-nums">{{ p.no }}</span>
+          </div>
+          <h3 style="font:700 1.18rem/1.26 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.02em;margin:0;overflow-wrap:break-word">{{ p.judul }}</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:10px 18px;font:500 .84rem/1 Archivo,sans-serif;color:#56637A">
+            <span style="display:inline-flex;align-items:center;gap:8px"><span style="flex:none;width:26px;height:26px;border-radius:999px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v5h6"></path><path d="M9 13h6"></path><path d="M9 17h4"></path></svg></span>40 soal</span>
+            <span style="display:inline-flex;align-items:center;gap:8px"><span style="flex:none;width:26px;height:26px;border-radius:999px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg></span>PDF</span>
+          </div>
+          <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:#F4F7FB;border-radius:999px;padding:9px 9px 9px 18px">
+              <span style="font:800 1.24rem/1 Archivo,sans-serif;font-stretch:108%;font-variant-numeric:tabular-nums;letter-spacing:-.03em">Rp10.000</span>
+              <span style="background:#FFFFFF;color:#56637A;border-radius:999px;padding:7px 13px;font:600 .66rem/1 Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap">Kunci + pembahasan</span>
+            </div>
+            <a href="#" style="display:flex;align-items:center;gap:10px;background:#0E2A55;color:#ffffff;border-radius:999px;padding:7px;font:600 .88rem/1 Archivo,sans-serif;transition:background .14s" style-hover="background:#071A36"><span style="flex:none;width:32px;height:32px;border-radius:999px;background:#ffffff;color:#0E2A55;display:grid;place-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></span><span style="flex:1;text-align:center;padding-right:32px">Checkout</span></a>
+          </div>
+        </article>
+      </sc-for>
+
+      <sc-if value="{{ showGridBundle }}" hint-placeholder-val="{{ false }}">
+        <article style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:26px;padding:20px;display:flex;flex-direction:column;gap:16px;transition:border-color .14s,transform .14s" style-hover="border-color:#0E2A55;transform:translateY(-3px)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="background:#F4F7FB;color:#56637A;border-radius:999px;padding:7px 14px;font:600 .66rem/1 Archivo,sans-serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">Bundle · hemat</span>
+            <span style="font:600 .72rem/1 Archivo,sans-serif;color:#8A96AC;font-variant-numeric:tabular-nums">06</span>
+          </div>
+          <h3 style="font:700 1.18rem/1.26 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.02em;margin:0;overflow-wrap:break-word">Bundle Lengkap PCPM BI — 5 Paket + 2 Modul</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:10px 18px;font:500 .84rem/1 Archivo,sans-serif;color:#56637A">
+            <span style="display:inline-flex;align-items:center;gap:8px"><span style="flex:none;width:26px;height:26px;border-radius:999px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v5h6"></path><path d="M9 13h6"></path><path d="M9 17h4"></path></svg></span>200 soal</span>
+            <span style="display:inline-flex;align-items:center;gap:8px"><span style="flex:none;width:26px;height:26px;border-radius:999px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 5.5 12 8c0-2.5 2-5 4.5-5a2.5 2.5 0 0 1 0 5"></path></svg></span>2 modul bonus</span>
+          </div>
+          <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:#F4F7FB;border-radius:999px;padding:9px 9px 9px 18px">
+              <span style="font:800 1.24rem/1 Archivo,sans-serif;font-stretch:108%;font-variant-numeric:tabular-nums;letter-spacing:-.03em">Rp45.000</span>
+              <span style="background:#FFFFFF;color:#56637A;border-radius:999px;padding:7px 13px;font:600 .66rem/1 Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap">Hemat Rp5.000</span>
+            </div>
+            <a href="#" style="display:flex;align-items:center;gap:10px;background:#0E2A55;color:#ffffff;border-radius:999px;padding:7px;font:600 .88rem/1 Archivo,sans-serif;transition:background .14s" style-hover="background:#071A36"><span style="flex:none;width:32px;height:32px;border-radius:999px;background:#ffffff;color:#0E2A55;display:grid;place-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></span><span style="flex:1;text-align:center;padding-right:32px">Checkout</span></a>
+          </div>
+        </article>
+      </sc-if>
+
+    </div>
+
+    <sc-if value="{{ showEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px dashed #D3DCE8;border-radius:26px;padding:28px 24px;background:#FFFFFF">
+        <span style="display:inline-block;background:#F4F7FB;color:#56637A;border-radius:999px;padding:7px 14px;font:600 .66rem/1 Archivo,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px">Kosong</span>
+        <p style="margin:0 0 8px;font:700 1.18rem/1.26 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.02em">Belum ada produk di filter ini</p>
+        <p style="margin:0;color:#56637A;font-size:.94rem;max-width:64ch">Mockup ini hanya memuat kartu contoh dari kategori PCPM, Bundle, dan Gratis. Di halaman asli, kartu diambil dari array PRODUK dan filter ini akan terisi sendiri.</p>
+      </div>
+    </sc-if>
+
+  </div>
+
+  <section id="cara" style="background:#071A36;color:#ffffff;margin-top:clamp(48px,7vw,80px);padding:clamp(52px,7vw,88px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;font:600 .72rem/1 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#B9C6DC">
+        <span>Cara pakai</span><span style="font-variant-numeric:tabular-nums">4 langkah</span>
+      </div>
+      <h2 style="font:800 clamp(2rem,5.2vw,3.6rem)/1.02 Archivo,sans-serif;font-stretch:115%;letter-spacing:-.035em;margin:18px 0 clamp(30px,4vw,46px);max-width:20ch;text-wrap:pretty">Yang dilatih polanya, bukan soalnya.</h2>
+      <div style="display:grid;gap:10px">
+        <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;align-items:center;background:#0E2A55;border-radius:22px;padding:clamp(16px,2.2vw,22px) clamp(18px,2.4vw,26px)">
+          <span style="width:44px;height:44px;border-radius:999px;background:#173A6B;color:#ffffff;display:grid;place-items:center;font:700 .88rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums">01</span>
+          <span style="font:600 clamp(1.1rem,2.2vw,1.6rem)/1.24 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.02em">Kerjakan dulu tanpa melihat kunci</span>
+        </div>
+        <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;align-items:center;background:#0E2A55;border-radius:22px;padding:clamp(16px,2.2vw,22px) clamp(18px,2.4vw,26px)">
+          <span style="width:44px;height:44px;border-radius:999px;background:#173A6B;color:#ffffff;display:grid;place-items:center;font:700 .88rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums">02</span>
+          <span style="font:600 clamp(1.1rem,2.2vw,1.6rem)/1.24 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.02em">Salin pembahasan soal yang salah ke ChatGPT atau Claude</span>
+        </div>
+        <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;align-items:center;background:#0E2A55;border-radius:22px;padding:clamp(16px,2.2vw,22px) clamp(18px,2.4vw,26px)">
+          <span style="width:44px;height:44px;border-radius:999px;background:#173A6B;color:#ffffff;display:grid;place-items:center;font:700 .88rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums">03</span>
+          <span style="font:600 clamp(1.1rem,2.2vw,1.6rem)/1.24 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.02em">Minta 3 soal dengan pola yang sama</span>
+        </div>
+        <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;align-items:center;background:#0E2A55;border-radius:22px;padding:clamp(16px,2.2vw,22px) clamp(18px,2.4vw,26px)">
+          <span style="width:44px;height:44px;border-radius:999px;background:#173A6B;color:#ffffff;display:grid;place-items:center;font:700 .88rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums">04</span>
+          <span style="font:600 clamp(1.1rem,2.2vw,1.6rem)/1.24 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.02em">Ulangi besoknya</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="kategori" style="max-width:1200px;margin:0 auto;padding:clamp(44px,6vw,72px) 24px 0">
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;font:600 .72rem/1 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#56637A;margin-bottom:18px">
+      <span>Kategori</span><span style="font-variant-numeric:tabular-nums">4 lini</span>
+    </div>
+
+    <sc-if value="{{ katLedger }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;gap:10px">
+        <a href="#katalog" style="display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:16px;align-items:center;background:#FFFFFF;border:1px solid #D3DCE8;border-radius:22px;padding:16px 18px;color:#0A1D3A;transition:border-color .14s,transform .14s" style-hover="border-color:#0E2A55;transform:translateY(-2px)">
+          <span style="width:48px;height:48px;border-radius:16px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v5h6"></path><path d="M9 13h6"></path><path d="M9 17h4"></path></svg></span>
+          <span style="min-width:0">
+            <span style="display:block;font:700 clamp(1.15rem,2.2vw,1.5rem)/1.2 Archivo,sans-serif;font-stretch:110%;letter-spacing:-.025em">PCPM Bank Indonesia</span>
+            <span style="display:block;margin-top:4px;font:500 .84rem/1.3 Archivo,sans-serif;color:#56637A">13 produk siap unduh</span>
+          </span>
+          <span style="justify-self:end;width:36px;height:36px;border-radius:999px;background:#0E2A55;color:#ffffff;display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></span>
+        </a>
+        <a href="#katalog" style="display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:16px;align-items:center;background:#FFFFFF;border:1px solid #D3DCE8;border-radius:22px;padding:16px 18px;color:#0A1D3A;transition:border-color .14s,transform .14s" style-hover="border-color:#0E2A55;transform:translateY(-2px)">
+          <span style="width:48px;height:48px;border-radius:16px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect x="2" y="8" width="20" height="14" rx="2"></rect></svg></span>
+          <span style="min-width:0">
+            <span style="display:block;font:700 clamp(1.15rem,2.2vw,1.5rem)/1.2 Archivo,sans-serif;font-stretch:110%;letter-spacing:-.025em">Persiapan Karier</span>
+            <span style="display:block;margin-top:4px;font:500 .84rem/1.3 Archivo,sans-serif;color:#56637A">2 produk siap unduh</span>
+          </span>
+          <span style="justify-self:end;width:36px;height:36px;border-radius:999px;background:#0E2A55;color:#ffffff;display:grid;place-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></span>
+        </a>
+        <div style="display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:16px;align-items:center;background:#FFFFFF;border:1px solid #D3DCE8;border-radius:22px;padding:16px 18px;opacity:.6">
+          <span style="width:48px;height:48px;border-radius:16px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg></span>
+          <span style="min-width:0">
+            <span style="display:block;font:700 clamp(1.15rem,2.2vw,1.5rem)/1.2 Archivo,sans-serif;font-stretch:110%;letter-spacing:-.025em">CPNS SKD 2026</span>
+            <span style="display:block;margin-top:4px;font:500 .84rem/1.3 Archivo,sans-serif;color:#56637A">Sedang disiapkan</span>
+          </span>
+          <span style="justify-self:end;background:#F4F7FB;color:#56637A;border-radius:999px;padding:8px 14px;font:600 .66rem/1 Archivo,sans-serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">Segera</span>
+        </div>
+        <div style="display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:16px;align-items:center;background:#FFFFFF;border:1px solid #D3DCE8;border-radius:22px;padding:16px 18px;opacity:.6">
+          <span style="width:48px;height:48px;border-radius:16px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M10 21v-6h4v6"></path></svg></span>
+          <span style="min-width:0">
+            <span style="display:block;font:700 clamp(1.15rem,2.2vw,1.5rem)/1.2 Archivo,sans-serif;font-stretch:110%;letter-spacing:-.025em">GAT BUMN</span>
+            <span style="display:block;margin-top:4px;font:500 .84rem/1.3 Archivo,sans-serif;color:#56637A">Sedang disiapkan</span>
+          </span>
+          <span style="justify-self:end;background:#F4F7FB;color:#56637A;border-radius:999px;padding:8px 14px;font:600 .66rem/1 Archivo,sans-serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">Segera</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ katKartu }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+        <div style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:22px;padding:20px">
+          <span style="width:44px;height:44px;border-radius:14px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center;margin-bottom:14px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v5h6"></path><path d="M9 13h6"></path><path d="M9 17h4"></path></svg></span>
+          <div style="font:700 1.16rem/1.18 Archivo,sans-serif;font-stretch:110%;letter-spacing:-.025em;margin-bottom:6px">PCPM Bank Indonesia</div>
+          <span style="font:500 .84rem/1.3 Archivo,sans-serif;color:#56637A">13 produk siap unduh</span>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:22px;padding:20px">
+          <span style="width:44px;height:44px;border-radius:14px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center;margin-bottom:14px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect x="2" y="8" width="20" height="14" rx="2"></rect></svg></span>
+          <div style="font:700 1.16rem/1.18 Archivo,sans-serif;font-stretch:110%;letter-spacing:-.025em;margin-bottom:6px">Persiapan Karier</div>
+          <span style="font:500 .84rem/1.3 Archivo,sans-serif;color:#56637A">2 produk siap unduh</span>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:22px;padding:20px;opacity:.6">
+          <span style="width:44px;height:44px;border-radius:14px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center;margin-bottom:14px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg></span>
+          <div style="font:700 1.16rem/1.18 Archivo,sans-serif;font-stretch:110%;letter-spacing:-.025em;margin-bottom:6px">CPNS SKD 2026</div>
+          <span style="font:500 .84rem/1.3 Archivo,sans-serif;color:#56637A">Sedang disiapkan</span>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:22px;padding:20px;opacity:.6">
+          <span style="width:44px;height:44px;border-radius:14px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center;margin-bottom:14px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M10 21v-6h4v6"></path></svg></span>
+          <div style="font:700 1.16rem/1.18 Archivo,sans-serif;font-stretch:110%;letter-spacing:-.025em;margin-bottom:6px">GAT BUMN</div>
+          <span style="font:500 .84rem/1.3 Archivo,sans-serif;color:#56637A">Sedang disiapkan</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <div id="faq" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;font:600 .72rem/1 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#56637A;margin:clamp(44px,6vw,72px) 0 18px">
+      <span>FAQ</span><span style="font-variant-numeric:tabular-nums">2 pertanyaan</span>
+    </div>
+
+    <div style="display:grid;gap:10px">
+      <div style="background:#FFFFFF;border:1px solid {{ q1.bd }};border-radius:22px;overflow:hidden">
+        <button type="button" onClick="{{ q1.t }}" aria-expanded="{{ q1.x }}" style="width:100%;background:transparent;border:0;cursor:pointer;text-align:left;padding:18px 20px;display:flex;justify-content:space-between;gap:16px;align-items:center;color:#0A1D3A">
+          <span style="font:700 1.06rem/1.3 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.02em">File-nya bisa dibagikan ke teman?</span>
+          <span style="flex:none;width:36px;height:36px;border-radius:999px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center;font:500 1.1rem/1 Archivo,sans-serif">{{ q1.s }}</span>
+        </button>
+        <sc-if value="{{ q1.o }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:0 20px 20px;color:#56637A;font-size:.98rem;max-width:70ch">Tiap PDF punya watermark nama pembeli di dalamnya, jadi file yang disebar tetap bisa dilacak.</div>
+        </sc-if>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid {{ q2.bd }};border-radius:22px;overflow:hidden">
+        <button type="button" onClick="{{ q2.t }}" aria-expanded="{{ q2.x }}" style="width:100%;background:transparent;border:0;cursor:pointer;text-align:left;padding:18px 20px;display:flex;justify-content:space-between;gap:16px;align-items:center;color:#0A1D3A">
+          <span style="font:700 1.06rem/1.3 Archivo,sans-serif;font-stretch:108%;letter-spacing:-.02em">Kenapa yang dilatih polanya, bukan soalnya?</span>
+          <span style="flex:none;width:36px;height:36px;border-radius:999px;background:#F4F7FB;color:#0E2A55;display:grid;place-items:center;font:500 1.1rem/1 Archivo,sans-serif">{{ q2.s }}</span>
+        </button>
+        <sc-if value="{{ q2.o }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:0 20px 20px;color:#56637A;font-size:.98rem;max-width:70ch">Soal aslinya tidak pernah sama persis. Yang berulang itu pola dan jebakannya.</div>
+        </sc-if>
+      </div>
+    </div>
+
+  </div>
+
+  <footer style="background:#0E2A55;color:#B9C6DC;border-radius:26px 26px 0 0;margin-top:clamp(48px,7vw,78px);padding:clamp(36px,5vw,56px) 0 30px;font-size:.92rem">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px 40px;align-items:flex-end">
+        <div style="min-width:0">
+          <div style="font:800 clamp(2.2rem,7vw,4.6rem)/.94 Archivo,sans-serif;font-stretch:115%;letter-spacing:-.04em;color:#ffffff;overflow-wrap:break-word">overtimeboo<span style="display:inline-block;width:.16em;height:.16em;border-radius:999px;background:#C0392B;vertical-align:baseline"></span></div>
+          <div style="margin-top:14px">Bank soal digital, dikirim otomatis setelah pembayaran.</div>
+        </div>
+        <nav style="flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:10px;font:600 .78rem/1 Archivo,sans-serif">
+          <a href="#katalog" style="color:#B9C6DC;white-space:nowrap" style-hover="color:#ffffff">Katalog</a>
+          <a href="#cara" style="color:#B9C6DC;white-space:nowrap" style-hover="color:#ffffff">Cara pakai</a>
+          <a href="#kategori" style="color:#B9C6DC;white-space:nowrap" style-hover="color:#ffffff">Kategori</a>
+          <a href="https://lynk.id/" style="display:inline-flex;align-items:center;gap:10px;background:#173A6B;color:#ffffff;border-radius:999px;padding:6px 7px 6px 16px;margin-top:4px;transition:background .14s" style-hover="background:#23406E">lynk.id<span style="width:26px;height:26px;border-radius:999px;background:#ffffff;color:#0E2A55;display:grid;place-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></span></a>
+        </nav>
+      </div>
+      <div style="height:1px;background:#23406E;margin:30px 0 18px"></div>
+      <p style="margin:0;max-width:70ch">Soal 100% original. Ini BUKAN bocoran soal seleksi mana pun, dan tidak berafiliasi dengan BKN, KemenPANRB, FHCI, Bank Indonesia, maupun BUMN mana pun.</p>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tickerText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;TPD ~1 SEP · TES TEKNIS 2–20 SEP · PCPM BI ANGKATAN 41&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Strip jadwal&quot;,&quot;label&quot;:&quot;Isi strip (kosongkan = strip tidak dirender)&quot;},&quot;bundleFeature&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Katalog&quot;,&quot;label&quot;:&quot;Bundle sebagai kartu lebar navy&quot;},&quot;katLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ledger&quot;,&quot;kartu&quot;],&quot;default&quot;:&quot;ledger&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Kategori&quot;,&quot;label&quot;:&quot;Tata letak kategori&quot;}}">
+class Component extends DCLogic {
+  state = { filter: "semua", open: 1 };
+
+  renderVals() {
+    const filter = this.state.filter;
+    const ids = ["semua", "pcpm", "career", "bundle", "gratis"];
+    const c = {}, f = {};
+    ids.forEach(id => {
+      const on = filter === id;
+      c[id] = {
+        bg: on ? "#0E2A55" : "#FFFFFF",
+        fg: on ? "#FFFFFF" : "#56637A",
+        p: on ? "true" : "false"
+      };
+      f[id] = () => this.setState({ filter: id });
+    });
+
+    const feature = this.props.bundleFeature !== false;
+    const showBundle = filter === "semua" || filter === "bundle";
+    const showGratis = filter === "semua" || filter === "gratis";
+    const showPaket = filter === "semua" || filter === "pcpm";
+    const paket = showPaket
+      ? [1, 2, 3, 4, 5].map(n => ({
+          no: "0" + n,
+          judul: "Bank Soal PCPM BI \u2014 Paket " + n
+        }))
+      : [];
+    const n = paket.length + (showGratis ? 1 : 0) + (showBundle ? 1 : 0);
+
+    const q = i => {
+      const o = this.state.open === i;
+      return {
+        o,
+        x: o ? "true" : "false",
+        s: o ? "\u2212" : "+",
+        bd: o ? "#0E2A55" : "#D3DCE8",
+        t: () => this.setState(s => ({ open: s.open === i ? 0 : i }))
+      };
+    };
+
+    const ticker = this.props.tickerText ?? "TPD ~1 SEP \u00b7 TES TEKNIS 2\u201320 SEP \u00b7 PCPM BI ANGKATAN 41";
+    const kat = this.props.katLayout ?? "ledger";
+
+    return {
+      c, f, paket,
+      q1: q(1), q2: q(2),
+      showGratis,
+      showFeature: showBundle && feature,
+      showGridBundle: showBundle && !feature,
+      showEmpty: n === 0,
+      statusText: n + " produk",
+      tickerText: ticker,
+      showTicker: String(ticker).trim().length > 0,
+      katLedger: kat === "ledger",
+      katKartu: kat !== "ledger"
+    };
+  }
+}
+</script>
+</body>
+</html>
