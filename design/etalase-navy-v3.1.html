@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_ds/modernist-ca20c87b-c736-4792-aab5-f1592031601b/styles.css">
+<script src="_ds/modernist-ca20c87b-c736-4792-aab5-f1592031601b/_ds_bundle.js"></script>
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#ECF0F6;color:#0A1D3A;font:400 1.0625rem/1.65 Archivo,system-ui,sans-serif;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+a{color:#0E2A55;text-decoration:none}
+a:hover{color:#071A36}
+summary{list-style:none}
+summary::-webkit-details-marker{display:none}
+details.faq{border-left-color:#D3DCE8!important}
+details.faq[open]{border-left-color:#C0392B!important}
+details.faq>summary::after{content:"+";font:500 1.1rem/1 Archivo,sans-serif;color:#56637A}
+details.faq[open]>summary::after{content:"\2212"}
+:focus-visible{outline:2px solid #C0392B;outline-offset:2px;border-radius:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</helmet>
+
+<div style="background:#ECF0F6;color:#0A1D3A;font:400 1.0625rem/1.65 Archivo,system-ui,sans-serif;min-height:100vh">
+
+  <header style="background:#0E2A55;color:#ffffff">
+    <div style="max-width:1080px;margin:0 auto;padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+      <span style="display:inline-flex;align-items:center;gap:10px">
+        <span style="position:relative;width:26px;height:26px;border-radius:10px;background:#ffffff;color:#0E2A55;display:grid;place-items:center;font:500 1.05rem/1 Newsreader,serif">o<span style="position:absolute;left:7px;bottom:5px;width:12px;height:2px;background:#C0392B"></span></span>
+        <span style="font:500 1.16rem/1 Newsreader,serif;letter-spacing:-.01em">overtimeboo<span style="color:#B9C6DC;font-weight:400">.</span></span>
+      </span>
+      <nav style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;font:500 .78rem/1 Archivo,sans-serif;letter-spacing:.09em;text-transform:uppercase">
+        <a href="#katalog" style="color:#B9C6DC" style-hover="color:#ffffff">katalog</a>
+        <a href="#cara" style="color:#B9C6DC" style-hover="color:#ffffff">cara pakai</a>
+        <a href="#kategori" style="color:#B9C6DC" style-hover="color:#ffffff">kategori</a>
+        <a href="#faq" style="color:#B9C6DC" style-hover="color:#ffffff">faq</a>
+        <a href="https://lynk.id/" style="color:#ffffff;border-bottom:1px solid #23406E;padding-bottom:2px" style-hover="border-color:#C0392B">lynk.id &#8599;</a>
+      </nav>
+    </div>
+  </header>
+
+  <sc-if value="{{ showTicker }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#071A36;color:#B9C6DC;height:34px;font:500 .74rem/34px Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 16px">{{ tickerText }}</div>
+  </sc-if>
+
+  <section style="background:#0E2A55;color:#ffffff;border-radius:0 0 18px 18px;padding:clamp(46px,7vw,80px) 0 0">
+    <div style="max-width:1080px;margin:0 auto;padding:0 22px">
+      <h1 style="font:400 clamp(2.4rem,7vw,4.6rem)/1.05 Newsreader,serif;letter-spacing:-.02em;margin:0 0 clamp(26px,4vw,40px);max-width:16ch;text-wrap:pretty">bank soal yang kunci sama pembahasannya lengkap.</h1>
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:22px 40px">
+        <p style="color:#B9C6DC;margin:0;max-width:46ch">soal, kunci, dan pembahasan tiap nomor. file PDF, download langsung baca. anywhere, anytime.</p>
+        <a href="#katalog" style="background:#ffffff;color:#0E2A55;border-radius:999px;padding:13px 21px;font:500 .88rem/1 Archivo,sans-serif;white-space:nowrap;transition:background .14s,color .14s" style-hover="background:#ECF0F6">lihat katalog &#8595;</a>
+      </div>
+      <div style="margin-top:clamp(34px,5vw,58px);border-top:1px solid #23406E;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))">
+        <div style="padding:18px 14px clamp(30px,4vw,44px) 0">
+          <div style="font:600 clamp(1.9rem,4.6vw,3.4rem)/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.02em">15</div>
+          <div style="margin-top:9px;font:500 .74rem/1.3 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#B9C6DC">produk</div>
+        </div>
+        <div style="padding:18px 14px clamp(30px,4vw,44px) 18px;border-left:1px solid #23406E">
+          <div style="font:600 clamp(1.9rem,4.6vw,3.4rem)/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.02em">4</div>
+          <div style="margin-top:9px;font:500 .74rem/1.3 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#B9C6DC">kategori</div>
+        </div>
+        <div style="position:relative;padding:18px 0 clamp(30px,4vw,44px) 18px;border-left:1px solid #23406E">
+          <span style="position:absolute;left:18px;top:-6px;width:2px;height:11px;background:#C0392B"></span>
+          <div style="font:600 clamp(1.9rem,4.6vw,3.4rem)/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.02em">1</div>
+          <div style="margin-top:9px;font:500 .74rem/1.3 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#B9C6DC">preview gratis</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="katalog" style="max-width:1080px;margin:0 auto;padding:0 22px">
+
+    <div style="position:relative;height:1px;background:#D3DCE8;margin:clamp(52px,8vw,84px) 0">
+      <span style="position:absolute;left:0;top:-5px;width:2px;height:11px;background:#C0392B"></span>
+      <span style="position:absolute;left:10px;top:-9px;font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.12em;color:#56637A;background:#ECF0F6;padding-right:8px">40 SOAL / PAKET</span>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;gap:12px;font:500 .78rem/1 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#56637A;padding-bottom:11px;border-bottom:1px solid #D3DCE8;margin-bottom:24px">
+      <span>katalog</span><span style="font-variant-numeric:tabular-nums">{{ statusText }}</span>
+    </div>
+    <h2 style="font:500 clamp(1.5rem,3.6vw,2.1rem)/1.18 Newsreader,serif;letter-spacing:-.015em;margin:0 0 22px;max-width:26ch">pilih materi yang lagi kamu kejar</h2>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+      <button type="button" aria-pressed="{{ c.semua.p }}" onClick="{{ f.semua }}" style="font:500 .84rem/1 Archivo,sans-serif;padding:10px 16px;border-radius:999px;border:1px solid {{ c.semua.bd }};background:{{ c.semua.bg }};color:{{ c.semua.fg }};cursor:pointer;transition:border-color .14s,background .14s" style-hover="border-color:#0E2A55">semua</button>
+      <button type="button" aria-pressed="{{ c.pcpm.p }}" onClick="{{ f.pcpm }}" style="font:500 .84rem/1 Archivo,sans-serif;padding:10px 16px;border-radius:999px;border:1px solid {{ c.pcpm.bd }};background:{{ c.pcpm.bg }};color:{{ c.pcpm.fg }};cursor:pointer;transition:border-color .14s,background .14s" style-hover="border-color:#0E2A55">pcpm</button>
+      <button type="button" aria-pressed="{{ c.career.p }}" onClick="{{ f.career }}" style="font:500 .84rem/1 Archivo,sans-serif;padding:10px 16px;border-radius:999px;border:1px solid {{ c.career.bd }};background:{{ c.career.bg }};color:{{ c.career.fg }};cursor:pointer;transition:border-color .14s,background .14s" style-hover="border-color:#0E2A55">career</button>
+      <button type="button" aria-pressed="{{ c.bundle.p }}" onClick="{{ f.bundle }}" style="font:500 .84rem/1 Archivo,sans-serif;padding:10px 16px;border-radius:999px;border:1px solid {{ c.bundle.bd }};background:{{ c.bundle.bg }};color:{{ c.bundle.fg }};cursor:pointer;transition:border-color .14s,background .14s" style-hover="border-color:#0E2A55">bundle</button>
+      <button type="button" aria-pressed="{{ c.gratis.p }}" onClick="{{ f.gratis }}" style="font:500 .84rem/1 Archivo,sans-serif;padding:10px 16px;border-radius:999px;border:1px solid {{ c.gratis.bd }};background:{{ c.gratis.bg }};color:{{ c.gratis.fg }};cursor:pointer;transition:border-color .14s,background .14s" style-hover="border-color:#0E2A55">gratis</button>
+    </div>
+
+    <sc-if value="{{ showFeature }}" hint-placeholder-val="{{ true }}">
+      <article style="background:#0E2A55;color:#ffffff;border-radius:10px;padding:clamp(24px,4vw,36px);margin-bottom:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,3vw,36px)">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:9px;margin-bottom:14px;font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#ffffff"><span style="width:2px;height:11px;background:#C0392B"></span>bundle &#183; hemat</span>
+          <h3 style="font:500 clamp(1.45rem,3vw,2rem)/1.2 Newsreader,serif;letter-spacing:-.015em;margin:0 0 14px;max-width:22ch;overflow-wrap:break-word">Bundle Lengkap PCPM BI &#8212; 5 Paket + 2 Modul</h3>
+          <p style="color:#B9C6DC;margin:0;max-width:44ch;font-size:.98rem">200 soal tanpa pengulangan, plus 2 modul belajar sebagai bonus. satu file per paket, watermark per pembeli.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:flex-end;gap:16px;align-items:flex-start">
+          <div>
+            <div style="font:600 clamp(1.7rem,3.4vw,2.3rem)/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.02em">Rp45.000</div>
+            <div style="margin-top:8px;font:500 .74rem/1.4 Archivo,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#B9C6DC">hemat Rp5.000 dari harga per paket</div>
+          </div>
+          <a href="#" style="background:#ffffff;color:#0E2A55;border-radius:999px;padding:13px 21px;font:500 .88rem/1 Archivo,sans-serif;white-space:nowrap;transition:background .14s" style-hover="background:#ECF0F6">checkout di lynk &#8599;</a>
+        </div>
+      </article>
+    </sc-if>
+
+    <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(276px,1fr))">
+
+      <sc-if value="{{ showGratis }}" hint-placeholder-val="{{ true }}">
+        <article style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:10px;padding:20px;display:flex;flex-direction:column;transition:border-color .14s,transform .14s" style-hover="border-color:#0E2A55;transform:translateY(-2px)">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px">
+            <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#C0392B;overflow-wrap:break-word">gratis</span>
+            <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#56637A">preview</span>
+          </div>
+          <h3 style="font:600 1.02rem/1.35 Archivo,sans-serif;margin:0 0 12px;overflow-wrap:break-word">Preview Gratis &#8212; 20 Soal PCPM BI</h3>
+          <ul style="list-style:none;margin:0 0 18px;padding:0;font-size:.9rem;color:#56637A">
+            <li style="padding:6px 0;border-top:1px solid #D3DCE8">20 soal TPU &amp; kebanksentralan</li>
+            <li style="padding:6px 0;border-top:1px solid #D3DCE8">kunci + pembahasan lengkap</li>
+          </ul>
+          <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font:600 1.12rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;color:#C0392B">gratis</span>
+            <a href="#" style="background:transparent;color:#0E2A55;border:1.5px solid #0E2A55;border-radius:999px;padding:10px 17px;font:500 .88rem/1 Archivo,sans-serif;white-space:nowrap;transition:background .14s,color .14s" style-hover="background:#0E2A55;color:#ffffff">ambil gratis &#8599;</a>
+          </div>
+        </article>
+      </sc-if>
+
+      <sc-for list="{{ paket }}" as="p" hint-placeholder-count="5">
+        <article style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:10px;padding:20px;display:flex;flex-direction:column;transition:border-color .14s,transform .14s" style-hover="border-color:#0E2A55;transform:translateY(-2px)">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px">
+            <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#56637A;overflow-wrap:break-word">pcpm</span>
+            <span style="font:600 .74rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.06em;color:#56637A">{{ p.no }}</span>
+          </div>
+          <h3 style="font:600 1.02rem/1.35 Archivo,sans-serif;margin:0 0 12px;overflow-wrap:break-word">{{ p.judul }}</h3>
+          <ul style="list-style:none;margin:0 0 18px;padding:0;font-size:.9rem;color:#56637A">
+            <li style="padding:6px 0;border-top:1px solid #D3DCE8">40 soal TPU + kebanksentralan</li>
+            <li style="padding:6px 0;border-top:1px solid #D3DCE8">PDF, watermark per pembeli</li>
+          </ul>
+          <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font:600 1.12rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums">Rp10.000</span>
+            <a href="#" style="background:#0E2A55;color:#ffffff;border:1.5px solid #0E2A55;border-radius:999px;padding:10px 17px;font:500 .88rem/1 Archivo,sans-serif;white-space:nowrap;transition:background .14s,border-color .14s" style-hover="background:#071A36;border-color:#071A36">checkout di lynk &#8599;</a>
+          </div>
+        </article>
+      </sc-for>
+
+      <sc-if value="{{ showGridBundle }}" hint-placeholder-val="{{ false }}">
+        <article style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:10px;padding:20px;display:flex;flex-direction:column;transition:border-color .14s,transform .14s" style-hover="border-color:#0E2A55;transform:translateY(-2px)">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px">
+            <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#56637A;overflow-wrap:break-word">bundle &#183; hemat</span>
+            <span style="font:600 .74rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.06em;color:#56637A">06</span>
+          </div>
+          <h3 style="font:600 1.02rem/1.35 Archivo,sans-serif;margin:0 0 12px;overflow-wrap:break-word">Bundle Lengkap PCPM BI &#8212; 5 Paket + 2 Modul</h3>
+          <ul style="list-style:none;margin:0 0 18px;padding:0;font-size:.9rem;color:#56637A">
+            <li style="padding:6px 0;border-top:1px solid #D3DCE8">200 soal, tanpa pengulangan</li>
+            <li style="padding:6px 0;border-top:1px solid #D3DCE8">2 modul belajar sebagai bonus</li>
+          </ul>
+          <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font:600 1.12rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums">Rp45.000</span>
+            <a href="#" style="background:#0E2A55;color:#ffffff;border:1.5px solid #0E2A55;border-radius:999px;padding:10px 17px;font:500 .88rem/1 Archivo,sans-serif;white-space:nowrap;transition:background .14s,border-color .14s" style-hover="background:#071A36;border-color:#071A36">checkout di lynk &#8599;</a>
+          </div>
+        </article>
+      </sc-if>
+
+    </div>
+
+    <sc-if value="{{ showEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px dashed #D3DCE8;border-radius:10px;padding:26px 22px;background:#FFFFFF">
+        <div style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#56637A;margin-bottom:10px">kosong</div>
+        <p style="margin:0 0 6px;font:600 1.02rem/1.35 Archivo,sans-serif">belum ada produk di filter ini</p>
+        <p style="margin:0;color:#56637A;font-size:.94rem">mockup ini cuma memuat kartu contoh dari kategori pcpm, bundle, dan gratis. di halaman asli, kartu diambil dari array PRODUK dan filter ini akan terisi sendiri.</p>
+      </div>
+    </sc-if>
+
+  </div>
+
+  <div style="max-width:1080px;margin:0 auto;padding:0 22px">
+    <div style="position:relative;height:1px;background:#D3DCE8;margin:clamp(52px,8vw,84px) 0">
+      <span style="position:absolute;left:0;top:-5px;width:2px;height:11px;background:#C0392B"></span>
+      <span style="position:absolute;left:10px;top:-9px;font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.12em;color:#56637A;background:#ECF0F6;padding-right:8px">200 SOAL / BUNDLE</span>
+    </div>
+  </div>
+
+  <section id="cara" style="background:#071A36;color:#ffffff;padding:clamp(48px,7vw,84px) 0">
+    <div style="max-width:1080px;margin:0 auto;padding:0 22px">
+      <div style="display:flex;justify-content:space-between;gap:12px;font:500 .78rem/1 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#B9C6DC;padding-bottom:11px;border-bottom:1px solid #23406E;margin-bottom:26px">
+        <span>cara pakai</span><span style="font-variant-numeric:tabular-nums">4 langkah</span>
+      </div>
+      <h2 style="font:400 clamp(1.9rem,5vw,3.1rem)/1.1 Newsreader,serif;letter-spacing:-.02em;margin:0 0 clamp(28px,4vw,44px);max-width:22ch;text-wrap:pretty">yang dilatih polanya, bukan soalnya.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 clamp(24px,4vw,52px)">
+        <div>
+          <div style="position:relative;display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:baseline;padding:18px 0;border-top:1px solid #23406E">
+            <span style="position:absolute;left:0;top:-6px;width:2px;height:11px;background:#C0392B"></span>
+            <span style="font:600 1.4rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;color:#B9C6DC">01</span>
+            <span>kerjain dulu tanpa lihat kunci</span>
+          </div>
+          <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:baseline;padding:18px 0;border-top:1px solid #23406E">
+            <span style="font:600 1.4rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;color:#B9C6DC">02</span>
+            <span>salin pembahasan soal yang salah ke ChatGPT atau Claude</span>
+          </div>
+        </div>
+        <div>
+          <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:baseline;padding:18px 0;border-top:1px solid #23406E">
+            <span style="font:600 1.4rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;color:#B9C6DC">03</span>
+            <span>minta 3 soal berpola sama</span>
+          </div>
+          <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:baseline;padding:18px 0;border-top:1px solid #23406E;border-bottom:1px solid #23406E">
+            <span style="font:600 1.4rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;color:#B9C6DC">04</span>
+            <span>ulang besoknya</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="kategori" style="max-width:1080px;margin:0 auto;padding:0 22px">
+
+    <div style="position:relative;height:1px;background:#D3DCE8;margin:clamp(52px,8vw,84px) 0">
+      <span style="position:absolute;left:0;top:-5px;width:2px;height:11px;background:#C0392B"></span>
+      <span style="position:absolute;left:10px;top:-9px;font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.12em;color:#56637A;background:#ECF0F6;padding-right:8px">166 PASSING GRADE</span>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;gap:12px;font:500 .78rem/1 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#56637A;padding-bottom:11px;border-bottom:1px solid #D3DCE8;margin-bottom:8px">
+      <span>kategori</span><span style="font-variant-numeric:tabular-nums">4 lini</span>
+    </div>
+
+    <sc-if value="{{ katLedger }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <a href="#katalog" style="display:grid;grid-template-columns:minmax(0,96px) minmax(0,1fr) auto;gap:12px 18px;align-items:baseline;padding:22px 8px 22px 0;border-bottom:1px solid #D3DCE8;color:#0A1D3A;transition:background .14s,padding-left .14s" style-hover="background:#FFFFFF;padding-left:10px">
+          <span style="font:600 clamp(1.6rem,3vw,2.2rem)/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.02em">13</span>
+          <span style="font:500 clamp(1.1rem,2.2vw,1.35rem)/1.25 Newsreader,serif">pcpm bank indonesia</span>
+          <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#56637A;overflow-wrap:break-word">produk &#8599;</span>
+        </a>
+        <a href="#katalog" style="display:grid;grid-template-columns:minmax(0,96px) minmax(0,1fr) auto;gap:12px 18px;align-items:baseline;padding:22px 8px 22px 0;border-bottom:1px solid #D3DCE8;color:#0A1D3A;transition:background .14s,padding-left .14s" style-hover="background:#FFFFFF;padding-left:10px">
+          <span style="font:600 clamp(1.6rem,3vw,2.2rem)/1 Archivo,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.02em">2</span>
+          <span style="font:500 clamp(1.1rem,2.2vw,1.35rem)/1.25 Newsreader,serif">persiapan karier</span>
+          <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#56637A;overflow-wrap:break-word">produk &#8599;</span>
+        </a>
+        <div style="display:grid;grid-template-columns:minmax(0,96px) minmax(0,1fr) auto;gap:12px 18px;align-items:baseline;padding:22px 8px 22px 0;border-bottom:1px solid #D3DCE8;opacity:.55">
+          <span style="font:600 clamp(1.6rem,3vw,2.2rem)/1 Archivo,sans-serif;color:#56637A">&#8212;</span>
+          <span style="font:500 clamp(1.1rem,2.2vw,1.35rem)/1.25 Newsreader,serif">cpns skd 2026</span>
+          <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#56637A;border:1px solid #D3DCE8;border-radius:999px;padding:6px 12px;overflow-wrap:break-word">segera</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,96px) minmax(0,1fr) auto;gap:12px 18px;align-items:baseline;padding:22px 8px 22px 0;border-bottom:1px solid #D3DCE8;opacity:.55">
+          <span style="font:600 clamp(1.6rem,3vw,2.2rem)/1 Archivo,sans-serif;color:#56637A">&#8212;</span>
+          <span style="font:500 clamp(1.1rem,2.2vw,1.35rem)/1.25 Newsreader,serif">gat bumn</span>
+          <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#56637A;border:1px solid #D3DCE8;border-radius:999px;padding:6px 12px;overflow-wrap:break-word">segera</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ katKartu }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));margin-top:18px">
+        <div style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:10px;padding:18px">
+          <div style="font:500 1.1rem/1.2 Newsreader,serif;margin-bottom:8px">pcpm bank indonesia</div>
+          <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#56637A;overflow-wrap:break-word"><b style="font-variant-numeric:tabular-nums;color:#0A1D3A;font-weight:600">13</b> produk</span>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:10px;padding:18px">
+          <div style="font:500 1.1rem/1.2 Newsreader,serif;margin-bottom:8px">persiapan karier</div>
+          <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#56637A;overflow-wrap:break-word"><b style="font-variant-numeric:tabular-nums;color:#0A1D3A;font-weight:600">2</b> produk</span>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:10px;padding:18px;opacity:.55">
+          <div style="font:500 1.1rem/1.2 Newsreader,serif;margin-bottom:8px">cpns skd 2026</div>
+          <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#56637A;overflow-wrap:break-word">segera</span>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #D3DCE8;border-radius:10px;padding:18px;opacity:.55">
+          <div style="font:500 1.1rem/1.2 Newsreader,serif;margin-bottom:8px">gat bumn</div>
+          <span style="font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#56637A;overflow-wrap:break-word">segera</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <div id="faq" style="position:relative;height:1px;background:#D3DCE8;margin:clamp(52px,8vw,84px) 0"></div>
+
+    <div style="display:flex;justify-content:space-between;gap:12px;font:500 .78rem/1 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#56637A;padding-bottom:11px;border-bottom:1px solid #D3DCE8;margin-bottom:24px">
+      <span>faq</span><span style="font-variant-numeric:tabular-nums">2 pertanyaan</span>
+    </div>
+
+    <details open="{{ true }}" class="faq" style="background:#FFFFFF;border:1px solid #D3DCE8;border-left:3px solid #D3DCE8;border-radius:10px;margin-bottom:10px;overflow:hidden">
+      <summary style="cursor:pointer;padding:16px 18px;font:500 1.05rem/1.35 Newsreader,serif;display:flex;justify-content:space-between;gap:14px;align-items:center"><span>file-nya bisa dishare ke temen?</span></summary>
+      <div style="padding:2px 18px 16px;color:#56637A;font-size:.98rem;border-top:1px solid #D3DCE8;padding-top:15px">tiap PDF punya watermark nama pembeli di dalamnya.</div>
+    </details>
+
+    <details class="faq" style="background:#FFFFFF;border:1px solid #D3DCE8;border-left:3px solid #D3DCE8;border-radius:10px;margin-bottom:10px;overflow:hidden">
+      <summary style="cursor:pointer;padding:16px 18px;font:500 1.05rem/1.35 Newsreader,serif;display:flex;justify-content:space-between;gap:14px;align-items:center"><span>kenapa yang dilatih polanya, bukan soalnya?</span></summary>
+      <div style="padding:2px 18px 16px;color:#56637A;font-size:.98rem;border-top:1px solid #D3DCE8;padding-top:15px">soal aslinya gak pernah sama persis. yang berulang itu pola dan jebakannya.</div>
+    </details>
+
+  </div>
+
+  <footer style="background:#0E2A55;color:#B9C6DC;border-radius:18px 18px 0 0;margin-top:clamp(52px,8vw,84px);padding:clamp(34px,5vw,48px) 0 32px;font-size:.9rem">
+    <div style="max-width:1080px;margin:0 auto;padding:0 22px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:22px 40px">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:10px;margin-bottom:12px">
+            <span style="position:relative;width:26px;height:26px;border-radius:10px;background:#ffffff;color:#0E2A55;display:grid;place-items:center;font:500 1.05rem/1 Newsreader,serif">o<span style="position:absolute;left:7px;bottom:5px;width:12px;height:2px;background:#C0392B"></span></span>
+            <span style="font:500 1.16rem/1 Newsreader,serif;letter-spacing:-.01em;color:#ffffff">overtimeboo<span style="color:#B9C6DC;font-weight:400">.</span></span>
+          </span>
+          <div>bank soal digital &#183; dikirim otomatis lewat lynk.id</div>
+        </div>
+        <nav style="display:flex;flex-direction:column;gap:8px;font:500 .78rem/1 Archivo,sans-serif;letter-spacing:.09em;text-transform:uppercase">
+          <a href="#katalog" style="color:#B9C6DC" style-hover="color:#ffffff">katalog</a>
+          <a href="#kategori" style="color:#B9C6DC" style-hover="color:#ffffff">kategori</a>
+          <a href="https://lynk.id/" style="color:#ffffff" style-hover="color:#B9C6DC">lynk.id &#8599;</a>
+        </nav>
+      </div>
+      <div style="position:relative;height:1px;background:#23406E;margin:26px 0 16px">
+        <span style="position:absolute;left:0;top:-5px;width:2px;height:11px;background:#C0392B"></span>
+      </div>
+      <p style="margin:0;max-width:70ch">soal 100% original. ini BUKAN bocoran soal seleksi mana pun. tidak berafiliasi dengan BKN, KemenPANRB, FHCI, Bank Indonesia, maupun BUMN mana pun.</p>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tickerText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;TPD ~1 SEP · TES TEKNIS 2–20 SEP · PCPM BI ANGKATAN 41&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;strip jadwal&quot;,&quot;label&quot;:&quot;isi strip (kosongkan = strip tidak dirender)&quot;},&quot;bundleFeature&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;katalog&quot;,&quot;label&quot;:&quot;bundle sebagai kartu lebar navy&quot;},&quot;katLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ledger&quot;,&quot;kartu&quot;],&quot;default&quot;:&quot;ledger&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;kategori&quot;,&quot;label&quot;:&quot;tata letak kategori&quot;}}">
+class Component extends DCLogic {
+  state = { filter: "semua" };
+
+  renderVals() {
+    const filter = this.state.filter;
+    const ids = ["semua", "pcpm", "career", "bundle", "gratis"];
+    const c = {}, f = {};
+    ids.forEach(id => {
+      const on = filter === id;
+      c[id] = {
+        bg: on ? "#0E2A55" : "#FFFFFF",
+        fg: on ? "#FFFFFF" : "#0A1D3A",
+        bd: on ? "#0E2A55" : "#D3DCE8",
+        p: on ? "true" : "false"
+      };
+      f[id] = () => this.setState({ filter: id });
+    });
+
+    const feature = this.props.bundleFeature !== false;
+    const showBundle = filter === "semua" || filter === "bundle";
+    const showGratis = filter === "semua" || filter === "gratis";
+    const showPaket = filter === "semua" || filter === "pcpm";
+    const paket = showPaket
+      ? [1, 2, 3, 4, 5].map(n => ({
+          no: "0" + n,
+          judul: "Bank Soal PCPM BI \u2014 Paket " + n
+        }))
+      : [];
+    const n = paket.length + (showGratis ? 1 : 0) + (showBundle ? 1 : 0);
+
+    const ticker = this.props.tickerText ?? "TPD ~1 SEP \u00b7 TES TEKNIS 2\u201320 SEP \u00b7 PCPM BI ANGKATAN 41";
+    const kat = this.props.katLayout ?? "ledger";
+
+    return {
+      c, f, paket,
+      showGratis,
+      showFeature: showBundle && feature,
+      showGridBundle: showBundle && !feature,
+      showEmpty: n === 0,
+      statusText: n + " produk",
+      tickerText: ticker,
+      showTicker: String(ticker).trim().length > 0,
+      katLedger: kat === "ledger",
+      katKartu: kat !== "ledger"
+    };
+  }
+}
+
+</script>
+</body>
+</html>
