@@ -1,0 +1,253 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>mockup tema navy v3 — overtimeboo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0E2A55; --navy-deep:#071A36; --ink:#0A1D3A;
+  --paper:#ECF0F6; --card:#FFFFFF; --line:#D3DCE8; --line-dark:#23406E;
+  --muted:#56637A; --on-navy:#FFFFFF; --on-navy-2:#B9C6DC;
+  --accent:#C0392B;
+  --wrap:1080px;
+  --r-card:10px; --r-hero:18px; --r-pill:999px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 1.0625rem/1.65 Archivo,system-ui,sans-serif;
+  overflow-wrap:break-word;
+}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+a{color:inherit}
+
+/* ---------- topbar + ticker ---------- */
+.top{background:var(--navy);color:var(--on-navy)}
+.top__in{display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:15px 0}
+.brand{font:500 1.16rem/1 Newsreader,serif;letter-spacing:-.01em}
+.brand b{color:var(--on-navy-2);font-weight:400}
+.top__link{font:500 .78rem/1 Archivo,sans-serif;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--on-navy-2);text-decoration:none}
+.top__link:hover{color:#fff}
+.tick{background:var(--navy-deep);color:var(--on-navy-2);
+  font:500 .74rem/34px Archivo,sans-serif;letter-spacing:.1em;
+  text-transform:uppercase;text-align:center;height:34px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 16px}
+
+/* ---------- hero ---------- */
+.hero{background:var(--navy);color:var(--on-navy);
+  border-radius:0 0 var(--r-hero) var(--r-hero);
+  padding:clamp(44px,7vw,78px) 0 clamp(38px,6vw,62px)}
+.hero h1{
+  font:400 clamp(2.4rem,7vw,4.6rem)/1.05 Newsreader,serif;
+  letter-spacing:-.02em;margin:0 0 20px;max-width:15ch}
+.hero p{color:var(--on-navy-2);max-width:52ch;margin:0 0 30px}
+.hero__meta{display:flex;flex-wrap:wrap;gap:10px 26px;
+  border-top:1px solid var(--line-dark);padding-top:20px}
+.stat{display:flex;align-items:baseline;gap:9px}
+.stat__n{font:600 1.12rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums}
+.stat__l{font:500 .74rem/1 Archivo,sans-serif;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--on-navy-2)}
+
+/* ---------- garis ambang batas ---------- */
+.batas{position:relative;height:1px;background:var(--line);
+  margin:clamp(52px,8vw,84px) 0}
+.batas::before{content:"";position:absolute;left:0;top:-5px;
+  width:2px;height:11px;background:var(--accent)}
+.batas__label{position:absolute;left:10px;top:-9px;
+  font:500 .68rem/1 Archivo,sans-serif;letter-spacing:.12em;
+  color:var(--muted);background:var(--paper);padding-right:8px}
+
+/* ---------- label section ---------- */
+.eyebrow{font:500 .78rem/1 Archivo,sans-serif;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);
+  padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:26px;
+  display:flex;justify-content:space-between;gap:12px}
+h2{font:500 clamp(1.5rem,3.6vw,2.1rem)/1.18 Newsreader,serif;
+  letter-spacing:-.015em;margin:0 0 8px}
+
+/* ---------- chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chip{font:500 .84rem/1 Archivo,sans-serif;padding:9px 15px;
+  border:1px solid var(--line);border-radius:var(--r-pill);
+  background:var(--card);color:var(--ink);cursor:pointer;
+  transition:border-color .14s,background .14s}
+.chip:hover{border-color:var(--navy)}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);
+  color:#fff}
+
+/* ---------- kartu produk ---------- */
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(276px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r-card);padding:20px;display:flex;flex-direction:column;
+  transition:border-color .14s,transform .14s}
+.card:hover{border-color:var(--navy);transform:translateY(-2px)}
+.card__badge{align-self:flex-start;font:500 .68rem/1 Archivo,sans-serif;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:11px;overflow-wrap:break-word}
+.card__judul{font:600 1.02rem/1.35 Archivo,sans-serif;margin:0 0 10px;
+  overflow-wrap:break-word}
+.card__meta{list-style:none;margin:0 0 18px;padding:0;
+  font-size:.9rem;color:var(--muted)}
+.card__meta li{padding:5px 0;border-top:1px solid var(--line)}
+.card__foot{margin-top:auto;display:flex;align-items:center;
+  justify-content:space-between;gap:12px}
+.harga{font:600 1.12rem/1 Archivo,sans-serif;font-variant-numeric:tabular-nums}
+.harga--free{color:var(--accent)}
+
+.btn{font:500 .88rem/1 Archivo,sans-serif;text-decoration:none;
+  padding:11px 17px;border-radius:var(--r-pill);white-space:nowrap;
+  background:var(--navy);color:#fff;border:1.5px solid var(--navy);
+  transition:background .14s,border-color .14s}
+.btn:hover{background:var(--navy-deep);border-color:var(--navy-deep)}
+.btn--ghost{background:transparent;color:var(--navy)}
+.btn--ghost:hover{background:var(--navy);color:#fff}
+
+/* ---------- kategori ---------- */
+.kat{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.kat__i{background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r-card);padding:18px}
+.kat__i--soon{opacity:.55}
+.kat__n{font:500 1.1rem/1.2 Newsreader,serif;margin-bottom:6px}
+.badge{display:inline-block;font:500 .68rem/1 Archivo,sans-serif;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  overflow-wrap:break-word}
+.badge b{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600}
+
+/* ---------- faq ---------- */
+details{background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r-card);margin-bottom:10px;overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:16px 18px;
+  font:500 1.05rem/1.35 Newsreader,serif}
+summary::-webkit-details-marker{display:none}
+details[open]{border-left:3px solid var(--accent)}
+details[open] summary{border-bottom:1px solid var(--line)}
+.faq__b{padding:15px 18px;color:var(--muted);font-size:.98rem}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy);color:var(--on-navy-2);
+  border-radius:var(--r-hero) var(--r-hero) 0 0;
+  margin-top:clamp(52px,8vw,84px);padding:38px 0 30px;font-size:.9rem}
+footer .brand{color:#fff;margin-bottom:14px;display:block}
+.disc{border-top:1px solid var(--line-dark);padding-top:16px;
+  margin-top:20px;max-width:70ch}
+
+/* ---------- a11y ---------- */
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap top__in">
+    <span class="brand">overtimeboo<b>.</b></span>
+    <a class="top__link" href="#">lynk.id ↗</a>
+  </div>
+</header>
+<div class="tick">TPD ~1 SEP · TES TEKNIS 2–20 SEP · PCPM BI ANGKATAN 41</div>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>bank soal yang kunci sama pembahasannya lengkap.</h1>
+    <p>soal, kunci, dan pembahasan tiap nomor. file PDF, download langsung baca. anywhere, anytime.</p>
+    <div class="hero__meta">
+      <span class="stat"><span class="stat__n">15</span><span class="stat__l">produk</span></span>
+      <span class="stat"><span class="stat__n">4</span><span class="stat__l">kategori</span></span>
+      <span class="stat"><span class="stat__n">1</span><span class="stat__l">preview gratis</span></span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <div class="batas"><span class="batas__label">40 SOAL / PAKET</span></div>
+
+  <div class="eyebrow"><span>katalog</span><span>15 produk</span></div>
+  <h2>pilih materi yang lagi kamu kejar</h2>
+  <div class="chips">
+    <button class="chip" aria-pressed="true">semua</button>
+    <button class="chip" aria-pressed="false">pcpm</button>
+    <button class="chip" aria-pressed="false">career</button>
+    <button class="chip" aria-pressed="false">bundle</button>
+    <button class="chip" aria-pressed="false">gratis</button>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <span class="card__badge">gratis</span>
+      <h3 class="card__judul">Preview Gratis — 20 Soal PCPM BI</h3>
+      <ul class="card__meta">
+        <li>20 soal TPU &amp; kebanksentralan</li>
+        <li>kunci + pembahasan lengkap</li>
+      </ul>
+      <div class="card__foot">
+        <span class="harga harga--free">gratis</span>
+        <a class="btn btn--ghost" href="#">ambil gratis ↗</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="card__badge">pcpm</span>
+      <h3 class="card__judul">Bank Soal PCPM BI — Paket 3</h3>
+      <ul class="card__meta">
+        <li>40 soal TPU + kebanksentralan</li>
+        <li>PDF, watermark per pembeli</li>
+      </ul>
+      <div class="card__foot">
+        <span class="harga">Rp10.000</span>
+        <a class="btn" href="#">checkout di lynk ↗</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="card__badge">bundle · hemat</span>
+      <h3 class="card__judul">Bundle Lengkap PCPM BI — 5 Paket + 2 Modul</h3>
+      <ul class="card__meta">
+        <li>200 soal, tanpa pengulangan</li>
+        <li>2 modul belajar sebagai bonus</li>
+      </ul>
+      <div class="card__foot">
+        <span class="harga">Rp45.000</span>
+        <a class="btn" href="#">checkout di lynk ↗</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="batas"><span class="batas__label">166 PASSING GRADE</span></div>
+
+  <div class="eyebrow"><span>kategori</span><span>4 lini</span></div>
+  <div class="kat">
+    <div class="kat__i"><div class="kat__n">pcpm bank indonesia</div>
+      <span class="badge"><b>13</b> produk</span></div>
+    <div class="kat__i"><div class="kat__n">persiapan karier</div>
+      <span class="badge"><b>2</b> produk</span></div>
+    <div class="kat__i kat__i--soon"><div class="kat__n">cpns skd 2026</div>
+      <span class="badge">segera</span></div>
+    <div class="kat__i kat__i--soon"><div class="kat__n">gat bumn</div>
+      <span class="badge">segera</span></div>
+  </div>
+
+  <div class="batas"></div>
+
+  <div class="eyebrow"><span>faq</span></div>
+  <details open>
+    <summary>file-nya bisa dishare ke temen?</summary>
+    <div class="faq__b">tiap PDF punya watermark nama pembeli di dalamnya. cara pakai yang paling ngefek: kerjain dulu tanpa lihat kunci, terus salin pembahasan soal yang salah ke ChatGPT atau Claude, minta 3 soal berpola sama, ulang besoknya.</div>
+  </details>
+  <details>
+    <summary>kenapa yang dilatih polanya, bukan soalnya?</summary>
+    <div class="faq__b">soal aslinya gak pernah sama persis. yang berulang itu pola dan jebakannya.</div>
+  </details>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">overtimeboo<b>.</b></span>
+    <div>bank soal digital · dikirim otomatis lewat lynk.id</div>
+    <p class="disc">soal 100% original. ini BUKAN bocoran soal seleksi mana pun. tidak berafiliasi dengan BKN, KemenPANRB, FHCI, Bank Indonesia, maupun BUMN mana pun.</p>
+  </div>
+</footer>
