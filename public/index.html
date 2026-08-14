@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>overtimeboo — bank soal PCPM BI, Karier, BUMN, CPNS</title>
+<meta name="description" content="Bank soal PCPM Bank Indonesia, TOEFL ITP, dan GAT BUMN. Kunci dan pembahasan di tiap nomor. Format PDF, dikirim otomatis.">
+<meta name="theme-color" content="#0E2A55">
+<link rel="canonical" href="https://overtime-boo.gulliveragent.workers.dev/">
+<link rel="icon" href="favicon.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="overtimeboo">
+<meta property="og:title" content="overtimeboo — bank soal PCPM BI, Karier, BUMN, CPNS">
+<meta property="og:description" content="Bank soal PCPM Bank Indonesia, TOEFL ITP, dan GAT BUMN. Kunci dan pembahasan di tiap nomor. Format PDF, dikirim otomatis.">
+<meta property="og:url" content="https://overtime-boo.gulliveragent.workers.dev/">
+<meta property="og:image" content="https://overtime-boo.gulliveragent.workers.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="overtimeboo — lolos sama nggak lolos itu selisih beberapa nomor">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+
+<style>
+:root{
+  /* ground */
+  --navy:#0E2A55; --navy-deep:#071A36; --navy-mid:#173A6B; --ink:#0A1D3A;
+  /* paper */
+  --paper:#ECF0F6; --paper-2:#F4F7FB; --card:#FFFFFF;
+  --line:#D3DCE8; --line-dark:#23406E;
+  /* text */
+  --muted:#56637A; --muted-2:#8A96AC; --on-navy-2:#B9C6DC;
+  /* accent */
+  --accent:#C0392B; --accent-bg:#FBE9E6;
+  /* aksi beli — hijau, sengaja beda nada dari aksen merah */
+  --buy:#0F7A4A; --buy-2:#0B6E3F;
+  /* geometri */
+  --wrap:1200px; --pad:24px;
+  --r-lg:26px; --r-md:22px; --r-ico:16px; --r-pill:999px;
+  --gap:14px; --sect:clamp(44px,6vw,72px);
+  --font:Archivo,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --disp-wd:115%; --sub-wd:112%; --row-wd:110%; --card-wd:108%;
+  /* skala — lantai 14px dijaga di semua peran (lihat catatan di bawah) */
+  --fs-body:clamp(1.0625rem,1rem + .3vw,1.125rem);
+  --fs-meta:clamp(.875rem,.85rem + .12vw,.9375rem);
+  --fs-ui:clamp(.9375rem,.9rem + .18vw,1rem);
+  --fs-card:clamp(1.125rem,1.08rem + .2vw,1.1875rem);
+  --fs-h1:clamp(2.5rem,6.6vw,5.2rem);
+  --fs-poster:clamp(2rem,5.2vw,3.6rem);
+  --fs-h2:clamp(1.7rem,3.6vw,2.5rem);
+  --fs-row:clamp(1.15rem,2.2vw,1.5rem);
+  --fs-step:clamp(1.15rem,2.4vw,1.75rem);
+  --fs-mark:clamp(2.2rem,7vw,4.6rem);
+  --fs-harga:clamp(1.25rem,1.15rem + .4vw,1.4rem);
+  --fs-brand:clamp(1.0625rem,1rem + .25vw,1.15rem);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:400 var(--fs-body)/1.6 var(--font);overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0}
+p{margin:0}
+a{color:var(--navy);text-decoration:none}
+img,svg{display:block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-4rem;z-index:60;background:var(--card);border-radius:var(--r-pill);
+  padding:10px 18px;font:600 var(--fs-ui)/1 var(--font);transition:top .15s}
+.skip:focus{top:12px}
+
+/* ---------- label / eyebrow ---------- */
+.eyebrow{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font:600 var(--fs-meta)/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow--onnavy{color:var(--on-navy-2)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--navy-deep);color:var(--on-navy-2);text-align:center;
+  padding:9px 16px;font:600 var(--fs-meta)/1.3 var(--font);letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- header ---------- */
+.hd{background:var(--paper)}
+.hd__in{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:16px var(--pad)}
+.brand{display:inline-flex;align-items:center;gap:10px}
+.mono{position:relative;width:32px;height:32px;border-radius:var(--r-pill);background:var(--navy);color:#fff;
+  display:grid;place-items:center;font:800 var(--fs-brand)/1 var(--font);font-stretch:115%}
+.mono::after{content:"";position:absolute;right:-1px;bottom:3px;width:9px;height:9px;border-radius:var(--r-pill);background:var(--accent)}
+.brand__n{font:800 var(--fs-brand)/1 var(--font);font-stretch:112%;letter-spacing:-.01em}
+.nav{display:flex;align-items:center;gap:6px;font:600 var(--fs-ui)/1 var(--font)}
+.nav a{padding:11px 14px;border-radius:var(--r-pill);color:var(--muted);transition:background .14s,color .14s}
+.nav a:hover{background:#E1E8F2;color:var(--ink)}
+/* pill di dalam nav butuh spesifisitas lebih tinggi, kalau tidak warnanya kena .nav a */
+.nav a.pill{color:#fff;padding:6px 7px 6px 16px}
+.nav a.pill:hover{background:var(--navy-deep);color:#fff}
+/* di layar sempit tautan jangkar disembunyikan — dulu membungkus jadi dua baris
+   dan menyisakan "FAQ" sendirian di samping pill. CTA-nya tetap tampil. */
+@media(max-width:760px){.nav a:not(.pill){display:none}}
+
+/* pill CTA ala referensi: label kiri, lingkaran ikon kanan */
+.pill{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;
+  border-radius:var(--r-pill);padding:6px 7px 6px 16px;font:600 var(--fs-ui)/1 var(--font);
+  min-height:44px;transition:background .14s}
+.pill:hover{background:var(--navy-deep);color:#fff}
+.pill i{flex:none;width:28px;height:28px;border-radius:var(--r-pill);background:#fff;color:var(--navy);display:grid;place-items:center}
+.pill--soft{background:var(--navy-mid)}
+.pill--soft:hover{background:var(--line-dark)}
+
+/* ---------- CTA selebar wadah: lingkaran ikon kiri, label tengah ---------- */
+/* Default = aksi beli (hijau). Putih di atas --buy = 5.38:1, lolos AA. */
+.cta{display:flex;align-items:center;gap:10px;border-radius:var(--r-pill);padding:7px;
+  font:600 var(--fs-ui)/1 var(--font);min-height:46px;
+  background:var(--buy);color:#fff;transition:background .14s,color .14s,border-color .14s}
+.cta:hover{background:var(--buy-2);color:#fff}
+.cta i{flex:none;width:34px;height:34px;border-radius:var(--r-pill);background:#fff;color:var(--buy);display:grid;place-items:center}
+.cta span{flex:1;text-align:center;padding-right:34px}
+/* sekunder: ambil gratis */
+.cta--ghost{background:var(--card);color:var(--navy);border:1.5px solid var(--navy)}
+.cta--ghost:hover{background:var(--navy);color:#fff}
+.cta--ghost i{background:var(--navy);color:#fff}
+.cta--ghost:hover i{background:#fff;color:var(--navy)}
+/* di atas navy: putih pekat */
+.cta--inv{background:#fff;color:var(--navy)}
+.cta--inv:hover{background:var(--paper);color:var(--navy)}
+.cta--inv i{background:var(--navy);color:#fff}
+/* di atas navy: garis putih. dulu tombol ini navy-di-atas-navy jadi tak kelihatan. */
+.cta--line{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.cta--line:hover{background:rgba(255,255,255,.12);color:#fff;border-color:#fff}
+.cta--line i{background:#fff;color:var(--navy)}
+.cta--auto{display:inline-flex;flex:none;padding:7px 8px 7px 8px}
+.cta--auto span{flex:none;padding:0 16px 0 6px}
+
+/* ---------- hero ---------- */
+.hero{background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:clamp(24px,3.4vw,40px);margin-top:8px}
+.hero__top{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-bottom:clamp(26px,4vw,46px)}
+.kicker{display:inline-flex;align-items:center;gap:9px;background:var(--navy-mid);border-radius:var(--r-pill);
+  padding:9px 16px;font:600 var(--fs-meta)/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:#fff}
+/* line-height 1.34, bukan .98 dari spec v3.2. Kotak latar elemen inline setinggi
+   kotak em font (~1.15em), jadi di .98 kapsul antarbaris tumpuk ~20px di desktop.
+   1.34 nyisain jarak +3.6px di 390px dan +7.5px di 1280px. Jangan turunkan lagi. */
+.hero h1{font:800 var(--fs-h1)/1.34 var(--font);font-stretch:var(--disp-wd);letter-spacing:-.035em;
+  max-width:17ch;text-wrap:balance}
+/* Kapsul sorot terisi penuh. box-decoration-break:clone bikin tiap baris dapat
+   kapsul utuh sendiri, bukan satu kapsul robek yang ujungnya menggantung. */
+.mark{display:inline;background:var(--accent);border-radius:var(--r-pill);
+  padding:.03em .34em .07em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero__lead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+  gap:22px 40px;padding:clamp(26px,4vw,44px) 0 clamp(24px,3.4vw,38px)}
+.hero__lead p{color:var(--on-navy-2);max-width:46ch}
+.hero__act{display:flex;flex-wrap:wrap;gap:10px}
+
+/* strip dampak: pola .row di atas navy */
+.strip{display:grid;gap:10px;border-top:1px solid var(--line-dark);padding:clamp(22px,3vw,30px) 0 0;margin:0;list-style:none}
+@media(min-width:900px){.strip{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ---------- row (kategori, langkah, strip) ---------- */
+.row{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:16px;align-items:center;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px;color:var(--ink);
+  transition:border-color .14s,transform .14s}
+a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
+.row .ico{width:48px;height:48px;border-radius:var(--r-ico);background:var(--paper-2);color:var(--navy);display:grid;place-items:center}
+.row .t{display:block;font:700 var(--fs-row)/1.2 var(--font);font-stretch:var(--row-wd);letter-spacing:-.025em}
+.row .s{display:block;margin-top:4px;font:500 var(--fs-meta)/1.35 var(--font);color:var(--muted)}
+.row .go{justify-self:end;width:36px;height:36px;border-radius:var(--r-pill);background:var(--navy);color:#fff;display:grid;place-items:center}
+.row--soon{opacity:.6}
+.row--navy{background:var(--navy-mid);border-color:transparent;color:#fff}
+.row--navy .ico{background:rgba(255,255,255,.13);color:#fff}
+.row--navy .s{color:var(--on-navy-2)}
+.row--step{grid-template-columns:44px minmax(0,1fr);background:var(--navy);border-color:transparent;color:#fff;
+  padding:clamp(16px,2.2vw,22px) clamp(18px,2.4vw,26px)}
+.row--step .no{width:44px;height:44px;border-radius:var(--r-pill);background:var(--navy-mid);color:#fff;
+  display:grid;place-items:center;font:700 var(--fs-ui)/1 var(--font);font-variant-numeric:tabular-nums}
+.row--step .t{font:600 var(--fs-step)/1.24 var(--font);font-stretch:var(--card-wd);letter-spacing:-.02em}
+.row--step .s{color:var(--on-navy-2)}
+
+/* ---------- katalog ---------- */
+.sect{margin-top:var(--sect)}
+.h2{font:700 var(--fs-h2)/1.06 var(--font);font-stretch:var(--sub-wd);letter-spacing:-.03em;
+  margin:16px 0 22px;max-width:24ch;text-wrap:pretty}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.chip{font:600 var(--fs-ui)/1 var(--font);white-space:nowrap;min-height:44px;padding:12px 20px;
+  border-radius:var(--r-pill);border:0;background:var(--card);color:var(--muted);cursor:pointer;
+  transition:background .14s,color .14s}
+.chip:hover{background:#E1E8F2}
+.chip.on{background:var(--navy);color:#fff}
+.grid{display:grid;gap:var(--gap);grid-template-columns:repeat(auto-fill,minmax(288px,1fr));margin:0;padding:0;list-style:none}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px;
+  display:flex;flex-direction:column;gap:16px;transition:border-color .14s,transform .14s}
+.card:hover{border-color:var(--navy);transform:translateY(-3px)}
+.card__hd{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tag{background:var(--paper-2);color:var(--muted);border-radius:var(--r-pill);padding:7px 14px;
+  font:600 var(--fs-meta)/1 var(--font);letter-spacing:.1em;text-transform:uppercase;max-width:100%}
+.tag--free{background:var(--accent-bg);color:var(--accent)}
+.card__no{font:600 var(--fs-meta)/1 var(--font);color:var(--muted-2);font-variant-numeric:tabular-nums}
+.card h3{font:700 var(--fs-card)/1.26 var(--font);font-stretch:var(--card-wd);letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px 18px;font:500 var(--fs-meta)/1 var(--font);color:var(--muted);margin:0;padding:0;list-style:none}
+.meta li{display:inline-flex;align-items:center;gap:8px}
+.meta i{flex:none;width:26px;height:26px;border-radius:var(--r-pill);background:var(--paper-2);color:var(--navy);display:grid;place-items:center}
+.card__foot{margin-top:auto;display:flex;flex-direction:column;gap:10px}
+.inset{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  background:var(--paper-2);border-radius:var(--r-pill);padding:9px 9px 9px 18px}
+.harga{font:800 var(--fs-harga)/1 var(--font);font-stretch:var(--card-wd);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.harga--free{color:var(--accent)}
+.inset .tag{background:var(--card)}
+
+/* kartu bundle lebar */
+.card--wide{background:var(--navy);color:#fff;border:0;border-radius:var(--r-lg);padding:clamp(24px,3.4vw,38px);
+  margin-bottom:var(--gap);display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:clamp(22px,3vw,44px)}
+.card--wide:hover{transform:none}
+.card--wide h3{font:700 clamp(1.6rem,3.2vw,2.4rem)/1.06 var(--font);font-stretch:var(--sub-wd);letter-spacing:-.03em;margin-bottom:16px;max-width:20ch}
+.card--wide p{color:var(--on-navy-2);max-width:42ch}
+.card--wide .col2{display:flex;flex-direction:column;justify-content:flex-end;gap:14px}
+.card--wide .inset{background:var(--navy-mid)}
+.card--wide .inset .tag{background:#fff;color:var(--navy)}
+/* cincin tipis: hijau di atas navy cuma 2.64:1, cincin ini yang bikin tepinya kebaca */
+.card--wide .cta{box-shadow:0 0 0 1.5px rgba(255,255,255,.3)}
+.card--wide .harga{color:#fff}
+.card--wide .kicker{margin-bottom:18px}
+
+.empty{border:1px dashed var(--line);border-radius:var(--r-lg);padding:28px 24px;background:var(--card)}
+.empty p:first-of-type{font:700 var(--fs-card)/1.26 var(--font);font-stretch:var(--card-wd);letter-spacing:-.02em;margin:14px 0 8px}
+.empty p:last-of-type{color:var(--muted);max-width:64ch}
+
+/* ---------- blok navy penuh lebar ---------- */
+.band{background:var(--navy-deep);color:#fff;margin-top:clamp(48px,7vw,80px);padding:clamp(52px,7vw,88px) 0}
+.poster{font:800 var(--fs-poster)/1.02 var(--font);font-stretch:var(--disp-wd);letter-spacing:-.035em;
+  margin:18px 0 clamp(30px,4vw,46px);max-width:21ch;text-wrap:pretty}
+.steps{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+
+/* ---------- faq ---------- */
+.faq{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+.faq+.faq{margin-top:10px}
+.faq[open]{border-color:var(--navy)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 20px;min-height:44px;display:flex;
+  justify-content:space-between;gap:16px;align-items:center;color:var(--ink);
+  font:700 var(--fs-card)/1.3 var(--font);font-stretch:var(--card-wd);letter-spacing:-.02em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:36px;height:36px;border-radius:var(--r-pill);
+  background:var(--paper-2);color:var(--navy);display:grid;place-items:center;font:500 var(--fs-harga)/1 var(--font)}
+.faq[open] summary::after{content:"\2212"}
+.faq__a{padding:0 20px 20px;color:var(--muted);max-width:70ch}
+
+/* ---------- penutup ---------- */
+.outro{background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:clamp(30px,4.6vw,56px);margin-top:var(--sect)}
+.outro .poster{margin:16px 0 clamp(24px,3vw,34px);max-width:20ch}
+.outro__sub{color:var(--on-navy-2);margin-top:14px;max-width:44ch}
+.badge{display:inline-flex;align-items:center;gap:9px;background:var(--navy-mid);border-radius:var(--r-pill);
+  padding:9px 16px;font:600 var(--fs-meta)/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:#fff}
+
+/* ---------- footer ---------- */
+.ft{background:var(--navy);color:var(--on-navy-2);border-radius:var(--r-lg) var(--r-lg) 0 0;
+  margin-top:clamp(48px,7vw,78px);padding:clamp(36px,5vw,56px) 0 30px}
+.ft__top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px 40px;align-items:flex-end}
+.wordmark{font:800 var(--fs-mark)/.94 var(--font);font-stretch:var(--disp-wd);letter-spacing:-.04em;color:#fff}
+.wordmark span{display:inline-block;width:.16em;height:.16em;border-radius:var(--r-pill);background:var(--accent)}
+.ft nav{flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:10px;font:600 var(--fs-ui)/1 var(--font)}
+.ft nav a{color:var(--on-navy-2);white-space:nowrap;padding:6px 0}
+.ft nav a:hover{color:#fff}
+.ft .pill--soft{color:#fff;margin-top:4px}
+.rule{height:1px;background:var(--line-dark);margin:30px 0 18px}
+.ft__legal{display:flex;flex-wrap:wrap;gap:6px 20px;margin:14px 0 0;padding:0;list-style:none;font:500 var(--fs-meta)/1.4 var(--font)}
+.ft__legal a{color:var(--on-navy-2)}
+.ft__legal a:hover{color:#fff}
+.ft__kontak{margin-top:12px}
+.ft__kontak a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.disc{max-width:70ch;font-size:var(--fs-meta);line-height:1.6}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#konten">Lompat ke konten</a>
+
+<!-- Strip jadwal. Kadaluwarsa akhir September 2026 — hapus seluruh baris ini kalau sudah lewat. -->
+<div class="ticker">TPD ~1 Sep · Tes teknis 2–20 Sep · PCPM BI angkatan 41</div>
+
+<header class="hd">
+  <div class="hd__in wrap">
+    <span class="brand">
+      <span class="mono" aria-hidden="true">o</span>
+      <span class="brand__n">overtimeboo</span>
+    </span>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="#katalog">Katalog</a>
+      <a href="#cara">Cara pakai</a>
+      <a href="#kategori">Kategori</a>
+      <a href="#faq">FAQ</a>
+      <a class="pill" href="https://lynk.id/overtimeboo" target="_blank" rel="noopener">lynk.id<i aria-hidden="true"><svg width="13" height="13"><use href="#i-ext"/></svg></i></a>
+    </nav>
+  </div>
+</header>
+
+<main id="konten">
+
+  <!-- ============ HERO ============ -->
+  <div class="wrap">
+    <section class="hero" aria-labelledby="h-hero">
+      <div class="hero__top">
+        <span class="kicker">Persiapan PCPM BI · CPNS · BUMN</span>
+      </div>
+      <h1 id="h-hero">Lolos sama nggak lolos itu <span class="mark">selisih beberapa nomor.</span></h1>
+      <div class="hero__lead">
+        <p>Makanya tiap nomor di sini ada pembahasannya. Yang salah hari ini, jangan sampai salah lagi pas ujian.</p>
+        <div class="hero__act">
+          <a class="cta cta--inv cta--auto" href="#katalog"><i aria-hidden="true"><svg width="15" height="15"><use href="#i-down"/></svg></i><span>Lihat katalog</span></a>
+          <a class="cta cta--line cta--auto" id="cta-preview-hero" href="#katalog" target="_blank" rel="noopener"><i aria-hidden="true"><svg width="15" height="15"><use href="#i-dl"/></svg></i><span>Ambil preview gratis</span></a>
+        </div>
+      </div>
+      <ul class="strip">
+        <li class="row row--navy">
+          <span class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-doc"/></svg></span>
+          <span><span class="t">Tahu kenapa salahnya</span><span class="s">Bukan cuma tahu jawabannya B.</span></span>
+        </li>
+        <li class="row row--navy">
+          <span class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-layers"/></svg></span>
+          <span><span class="t">Nggak muter di soal yang itu-itu aja</span><span class="s">200 soal, nol pengulangan antar paket.</span></span>
+        </li>
+        <li class="row row--navy">
+          <span class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-dl"/></svg></span>
+          <span><span class="t">Bisa mulai malam ini juga</span><span class="s">Bayar, file langsung kekirim. Nggak usah daftar akun.</span></span>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- ============ KATALOG ============ -->
+  <section id="katalog" class="wrap sect" aria-labelledby="h-katalog">
+    <p class="eyebrow"><span>Katalog</span><span class="num" id="statusbar"></span></p>
+    <h2 class="h2" id="h-katalog">Pilih materi yang sedang kamu kejar</h2>
+    <ul class="chips" role="group" aria-label="Filter katalog">
+      <li><button class="chip on" type="button" data-f="semua" aria-pressed="true">Semua</button></li>
+      <li><button class="chip" type="button" data-f="pcpm" aria-pressed="false">PCPM</button></li>
+      <li><button class="chip" type="button" data-f="karier" aria-pressed="false">Karier</button></li>
+      <li><button class="chip" type="button" data-f="bundle" aria-pressed="false">Bundle</button></li>
+      <li><button class="chip" type="button" data-f="gratis" aria-pressed="false">Gratis</button></li>
+    </ul>
+    <div id="feature"></div>
+    <ul class="grid" id="grid"></ul>
+  </section>
+
+  <!-- ============ CARA PAKAI ============ -->
+  <section id="cara" class="band" aria-labelledby="h-cara">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--onnavy"><span>Cara pakai</span><span class="num">4 langkah</span></p>
+      <h2 class="poster" id="h-cara">Belinya gampang. Yang nentuin cara makainya.</h2>
+      <ol class="steps">
+        <li class="row row--step">
+          <span class="no" aria-hidden="true">01</span>
+          <span><span class="t">Kerjain dulu, kuncinya tutup</span><span class="s">Nilai jelek di latihan itu murah. Di ujian mahal.</span></span>
+        </li>
+        <li class="row row--step">
+          <span class="no" aria-hidden="true">02</span>
+          <span><span class="t">Fokusin ke nomor yang salah</span><span class="s">Yang bener nggak ngajarin apa-apa. Yang salah itu datanya.</span></span>
+        </li>
+        <li class="row row--step">
+          <span class="no" aria-hidden="true">03</span>
+          <span><span class="t">Cari pola yang sama di paket berikutnya</span><span class="s">Kejebak dua kali di pola yang sama itu bukan sial.</span></span>
+        </li>
+        <li class="row row--step">
+          <span class="no" aria-hidden="true">04</span>
+          <span><span class="t">Besok diulang lagi, bukan hari itu juga</span><span class="s">Kasih jeda semalam. Itu yang bikin nempel sampai hari H.</span></span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ KATEGORI ============ -->
+  <section id="kategori" class="wrap sect" aria-labelledby="h-kategori">
+    <p class="eyebrow"><span>Kategori</span><span class="num">4 lini</span></p>
+    <h2 class="h2" id="h-kategori">Mulai dari tes yang paling deket tanggalnya.</h2>
+    <ul class="steps" id="grid-kategori"></ul>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="wrap sect" aria-labelledby="h-faq">
+    <p class="eyebrow"><span id="h-faq">FAQ</span><span class="num">4 pertanyaan</span></p>
+    <div style="margin-top:18px">
+      <details class="faq" open>
+        <summary>Beli di sini gimana caranya?</summary>
+        <div class="faq__a"><p>Klik produknya, checkout di lynk.id pakai QRIS, e-wallet, atau transfer bank. File langsung dikirim ke email setelah pembayaran masuk. Nggak ada admin yang perlu dichat, nggak ada transfer manual.</p></div>
+      </details>
+      <details class="faq">
+        <summary>Kalau nggak cocok, bisa refund?</summary>
+        <div class="faq__a"><p>Produk digital jadi nggak ada refund. Makanya preview gratisnya disediakan duluan. Kerjain dulu, lihat sendiri isinya, baru putuskan.</p></div>
+      </details>
+      <details class="faq">
+        <summary>File-nya bisa dibagikan ke teman?</summary>
+        <div class="faq__a"><p>Tiap PDF ada watermark nama pembeli di dalamnya, jadi file yang disebar tetap bisa dilacak.</p></div>
+      </details>
+      <details class="faq">
+        <summary>Kenapa yang dilatih polanya, bukan soalnya?</summary>
+        <div class="faq__a"><p>Soal aslinya nggak pernah sama persis tiap tahun. Yang berulang itu pola dan jebakannya.</p></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ PENUTUP ============ -->
+  <div class="wrap">
+    <section class="outro" aria-labelledby="h-outro">
+      <span class="badge">Mulai hari ini</span>
+      <h2 class="poster" id="h-outro">Sisa waktunya tetap segitu. Yang masih bisa diatur cuma cara makainya.</h2>
+      <a class="cta cta--inv cta--auto" id="cta-preview-outro" href="#katalog" target="_blank" rel="noopener"><i aria-hidden="true"><svg width="15" height="15"><use href="#i-dl"/></svg></i><span>Ambil preview gratis</span></a>
+      <p class="outro__sub">20 soal PCPM BI, gratis, lengkap sama pembahasannya.</p>
+    </section>
+  </div>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__top">
+      <div style="min-width:0">
+        <div class="wordmark">overtimeboo<span aria-hidden="true"></span></div>
+        <p style="margin-top:14px">Bank soal digital, dikirim otomatis setelah pembayaran.</p>
+        <p class="ft__kontak">tanya-tanya: <a href="https://www.threads.com/@bukanordalpcpmbi" target="_blank" rel="noopener">threads @bukanordalpcpmbi</a></p>
+      </div>
+      <nav aria-label="Navigasi footer">
+        <a href="#katalog">Katalog</a>
+        <a href="#cara">Cara pakai</a>
+        <a href="#kategori">Kategori</a>
+        <a class="pill pill--soft" href="https://lynk.id/overtimeboo" target="_blank" rel="noopener">lynk.id<i aria-hidden="true"><svg width="13" height="13"><use href="#i-ext"/></svg></i></a>
+      </nav>
+    </div>
+    <div class="rule"></div>
+    <p class="disc">Soal 100% disusun sendiri. Ini BUKAN bocoran soal seleksi mana pun, dan tidak berafiliasi dengan BKN, KemenPANRB, FHCI, Bank Indonesia, ETS, maupun BUMN mana pun.</p>
+    <ul class="ft__legal">
+      <li><a href="https://lynk.id/overtimeboo/terms_of_service" target="_blank" rel="noopener">Ketentuan layanan</a></li>
+      <li><a href="https://lynk.id/overtimeboo/privacy_policy" target="_blank" rel="noopener">Kebijakan privasi</a></li>
+      <li><a href="https://lynk.id/overtimeboo/refund_policy" target="_blank" rel="noopener">Kebijakan retur dana</a></li>
+    </ul>
+  </div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h6"/><path d="M9 13h6"/><path d="M9 17h4"/></symbol>
+<symbol id="i-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 2.2a2 2 0 0 0-1.6 0L2.6 6.1a1 1 0 0 0 0 1.8l8.6 3.9a2 2 0 0 0 1.6 0l8.6-3.9a1 1 0 0 0 0-1.8Z"/><path d="m6.1 11.5-3.5 1.6a1 1 0 0 0 0 1.8l8.6 3.9a2 2 0 0 0 1.6 0l8.6-3.9a1 1 0 0 0 0-1.8l-3.5-1.6"/></symbol>
+<symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></symbol>
+<symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol>
+<symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+<symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect x="2" y="8" width="20" height="14" rx="2"/></symbol>
+<symbol id="i-bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M10 21v-6h4v6"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></symbol>
+</defs></svg>
+
+<script>
+/* ============================================================
+   CARA NAMBAH / EDIT LISTING
+   Cukup edit array PRODUK. Jangan sentuh HTML.
+   Status bar, jumlah kartu, dan subjudul kategori ngitung sendiri.
+
+   { judul:"", harga:0, kategori:"pcpm", tag:[], meta:["",""], url:"" },
+
+   kategori : "pcpm" | "karier"        (chip filter ikut dua ini)
+   harga    : angka polos. 0 = gratis, tombol jadi "Ambil gratis"
+   tag      : "bundle" / "hemat" / "gratis"
+   meta     : 2 keterangan pendek, tampil sebagai ikon + label di kartu
+   url      : link listing Lynk lengkap pakai https://
+
+   PRODUK[0] tampil sebagai kartu navy lebar di filter Semua & Bundle.
+   Kalau flagship-nya ganti, pindahkan objeknya ke urutan pertama.
+
+   Habis edit: simpan -> Cloudflare -> New deployment -> drag folder.
+   Kalau harga berubah di Lynk, ganti di sini di hari yang sama.
+   ============================================================ */
+const PRODUK = [
+  { judul:"Bundle Lengkap PCPM BI — 5 Paket + 2 Modul", harga:35000, kategori:"pcpm", tag:["bundle","hemat"], meta:["200 soal","2 modul bonus"], url:"https://lynk.id/overtimeboo/y5le31x7yq6w" },
+  { judul:"Bundle Bank Soal PCPM BI — Bahasa Inggris", harga:25000, kategori:"pcpm", tag:["bundle"], meta:["250 soal","5 paket"], url:"https://lynk.id/overtimeboo/rwrq6zgwj75y" },
+  { judul:"Preview Gratis — 20 Soal PCPM BI", harga:0, kategori:"pcpm", tag:["gratis"], meta:["20 soal","TPU & kebanksentralan"], url:"https://lynk.id/overtimeboo/m0jopjxw67q0" },
+  { judul:"Bank Soal PCPM BI — Paket 1", harga:10000, kategori:"pcpm", tag:[], meta:["40 soal","PDF"], url:"https://lynk.id/overtimeboo/y7l2olg22yd6" },
+  { judul:"Bank Soal PCPM BI — Paket 2", harga:10000, kategori:"pcpm", tag:[], meta:["40 soal","PDF"], url:"https://lynk.id/overtimeboo/p401v0g4199p" },
+  { judul:"Bank Soal PCPM BI — Paket 3", harga:10000, kategori:"pcpm", tag:[], meta:["40 soal","PDF"], url:"https://lynk.id/overtimeboo/qq0980x494p8" },
+  { judul:"Bank Soal PCPM BI — Paket 4", harga:10000, kategori:"pcpm", tag:[], meta:["40 soal","PDF"], url:"https://lynk.id/overtimeboo/nlo4wngorkdy" },
+  { judul:"Bank Soal PCPM BI — Paket 5", harga:10000, kategori:"pcpm", tag:[], meta:["40 soal","PDF"], url:"https://lynk.id/overtimeboo/2k8n146npnmg" },
+  { judul:"PCPM BI Bahasa Inggris — Paket 1", harga:10000, kategori:"pcpm", tag:[], meta:["50 soal","PDF"], url:"https://lynk.id/overtimeboo/xmzo9ong0l7x" },
+  { judul:"PCPM BI Bahasa Inggris — Paket 2", harga:10000, kategori:"pcpm", tag:[], meta:["50 soal","PDF"], url:"https://lynk.id/overtimeboo/kl0m1yv8238q" },
+  { judul:"PCPM BI Bahasa Inggris — Paket 3", harga:10000, kategori:"pcpm", tag:[], meta:["50 soal","PDF"], url:"https://lynk.id/overtimeboo/n839nj3eplwv" },
+  { judul:"PCPM BI Bahasa Inggris — Paket 4", harga:10000, kategori:"pcpm", tag:[], meta:["50 soal","PDF"], url:"https://lynk.id/overtimeboo/e6rje4308nk8" },
+  { judul:"PCPM BI Bahasa Inggris — Paket 5", harga:10000, kategori:"pcpm", tag:[], meta:["50 soal","PDF"], url:"https://lynk.id/overtimeboo/58zpkrw8znwj" },
+  { judul:"Persiapan Tes TOEFL ITP — 300 Soal + Modul Grammar", harga:25000, kategori:"karier", tag:["bundle"], meta:["300 soal","+ modul grammar"], url:"https://lynk.id/overtimeboo/v349ng9nw490" },
+  { judul:"Preview Gratis — 50 Soal GAT BUMN", harga:0, kategori:"karier", tag:["gratis"], meta:["50 soal","+ pembahasan"], url:"https://lynk.id/overtimeboo/qymkqox1v251" },
+];
+
+const KATEGORI = [
+  { id:"pcpm",   nama:"PCPM Bank Indonesia", ket:"TPU, kebanksentralan, dan Bahasa Inggris", ikon:"i-doc",   aksi:"filter" },
+  { id:"karier", nama:"Persiapan Karier",    ket:"Skill yang kepakai di banyak seleksi",     ikon:"i-brief", aksi:"filter" },
+  { id:"bumn",   nama:"GAT BUMN",            ket:"Preview 50 soal sudah bisa diambil",       ikon:"i-bank",  aksi:"preview" },
+  { id:"cpns",   nama:"CPNS SKD 2026",       ket:"Menunggu jadwal resmi 2026",               ikon:"i-cal",   aksi:"segera" },
+];
+
+const PREVIEW_PCPM = PRODUK.find(p => p.harga === 0 && p.kategori === "pcpm");
+const PREVIEW_BUMN = PRODUK.find(p => p.harga === 0 && /BUMN/.test(p.judul));
+
+const rp = n => n === 0 ? "Gratis" : "Rp" + n.toLocaleString("id-ID");
+const esc = s => String(s).replace(/[&<>"]/g, m => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[m]));
+const ikonMeta = t => /PDF/i.test(t) ? "i-dl" : /modul|paket/i.test(t) ? "i-layers" : "i-doc";
+const svg = (id, s) => `<svg width="${s}" height="${s}" aria-hidden="true"><use href="#${id}"/></svg>`;
+
+function labelTag(p){
+  if (p.tag.includes("gratis")) return { txt:"Gratis", cls:"tag--free" };
+  if (p.tag.includes("bundle")) return { txt: p.tag.includes("hemat") ? "Bundle · hemat" : "Bundle", cls:"" };
+  return { txt: p.kategori === "pcpm" ? "PCPM" : "Karier", cls:"" };
+}
+
+function kartu(p, i){
+  const t = labelTag(p), gratis = p.harga === 0;
+  return `<li class="card">
+    <div class="card__hd"><span class="tag ${t.cls}">${esc(t.txt)}</span><span class="card__no">${String(i + 1).padStart(2, "0")}</span></div>
+    <h3>${esc(p.judul)}</h3>
+    <ul class="meta">${p.meta.map(m => `<li><i>${svg(ikonMeta(m), 13)}</i>${esc(m)}</li>`).join("")}</ul>
+    <div class="card__foot">
+      <div class="inset"><span class="harga ${gratis ? "harga--free" : ""}">${rp(p.harga)}</span><span class="tag">Kunci + pembahasan</span></div>
+      <a class="cta ${gratis ? "cta--ghost" : ""}" href="${p.url}" target="_blank" rel="noopener"><i>${svg(gratis ? "i-dl" : "i-ext", 15)}</i><span>${gratis ? "Ambil gratis" : "Checkout"}</span><span class="sr"> — ${esc(p.judul)}</span></a>
+    </div>
+  </li>`;
+}
+
+function kartuLebar(p){
+  return `<article class="card card--wide">
+    <div>
+      <span class="kicker">Bundle · hemat</span>
+      <h3>${esc(p.judul)}</h3>
+      <p>200 soal tanpa pengulangan, plus 2 modul belajar sebagai bonus. Satu file per paket, watermark per pembeli.</p>
+    </div>
+    <div class="col2">
+      <div class="inset"><span class="harga">${rp(p.harga)}</span><span class="tag">Kunci + pembahasan</span></div>
+      <a class="cta" href="${p.url}" target="_blank" rel="noopener"><i>${svg("i-ext", 16)}</i><span>Checkout</span><span class="sr"> — ${esc(p.judul)}</span></a>
+    </div>
+  </article>`;
+}
+
+const cocok = (p, f) => f === "semua" || (f === "bundle" || f === "gratis" ? p.tag.includes(f) : p.kategori === f);
+const grid = document.getElementById("grid");
+const feature = document.getElementById("feature");
+const statusbar = document.getElementById("statusbar");
+
+function render(f){
+  const list = PRODUK.filter(p => cocok(p, f));
+  const pakaiFeature = (f === "semua" || f === "bundle") && list[0] === PRODUK[0];
+  feature.innerHTML = pakaiFeature ? kartuLebar(PRODUK[0]) : "";
+  const sisa = pakaiFeature ? list.slice(1) : list;
+  grid.innerHTML = sisa.length ? sisa.map(kartu).join("")
+    : (pakaiFeature ? "" : `<li class="empty"><span class="tag">Kosong</span><p>Belum ada produk di filter ini.</p><p>Coba filter lain, atau ambil preview gratisnya dulu.</p></li>`);
+  statusbar.textContent = list.length + " produk";
+}
+
+function setFilter(f){
+  document.querySelectorAll(".chip").forEach(c => {
+    const on = c.dataset.f === f;
+    c.classList.toggle("on", on);
+    c.setAttribute("aria-pressed", on);
+  });
+  render(f);
+}
+
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => setFilter(c.dataset.f)));
+
+document.getElementById("grid-kategori").innerHTML = KATEGORI.map(k => {
+  const isi = `<span class="ico">${svg(k.ikon, 20)}</span><span><span class="t">${esc(k.nama)}</span><span class="s">${esc(k.ket)}</span></span>`;
+  if (k.aksi === "filter")
+    return `<li><a class="row" href="#katalog" data-goto="${k.id}">${isi}<span class="go">${svg("i-chev", 16)}</span></a></li>`;
+  if (k.aksi === "preview" && PREVIEW_BUMN)
+    return `<li><a class="row" href="${PREVIEW_BUMN.url}" target="_blank" rel="noopener">${isi}<span class="go">${svg("i-dl", 16)}</span></a></li>`;
+  return `<li><div class="row row--soon">${isi}<span class="tag">Segera</span></div></li>`;
+}).join("");
+
+if (PREVIEW_PCPM) ["cta-preview-hero", "cta-preview-outro"].forEach(id => { document.getElementById(id).href = PREVIEW_PCPM.url; });
+
+const halus = (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth";
+document.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", e => {
+  e.preventDefault();
+  setFilter(b.dataset.goto);
+  document.getElementById("katalog").scrollIntoView({ behavior: halus, block: "start" });
+}));
+
+render("semua");
+</script>
+</body>
+</html>
