@@ -34,8 +34,14 @@
   --muted:#56637A; --muted-2:#8A96AC; --on-navy-2:#B9C6DC;
   /* accent */
   --accent:#C0392B; --accent-bg:#FBE9E6;
-  /* aksi beli — hijau, sengaja beda nada dari aksen merah */
+  /* hijau: aksi (beli & ambil gratis) + permukaan kartu gratis
+     --buy      isian tombol, putih di atasnya 5.38:1
+     --buy-2    hover, dan teks hijau di atas permukaan lembut (5.17:1 di --free-2)
+     --free     permukaan kartu gratis, ink di atasnya 15.05:1
+     --free-2   pill inset di dalam kartu gratis
+     --free-ln  garis tepi kartu gratis */
   --buy:#0F7A4A; --buy-2:#0B6E3F;
+  --free:#EAF5EF; --free-2:#D8EDE2; --free-ln:#A8D6BE;
   /* geometri */
   --wrap:1200px; --pad:24px;
   --r-lg:26px; --r-md:22px; --r-ico:16px; --r-pill:999px;
@@ -127,10 +133,9 @@ img,svg{display:block}
 .cta--inv{background:#fff;color:var(--navy)}
 .cta--inv:hover{background:var(--paper);color:var(--navy)}
 .cta--inv i{background:var(--navy);color:#fff}
-/* di atas navy: garis putih. dulu tombol ini navy-di-atas-navy jadi tak kelihatan. */
-.cta--line{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
-.cta--line:hover{background:rgba(255,255,255,.12);color:#fff;border-color:#fff}
-.cta--line i{background:#fff;color:var(--navy)}
+/* tombol hijau di atas navy: hijau vs navy cuma 2.64:1, cincin ini yang
+   bikin tepi tombolnya kebaca. Dipakai di hero dan kartu bundle lebar. */
+.hero .cta:not(.cta--inv),.card--wide .cta{box-shadow:0 0 0 1.5px rgba(255,255,255,.3)}
 .cta--auto{display:inline-flex;flex:none;padding:7px 8px 7px 8px}
 .cta--auto span{flex:none;padding:0 16px 0 6px}
 
@@ -195,7 +200,7 @@ a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
 .card__hd{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .tag{background:var(--paper-2);color:var(--muted);border-radius:var(--r-pill);padding:7px 14px;
   font:600 var(--fs-meta)/1 var(--font);letter-spacing:.1em;text-transform:uppercase;max-width:100%}
-.tag--free{background:var(--accent-bg);color:var(--accent)}
+.tag--free{background:var(--card);color:var(--buy-2)}
 .card__no{font:600 var(--fs-meta)/1 var(--font);color:var(--muted-2);font-variant-numeric:tabular-nums}
 .card h3{font:700 var(--fs-card)/1.26 var(--font);font-stretch:var(--card-wd);letter-spacing:-.02em}
 .meta{display:flex;flex-wrap:wrap;gap:10px 18px;font:500 var(--fs-meta)/1 var(--font);color:var(--muted);margin:0;padding:0;list-style:none}
@@ -205,8 +210,15 @@ a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
 .inset{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
   background:var(--paper-2);border-radius:var(--r-pill);padding:9px 9px 9px 18px}
 .harga{font:800 var(--fs-harga)/1 var(--font);font-stretch:var(--card-wd);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.harga--free{color:var(--accent)}
+.harga--free{color:var(--buy-2)}
 .inset .tag{background:var(--card)}
+
+/* ---------- kartu gratis: seluruh permukaan hijau lembut ---------- */
+.card--free{background:var(--free);border-color:var(--free-ln)}
+.card--free:hover{border-color:var(--buy)}
+.card--free .meta i{background:var(--free-2);color:var(--buy-2)}
+.card--free .inset{background:var(--free-2)}
+.card--free .inset .tag{background:var(--free);color:var(--buy-2)}
 
 /* kartu bundle lebar */
 .card--wide{background:var(--navy);color:#fff;border:0;border-radius:var(--r-lg);padding:clamp(24px,3.4vw,38px);
@@ -217,8 +229,6 @@ a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
 .card--wide .col2{display:flex;flex-direction:column;justify-content:flex-end;gap:14px}
 .card--wide .inset{background:var(--navy-mid)}
 .card--wide .inset .tag{background:#fff;color:var(--navy)}
-/* cincin tipis: hijau di atas navy cuma 2.64:1, cincin ini yang bikin tepinya kebaca */
-.card--wide .cta{box-shadow:0 0 0 1.5px rgba(255,255,255,.3)}
 .card--wide .harga{color:#fff}
 .card--wide .kicker{margin-bottom:18px}
 
@@ -307,7 +317,7 @@ a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
         <p>Biasanya bukan karena soalnya kurang. Kamu cuma belum pernah dikasih tahu kenapa jawaban kamu salah.</p>
         <div class="hero__act">
           <a class="cta cta--inv cta--auto" href="#katalog"><i aria-hidden="true"><svg width="15" height="15"><use href="#i-down"/></svg></i><span>Lihat katalog</span></a>
-          <a class="cta cta--line cta--auto" id="cta-preview-hero" href="#katalog" target="_blank" rel="noopener"><i aria-hidden="true"><svg width="15" height="15"><use href="#i-dl"/></svg></i><span>Ambil preview gratis</span></a>
+          <a class="cta cta--auto" id="cta-preview-hero" href="#katalog" target="_blank" rel="noopener"><i aria-hidden="true"><svg width="15" height="15"><use href="#i-dl"/></svg></i><span>Ambil preview gratis</span></a>
         </div>
       </div>
       <ul class="strip">
@@ -508,13 +518,13 @@ function labelTag(p){
 
 function kartu(p, i){
   const t = labelTag(p), gratis = p.harga === 0;
-  return `<li class="card">
+  return `<li class="card${gratis ? " card--free" : ""}">
     <div class="card__hd"><span class="tag ${t.cls}">${esc(t.txt)}</span><span class="card__no">${String(i + 1).padStart(2, "0")}</span></div>
     <h3>${esc(p.judul)}</h3>
     <ul class="meta">${p.meta.map(m => `<li><i>${svg(ikonMeta(m), 13)}</i>${esc(m)}</li>`).join("")}</ul>
     <div class="card__foot">
       <div class="inset"><span class="harga ${gratis ? "harga--free" : ""}">${rp(p.harga)}</span><span class="tag">Kunci + pembahasan</span></div>
-      <a class="cta ${gratis ? "cta--ghost" : ""}" href="${p.url}" target="_blank" rel="noopener"><i>${svg(gratis ? "i-dl" : "i-ext", 15)}</i><span>${gratis ? "Ambil gratis" : "Checkout"}</span><span class="sr"> — ${esc(p.judul)}</span></a>
+      <a class="cta" href="${p.url}" target="_blank" rel="noopener"><i>${svg(gratis ? "i-dl" : "i-ext", 15)}</i><span>${gratis ? "Ambil gratis" : "Checkout"}</span><span class="sr"> — ${esc(p.judul)}</span></a>
     </div>
   </li>`;
 }
