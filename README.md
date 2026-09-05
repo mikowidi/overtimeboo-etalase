@@ -299,7 +299,32 @@ tidak ada tagihan yang bisa membengkak diam-diam.
 
 ---
 
-## 12. Belum dikerjakan
+## 12. Banner berjadwal — WAJIB DICEK TIAP DUA MINGGU
+
+Baris paling atas `index.html` (`<div class="ticker">`) memuat **tanggal seleksi
+yang sedang berjalan**. Itu satu-satunya bagian situs yang bisa jadi salah tanpa
+ada yang menyentuhnya, dan salahnya merugikan: kalau tanggalnya sudah lewat,
+pengunjung membaca tesnya sebagai sudah selesai lalu menutup halaman.
+
+Ini pernah kejadian. Per 4 Sep 2026 banner masih berbunyi `TPD ~1 Sep · Tes
+teknis 2–20 Sep`, dua-duanya salah, sementara SPD-nya justru tanggal 5–6 Sep.
+
+**Jadwal PCPM BI angkatan 41 (rujukan resmi):**
+
+| Tahap | Pelaksanaan | Banner jadi |
+|---|---|---|
+| Seleksi Potensi Dasar | 5–6 Sep 2026 | `SPD 5–6 Sep · Tes teknis minggu ke-3 Sep · PCPM BI angkatan 41` |
+| Seleksi Pengetahuan Teknis (termasuk B. Inggris) | minggu ke-3 Sep 2026 | `Tes teknis minggu ke-3 Sep · Seleksi psikologi minggu ke-2 Okt · PCPM BI angkatan 41` |
+| Seleksi Psikologi | minggu ke-2 Okt 2026 | — |
+| Setelah Oktober | — | **hapus seluruh baris `<div class="ticker">`** |
+
+Aturannya: banner hanya boleh menyebut tahap yang **belum lewat**. Kalau ragu,
+hapus barisnya — halaman tanpa banner lebih baik daripada halaman dengan tanggal
+basi.
+
+---
+
+## 13. Belum dikerjakan
 
 Sengaja ditunda, bukan kelupaan:
 
