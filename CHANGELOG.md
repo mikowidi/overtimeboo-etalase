@@ -124,6 +124,26 @@ Yang diperbaiki sambil jalan, semuanya cacat yang terbawa dari berkas Antigravit
   terang (15,15:1), dan gradien kartu gratis ditumpuk di atas `--surface`
   karena versi lama mulai dari transparan dan bagian atasnya nggak punya isian.
 
+### Aset: favicon & OG (7 Sep)
+
+- **klaim "Nol pengulangan antar paket" dicabut dari og.png.** Klaim itu sudah
+  dicabut dari situs sejak v3.6 karena tidak bisa dipertahankan lintas lini,
+  tapi masih ikut terbawa tiap kali tautannya dibagikan ke WhatsApp atau
+  Threads. Diganti tiga klaim proses: pembahasan tiap nomor, dicek
+  kemiripannya sebelum rilis, file langsung masuk email.
+- **og.png pakai TEMA TERANG**, mengikuti tema default situs. Latar `--bg`,
+  kartu `--surface`, sorotan `--accent` dengan garis bawah merah muda,
+  badge isian padat `--primary`. Font DM Sans + Inter.
+- **favicon.png**: font DM Sans, gugus huruf + titik ditengahkan (sebelumnya
+  bergeser ~25px ke kanan). Tetap navy beraksen merah supaya kebaca di bilah
+  tab terang maupun gelap.
+- keduanya di-recompress lossless: og 103 KB -> 76,6 KB, favicon 20,3 -> 13,7 KB.
+- **`.assetsignore` dipindah ke `public/`.** Cloudflare Workers cuma membaca
+  berkas itu dari dalam direktori aset, jadi di akar repo dia tidak pernah
+  berlaku. Catatan: kalau deploy-nya lewat drag-drop dashboard, `.assetsignore`
+  sama sekali tidak dipakai — berkas yang tidak ingin naik harus benar-benar
+  tidak ada di `public/`.
+
 ### Putaran umpan balik kedua (7 Sep)
 
 - **badge seksi dipadatkan.** Isian `--primary` dengan teks `--on-primary`,
