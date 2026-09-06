@@ -124,6 +124,24 @@ Yang diperbaiki sambil jalan, semuanya cacat yang terbawa dari berkas Antigravit
   terang (15,15:1), dan gradien kartu gratis ditumpuk di atas `--surface`
   karena versi lama mulai dari transparan dan bagian atasnya nggak punya isian.
 
+### Putaran umpan balik kedua (7 Sep)
+
+- **badge seksi dipadatkan.** Isian `--primary` dengan teks `--on-primary`,
+  ukuran naik ke `--fs-ui`. Versi 8% alpha sebelumnya nyaris hilang di halaman.
+  "COMING NEXT" sekarang navy berteks putih, kebalik sendiri di tema gelap.
+- **label "Berikutnya" dan "Nanti" dihapus dari layar.** Blok sorotan sudah
+  bilang mana yang berikutnya dan sisanya jelas belakangan. Labelnya tetap
+  ditulis buat pembaca layar — status nggak boleh cuma lewat warna.
+- **"Kamu lagi ngejar tes yang mana?" jadi "Mau belajar apa hari ini?"**
+- **kartu bundle unggulan jadi hijau** lewat set token `--flag-*` sendiri,
+  lepas dari `--hi-*` milik timeline. Dua blok itu bawa pesan beda — "kamu
+  lagi di sini" vs "ini yang direkomendasiin" — dan kalau dua-duanya navy
+  mereka rebutan mata. Badge "BUNDLE UTAMA" dan "Hemat 30%" ikut dipadatkan;
+  keduanya sebelumnya pakai isian alpha yang jadi putih-di-atas-putih begitu
+  kartunya hijau.
+- **"Beli di Lynk" jadi "Checkout", "Ambil gratis" jadi "Download"**, termasuk
+  tombol kartu unggulan dan kartu "Segera".
+
 Kontras diukur ulang di halaman jadi, bukan disalin dari tabel. Terendah di
 mode terang 4,95:1, di mode gelap 4,75:1. Rincian per keadaan di README bagian
 12 dan 13.

@@ -91,6 +91,19 @@
   --hi-body: #B9C6DC;
   --hi-muted: #9AA9C2;
   --hi-line: rgba(255, 255, 255, 0.22);
+  /* --- kartu unggulan: hijau, bukan navy ---
+     Bedanya dengan --hi-* disengaja. Blok sorotan timeline jawab "kamu lagi di
+     mana", kartu unggulan jawab "ini yang paling kami rekomendasiin". Kalau
+     dua-duanya navy, dua pesan itu jadi rebutan mata di halaman yang sama.
+     Hijau dipilih, bukan merah: hijau sudah berarti transaksi di situs ini,
+     dan merah jatahnya cuma buat sorotan hemat (§3). */
+  --flag-bg: #0F7A4A;
+  --flag-ink: #FFFFFF;
+  --flag-body: #DDF2E8;          /* 4,60:1 di atas --flag-bg, tetap di bawah putih */
+  --flag-line: rgba(255, 255, 255, 0.30);
+  --flag-inset: #0A5230;         /* kotak harga: 1,73:1 dari kartunya, putih 9,28:1 */
+  --flag-chip: #FFFFFF;          /* isi badge & tombol di dalam kartu */
+  --flag-on-chip: #0F7A4A;
   /* Warna aksi di DALAM blok sorotan. Karena bloknya kebalikan halaman,
      isinya juga harus kebalikan: di tema terang bloknya navy, jadi tombol
      dan pill di dalamnya pakai biru terang + hijau terang. */
@@ -179,6 +192,13 @@
   --hi-body: #33415C;
   --hi-muted: #56637A;
   --hi-line: rgba(10, 29, 58, 0.16);
+  --flag-bg: #3FD68B;
+  --flag-ink: #0A1D3A;
+  --flag-body: #0F3D28;
+  --flag-line: rgba(10, 29, 58, 0.22);
+  --flag-inset: #A8EFCC;
+  --flag-chip: #0A1D3A;
+  --flag-on-chip: #3FD68B;
   --hi-primary: #0E2A55;
   --hi-primary-rgb: 14, 42, 85;
   --hi-on-primary: #FFFFFF;
@@ -195,7 +215,6 @@
    terang di tema gelap — jadi seluruh token teks di dalamnya ikut dibalik.
    Ini yang bikin kartu unggulan di tema gelap nggak lagi menyatu sama latar
    (dulu cuma 1,22:1) dan tahap yang lagi berlangsung langsung ketahuan. */
-.wide-card,
 .tl-card[aria-current="step"] {
   --surface: var(--hi-bg);
   --surface-2: var(--hi-bg);
@@ -217,12 +236,39 @@
   color: var(--hi-body);
 }
 
+/* Kartu unggulan. Seluruh isinya ikut dibalik lewat token, jadi badge, harga,
+   dan tombol checkout otomatis benar di kedua tema tanpa aturan satu-satu. */
+.wide-card {
+  --surface: var(--flag-bg);
+  --surface-2: var(--flag-bg);
+  --heading: var(--flag-ink);
+  --body: var(--flag-body);
+  --muted: var(--flag-body);
+  --border: var(--flag-line);
+  --border-strong: var(--flag-line);
+  --chip-fill: var(--flag-line);
+  --primary: var(--flag-chip);
+  --primary-rgb: 255, 255, 255;
+  --primary-hover: var(--flag-chip);
+  --on-primary: var(--flag-on-chip);
+  --buy: var(--flag-chip);
+  --buy-2: var(--flag-chip);
+  --buy-rgb: 255, 255, 255;
+  --on-buy: var(--flag-on-chip);
+  background: var(--flag-bg);
+  color: var(--flag-body);
+  border: 1.5px solid var(--flag-line);
+}
+.wide-card .wide-action-box {
+  background: var(--flag-inset);
+  border-color: var(--flag-line);
+}
+
 /* Bidang navy: gelap di kedua tema, jadi tokennya dialihkan sekali di sini
    dan seluruh isinya ikut otomatis. Tanpa ini, di mode terang teks body di
    footer cuma 1,39:1 — praktis tidak terlihat. */
 .band-section,
-.main-footer,
-.wide-action-box {
+.main-footer {
   --heading: var(--on-dark-heading);
   --body: var(--on-dark-body);
   --muted: var(--on-dark-muted);
@@ -271,12 +317,16 @@ img, svg { display: block; }
 .skip:focus { top: 16px; }
 
 /* ---------- SUBTITLE BADGE (KHAS NOXFOLIO) ---------- */
+/* Isian padat, teksnya kebalikan — di tema terang navy dengan teks putih, di
+   tema gelap otomatis kebalik jadi biru terang dengan teks gelap. Versi lama
+   pakai isian 8% alpha dan hasilnya nyaris hilang di halaman. Ukurannya
+   dinaikkan dari --fs-meta ke --fs-ui. */
 .sub-title {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(var(--primary-rgb), 0.08); border: 1px solid rgba(var(--primary-rgb), 0.22);
-  border-radius: var(--r-pill); padding: 8px 18px;
-  font: 700 var(--fs-meta)/1 var(--font-heading); letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--primary);
+  background: var(--primary); border: 0;
+  border-radius: var(--r-pill); padding: 11px 22px;
+  font: 700 var(--fs-ui)/1 var(--font-heading); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--on-primary);
 }
 
 /* ---------- BUTTONS (.THEME-BTN KHAS NOXFOLIO) ---------- */
@@ -724,9 +774,9 @@ img, svg { display: block; }
 }
 .wide-card .price-val { color: var(--primary); font-size: clamp(1.75rem, 2.6vw, 2.25rem); }
 .wide-badge {
-  background: rgba(var(--primary-rgb), 0.15); border: 1px solid rgba(var(--primary-rgb), 0.35);
-  color: var(--primary); border-radius: var(--r-pill);
-  padding: 6px 14px; font: 700 var(--fs-meta)/1 var(--font-heading);
+  background: var(--primary); border: 0;
+  color: var(--on-primary); border-radius: var(--r-pill);
+  padding: 7px 15px; font: 700 var(--fs-meta)/1 var(--font-heading);
 }
 
 .empty-state {
@@ -1012,7 +1062,7 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
         <div class="sub-title">
           <span>Katalog Produk</span>
         </div>
-        <h2 class="h2" id="h-katalog">Kamu lagi ngejar tes yang mana?</h2>
+        <h2 class="h2" id="h-katalog">Mau belajar apa hari ini?</h2>
       </div>
       <div class="count-pill">
         <span>●</span><span id="statusbar">21 produk tersedia</span>
@@ -1251,7 +1301,7 @@ function kartu(p){
       </div>
       <a class="theme-btn theme-btn--buy" href="${p.url}" target="_blank" rel="noopener">
         <i>${svg(gratis ? "i-dl" : "i-ext", 14)}</i>
-        <span>${gratis ? "Ambil gratis" : "Beli di Lynk"}</span>
+        <span>${gratis ? "Download" : "Checkout"}</span>
         <span class="sr"> — ${esc(p.judul)}</span>
       </a>
     </div>
@@ -1276,7 +1326,7 @@ function kartuLebar(p){
       </div>
       <a class="theme-btn theme-btn--buy theme-btn--full" href="${p.url}" target="_blank" rel="noopener">
         <i>${svg("i-ext", 16)}</i>
-        <span>Beli Bundle Lengkap di Lynk</span>
+        <span>Checkout</span>
         <span class="sr"> — ${esc(p.judul)}</span>
       </a>
     </div>
@@ -1376,8 +1426,13 @@ const ST = { lewat:"Selesai", berlangsung:"Berlangsung", berikutnya:"Berikutnya"
 function kartuTahap(x){
   const tanda = x.status === "berlangsung" ? '<span class="tl-dot" aria-hidden="true"></span>'
     : x.status === "lewat" ? svg("i-check", 12) : "";
+  /* "Berikutnya" dan "Nanti" nggak ditampilkan: blok sorotan sudah bilang mana
+     yang berikutnya, dan sisanya jelas belakangan. Labelnya tetap ditulis buat
+     pembaca layar — status nggak boleh cuma disampaikan lewat warna. */
+  const tampak = x.status === "lewat" || x.status === "berlangsung";
+  const label = tampak ? ST[x.status] : `<span class="sr">${ST[x.status]}</span>`;
   return `<li class="tl-card" role="listitem" data-s="${x.status}"${x === SOROT ? ' aria-current="step"' : ""}>
-    <span class="tl-card-hd"><span class="tl-no">${esc(x.no)}</span><span class="tl-st">${tanda}${ST[x.status]}</span></span>
+    <span class="tl-card-hd"><span class="tl-no">${esc(x.no)}</span><span class="tl-st">${tanda}${label}</span></span>
     <span class="tl-tgl">${esc(x.label)}</span>
     <h3 class="tl-nama">${esc(x.nama)}</h3>
     <p class="tl-diuji">${esc(x.diuji)}</p></li>`;
@@ -1426,7 +1481,7 @@ if (tlRel && !SOROT) {
         <div class="card-top"><span class="card-badge">Segera</span></div>
         <h3>Materi buat tahap ini lagi disiapin.</h3>
         <p style="color:var(--body);font-size:var(--fs-meta);line-height:1.5">Sementara, preview gratisnya udah bisa kamu ambil.</p>
-        <div class="card-foot">${pv ? `<a class="theme-btn theme-btn--buy theme-btn--full" href="${pv.url}" target="_blank" rel="noopener"><i>${svg("i-dl", 14)}</i><span>Ambil preview gratis</span></a>` : ""}</div>
+        <div class="card-foot">${pv ? `<a class="theme-btn theme-btn--buy theme-btn--full" href="${pv.url}" target="_blank" rel="noopener"><i>${svg("i-dl", 14)}</i><span>Download</span></a>` : ""}</div>
       </li>`;
 
   /* Rel digeser supaya tahap sorotan ada di kiri layar begitu halaman dibuka.

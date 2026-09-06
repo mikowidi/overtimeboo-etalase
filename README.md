@@ -404,6 +404,41 @@ Makanya ada satu set `--on-dark-*` yang dialihkan sekali lewat selektor
 gabungan, dan seluruh isi bidang itu ikut otomatis. Kalau nanti ada bidang navy
 baru, **tambahkan selektornya ke daftar itu**, jangan menambal warnanya satu-satu.
 
+### Tiga blok kontras, tiga pesan berbeda
+
+Situs ini punya tiga bidang yang sengaja dibalik terhadap halaman. Ketiganya
+dikendalikan token, jadi isinya (badge, harga, tombol) ikut benar sendiri di
+kedua tema. Kalau nambah bidang serupa, **tambahkan selektornya ke lingkup yang
+sudah ada**, jangan menambal warnanya satu per satu.
+
+| Bidang | Token | Pesannya | Terang | Gelap |
+|---|---|---|---|---|
+| Tahap sorotan di timeline | `--hi-*` | "kamu lagi di sini" | navy, teks putih | terang, teks gelap |
+| Kartu bundle unggulan | `--flag-*` | "ini yang direkomendasiin" | hijau tua, teks putih | hijau terang, teks gelap |
+| Band cara pakai & footer | `--on-dark-*` | pembatas seksi | navy di kedua tema | navy di kedua tema |
+
+Kartu unggulan sengaja **hijau, bukan navy**. Kalau dua-duanya navy, "kamu lagi
+di sini" dan "beli yang ini" jadi rebutan mata di halaman yang sama. Hijau juga
+sudah berarti transaksi di situs ini, jadi maknanya nyambung. Merah nggak
+dipakai karena jatahnya cuma buat sorotan hemat.
+
+Angka kartu unggulan, diukur di halaman jadi:
+
+| | Terang | Gelap |
+|---|---|---|
+| kartu vs latar halaman | 4,70:1 | 9,26:1 |
+| judul di kartu | 5,38:1 | 8,96:1 |
+| paragraf di kartu | 4,60:1 | 6,52:1 |
+| badge (isian padat) | 5,38:1 | 8,96:1 |
+| tombol checkout | 5,38:1 | 8,96:1 |
+
+### Badge seksi (`.sub-title`)
+
+Isian **padat** `--primary` dengan teks `--on-primary`, jadi otomatis kebalik
+per tema. Versi sebelumnya pakai isian 8% alpha dan praktis nggak kelihatan.
+Di dalam kartu unggulan, `--primary` sudah dialihkan ke `--flag-chip`, jadi
+badge-nya jadi pil putih berteks hijau tanpa aturan tambahan.
+
 ### Pembagian peran warna
 
 | Peran | Token | Dipakai untuk |
