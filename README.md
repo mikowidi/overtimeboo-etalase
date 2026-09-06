@@ -124,7 +124,9 @@ dalam `<script>`. Menambah listing baru = menambah satu objek di array itu.
 overtimeboo-etalase/
 ├── public/
 │   ├── index.html        ← seluruh situs ada di sini
-│   ├── og.png            ← gambar pratinjau saat link dibagikan (1200×630)
+│   ├── og-v2.png         ← gambar pratinjau saat link dibagikan (1200×630)
+│   │                       namanya berversi: ganti isi = naikkan angkanya,
+│   │                       kalau tidak cache media sosial menyajikan yang lama
 │   └── favicon.png
 ├── wrangler.jsonc        ← konfigurasi Cloudflare
 ├── .gitignore

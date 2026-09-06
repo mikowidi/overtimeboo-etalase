@@ -138,6 +138,11 @@ Yang diperbaiki sambil jalan, semuanya cacat yang terbawa dari berkas Antigravit
   bergeser ~25px ke kanan). Tetap navy beraksen merah supaya kebaca di bilah
   tab terang maupun gelap.
 - keduanya di-recompress lossless: og 103 KB -> 76,6 KB, favicon 20,3 -> 13,7 KB.
+- **berkas OG dinamai berversi: `og.png` -> `og-v2.png`.** WhatsApp, Threads,
+  dan Facebook nge-cache gambar OG lama dan nggak peduli isinya sudah diganti.
+  Karena gambar lama memuat klaim yang sudah dicabut, nunggu cache lewat sendiri
+  bukan pilihan. Kalau isi OG berubah lagi, **naikkan lagi angkanya** — jangan
+  timpa berkas dengan nama yang sama.
 - **`.assetsignore` dipindah ke `public/`.** Cloudflare Workers cuma membaca
   berkas itu dari dalam direktori aset, jadi di akar repo dia tidak pernah
   berlaku. Catatan: kalau deploy-nya lewat drag-drop dashboard, `.assetsignore`
