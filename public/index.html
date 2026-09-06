@@ -2,10 +2,11 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>overtimeboo — bank soal PCPM BI, potensi dasar, psikotes, CPNS</title>
 <meta name="description" content="Bank soal PCPM Bank Indonesia, potensi dasar, psikotes, TOEFL ITP, dan CPNS SKD. Kunci dan pembahasan di tiap nomor. Format PDF, dikirim otomatis.">
-<meta name="theme-color" content="#0E2A55">
+<meta name="theme-color" content="#ECF0F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#071A36" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://overtime-boo.gulliveragent.workers.dev/">
 <link rel="icon" href="favicon.png" type="image/png">
 <meta property="og:type" content="website">
@@ -19,290 +20,846 @@
 <meta property="og:image:alt" content="overtimeboo — udah latihan banyak tapi masih salah di situ-situ aja">
 <meta name="twitter:card" content="summary_large_image">
 
+<!-- Google Fonts: DM Sans (Headings) + Inter (Body/UI) - Khas Noxfolio -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
+
+<!-- Tema dipasang sebelum paint supaya tidak ada kedip putih. Sengaja inline
+     dan sengaja di <head>, bukan di akhir <body>. -->
+<script>try{var t=localStorage.getItem("tema");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}</script>
 
 <style>
-:root{
-  /* ground */
-  --navy:#0E2A55; --navy-deep:#071A36; --navy-mid:#173A6B; --ink:#0A1D3A;
-  /* paper */
-  --paper:#ECF0F6; --paper-2:#F4F7FB; --card:#FFFFFF;
-  --line:#D3DCE8; --line-dark:#23406E;
-  /* text */
-  --muted:#56637A; --muted-2:#8A96AC; --on-navy-2:#B9C6DC;
-  /* accent */
-  --accent:#C0392B; --accent-bg:#FBE9E6;
-  /* hijau: aksi (beli & ambil gratis) + permukaan kartu gratis
-     --buy      isian tombol, putih di atasnya 5.38:1
-     --buy-2    hover, dan teks hijau di atas permukaan lembut (5.17:1 di --free-2)
-     --free     permukaan kartu gratis, ink di atasnya 15.05:1
-     --free-2   pill inset di dalam kartu gratis
-     --free-ln  garis tepi kartu gratis */
-  --buy:#0F7A4A; --buy-2:#0B6E3F;
-  --free:#EAF5EF; --free-2:#D8EDE2; --free-ln:#A8D6BE;
-  /* geometri */
-  --wrap:1200px; --pad:24px;
-  --r-lg:26px; --r-md:22px; --r-ico:16px; --r-pill:999px;
-  --gap:14px; --sect:clamp(44px,6vw,72px);
-  --font:Archivo,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  --disp-wd:115%; --sub-wd:112%; --row-wd:110%; --card-wd:108%;
-  /* skala — lantai 14px dijaga di semua peran (lihat catatan di bawah) */
-  --fs-body:clamp(1.0625rem,1rem + .3vw,1.125rem);
-  --fs-meta:clamp(.875rem,.85rem + .12vw,.9375rem);
-  --fs-ui:clamp(.9375rem,.9rem + .18vw,1rem);
-  --fs-card:clamp(1.125rem,1.08rem + .2vw,1.1875rem);
-  --fs-h1:clamp(2.5rem,6.6vw,5.2rem);
-  --fs-poster:clamp(2rem,5.2vw,3.6rem);
-  --fs-h2:clamp(1.7rem,3.6vw,2.5rem);
-  --fs-row:clamp(1.15rem,2.2vw,1.5rem);
-  --fs-step:clamp(1.15rem,2.4vw,1.75rem);
-  --fs-mark:clamp(2.2rem,7vw,4.6rem);
-  --fs-harga:clamp(1.25rem,1.15rem + .4vw,1.4rem);
-  --fs-brand:clamp(1.0625rem,1rem + .25vw,1.15rem);
+/* ============================================================================
+   PALET — DUA TEMA, DUA-DUANYA BIRU
+   Aksen lime Noxfolio dibuang. Basisnya keluarga navy yang sudah dipakai v3.6,
+   supaya ada kesinambungan visual dengan situs yang pembeli lihat tiga minggu
+   terakhir.
+
+   ATURAN KERAS: setiap token WAJIB punya nilai di :root polos ini. Kalau sebuah
+   warna cuma didefinisikan di dalam blok media atau [data-theme], mode terang
+   bakal bolong. Blok di bawah cuma menimpa, tidak pernah memperkenalkan token.
+
+   Pembagian peran warna, jangan dicampur:
+     biru  (--primary) = merek dan navigasi
+     hijau (--buy)     = transaksi, beli dan ambil gratis
+     koral (--accent)  = sorotan, dipakai sangat hemat
+   Kalau tombol beli ikut biru, dia jadi tidak terbedakan dari tautan biasa.
+
+   Rasio kontras diukur ulang, bukan disalin. Lihat README bagian 12.
+   ============================================================================ */
+:root {
+  /* --- permukaan --- */
+  --bg: #ECF0F6;
+  --surface: #FFFFFF;
+  --surface-2: #F4F7FB;
+  --surface-dark: #0E2A55;        /* blok navy: band cara pakai, footer, kartu lewat */
+  --surface-hover: #E1E8F2;       /* latar tautan nav saat hover */
+  --chip-fill: #EEF2F8;           /* gelembung ikon kecil, badge, tombol bulat */
+  --header-bg: rgba(236, 240, 246, 0.88);
+
+  /* --- teks --- */
+  --heading: #0A1D3A;
+  --body: #33415C;
+  --muted: #56637A;
+  --muted-2: #8A96AC;
+
+  /* --- garis --- */
+  --border: #D3DCE8;
+  --border-strong: #B9C6DC;
+
+  /* --- peran warna --- */
+  --primary: #0E2A55;
+  --primary-hover: #173A6B;
+  --primary-rgb: 14, 42, 85;
+  --border-hover: rgba(var(--primary-rgb), 0.45);  /* garis tepi saat hover, ikut --primary */
+  --on-primary: #FFFFFF;          /* teks di atas bidang --primary */
+  --buy: #0F7A4A;
+  --buy-2: #0B6E3F;
+  --buy-rgb: 15, 122, 74;
+  --on-buy: #FFFFFF;
+  --accent: #C0392B;
+
+  /* --- teks di atas bidang navy --- */
+  /* Dipakai di .band-section, .main-footer, dan kartu tahapan "lewat". Bidang
+     itu gelap di KEDUA tema, jadi tokennya sama di kedua tema — token teks
+     biasa (--body #33415C di atas navy = 1,39:1) tidak terbaca di sana. */
+  --on-dark-heading: #FFFFFF;
+  --on-dark-body: #B9C6DC;
+  --on-dark-muted: #9AA9C2;
+  --on-dark-primary: #6FB3FF;     /* navy tidak terbaca di atas navy */
+  --on-dark-surface: #173A6B;
+  --on-dark-border: rgba(255, 255, 255, 0.14);
+  --on-dark-border-strong: rgba(255, 255, 255, 0.24);
+
+  /* --- bayangan: navy tipis di terang, hitam di gelap --- */
+  --sh-sm: 0 8px 24px rgba(14, 42, 85, 0.07);
+  --sh-md: 0 12px 30px rgba(14, 42, 85, 0.10);
+  --sh-lg: 0 20px 48px rgba(14, 42, 85, 0.13);
+
+  /* --- font --- */
+  --font-heading: "DM Sans", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  --font-body: "Inter", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+
+  /* --- geometri --- */
+  --wrap: 1220px;
+  --pad: clamp(18px, 4vw, 28px);
+  --r-lg: 24px;
+  --r-md: 18px;
+  --r-sm: 12px;
+  --r-pill: 9999px;
+  --gap: 18px;
+  --sect-gap: clamp(52px, 7.5vw, 92px);
+
+  /* --- skala tipografi --- */
+  --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --fs-meta: clamp(0.875rem, 0.84rem + 0.14vw, 0.9375rem);
+  --fs-ui: clamp(0.9375rem, 0.9rem + 0.16vw, 1rem);
+  --fs-card-title: clamp(1.18rem, 1.1rem + 0.3vw, 1.28rem);
+  --fs-harga: clamp(1.4rem, 1.3rem + 0.4vw, 1.6rem);
+  --fs-h1: clamp(2.4rem, 5.8vw, 4.4rem);
+  --fs-h2: clamp(1.85rem, 3.6vw, 2.65rem);
+  --fs-tlno: clamp(2rem, 4.2vw, 2.8rem);
 }
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);
-  font:400 var(--fs-body)/1.6 var(--font);overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
-h1,h2,h3{margin:0}
-p{margin:0}
-a{color:var(--navy);text-decoration:none}
-img,svg{display:block}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
-.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.skip{position:absolute;left:12px;top:-4rem;z-index:60;background:var(--card);border-radius:var(--r-pill);
-  padding:10px 18px;font:600 var(--fs-ui)/1 var(--font);transition:top .15s}
-.skip:focus{top:12px}
+/* Token gelap ditulis sekali, dipakai dua kali: sekali buat yang ikut sistem,
+   sekali buat yang memaksa lewat toggle. Urutannya penting — blok [data-theme]
+   harus terakhir supaya pilihan manual menang atas preferensi sistem. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #071A36;
+    --surface: #0E2A55;
+    --surface-2: #173A6B;
+    --surface-dark: #05132A;
+    --surface-hover: rgba(255, 255, 255, 0.06);
+    --chip-fill: rgba(255, 255, 255, 0.08);
+    --header-bg: rgba(7, 26, 54, 0.88);
+    --heading: #FFFFFF;
+    --body: #B9C6DC;
+    --muted: #8A96AC;
+    --muted-2: #6B7A93;
+    --border: rgba(255, 255, 255, 0.10);
+    --border-strong: rgba(255, 255, 255, 0.20);
+    --primary: #6FB3FF;
+    --primary-hover: #8AC2FF;
+    --primary-rgb: 111, 179, 255;
+    --on-primary: #0A1D3A;
+    --buy: #3FD68B;
+    --buy-2: #5FE0A0;
+    --buy-rgb: 63, 214, 139;
+    --on-buy: #0A1D3A;
+    --accent: #FF7A6B;
+    --sh-sm: 0 8px 24px rgba(0, 0, 0, 0.25);
+    --sh-md: 0 12px 30px rgba(0, 0, 0, 0.35);
+    --sh-lg: 0 20px 48px rgba(0, 0, 0, 0.50);
+  }
+}
 
-/* ---------- label / eyebrow ---------- */
-.eyebrow{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
-  font:600 var(--fs-meta)/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.eyebrow--onnavy{color:var(--on-navy-2)}
-.num{font-variant-numeric:tabular-nums}
+:root[data-theme="dark"] {
+  --bg: #071A36;
+  --surface: #0E2A55;
+  --surface-2: #173A6B;
+  --surface-dark: #05132A;
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --chip-fill: rgba(255, 255, 255, 0.08);
+  --header-bg: rgba(7, 26, 54, 0.88);
+  --heading: #FFFFFF;
+  --body: #B9C6DC;
+  --muted: #8A96AC;
+  --muted-2: #6B7A93;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.20);
+  --primary: #6FB3FF;
+  --primary-hover: #8AC2FF;
+  --primary-rgb: 111, 179, 255;
+  --on-primary: #0A1D3A;
+  --buy: #3FD68B;
+  --buy-2: #5FE0A0;
+  --buy-rgb: 63, 214, 139;
+  --on-buy: #0A1D3A;
+  --accent: #FF7A6B;
+  --sh-sm: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --sh-md: 0 12px 30px rgba(0, 0, 0, 0.35);
+  --sh-lg: 0 20px 48px rgba(0, 0, 0, 0.50);
+}
 
-/* ---------- ticker ---------- */
-.ticker{background:var(--navy-deep);color:var(--on-navy-2);text-align:center;
-  padding:9px 16px;font:600 var(--fs-meta)/1.3 var(--font);letter-spacing:.14em;text-transform:uppercase}
+/* Bidang navy: gelap di kedua tema, jadi tokennya dialihkan sekali di sini
+   dan seluruh isinya ikut otomatis. Tanpa ini, di mode terang teks body di
+   footer cuma 1,39:1 — praktis tidak terlihat. */
+.band-section,
+.main-footer,
+.wide-action-box,
+.tl-card[data-s="lewat"] {
+  --heading: var(--on-dark-heading);
+  --body: var(--on-dark-body);
+  --muted: var(--on-dark-muted);
+  --primary: var(--on-dark-primary);
+  --primary-rgb: 111, 179, 255;
+  --on-primary: #0A1D3A;
+  --surface: var(--on-dark-surface);
+  --surface-2: #1E4780;
+  --border: var(--on-dark-border);
+  --border-strong: var(--on-dark-border-strong);
+  --chip-fill: rgba(255, 255, 255, 0.10);
+}
 
-/* ---------- header ---------- */
-.hd{background:var(--paper)}
-.hd__in{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:16px var(--pad)}
-.brand{display:inline-flex;align-items:center;gap:10px}
-.mono{position:relative;width:32px;height:32px;border-radius:var(--r-pill);background:var(--navy);color:#fff;
-  display:grid;place-items:center;font:800 var(--fs-brand)/1 var(--font);font-stretch:115%}
-.mono::after{content:"";position:absolute;right:-1px;bottom:3px;width:9px;height:9px;border-radius:var(--r-pill);background:var(--accent)}
-.brand__n{font:800 var(--fs-brand)/1 var(--font);font-stretch:112%;letter-spacing:-.01em}
-.nav{display:flex;align-items:center;gap:6px;font:600 var(--fs-ui)/1 var(--font)}
-.nav a{padding:11px 14px;border-radius:var(--r-pill);color:var(--muted);transition:background .14s,color .14s}
-.nav a:hover{background:#E1E8F2;color:var(--ink)}
-/* pill di dalam nav butuh spesifisitas lebih tinggi, kalau tidak warnanya kena .nav a */
-.nav a.pill{color:#fff;padding:6px 7px 6px 16px}
-.nav a.pill:hover{background:var(--navy-deep);color:#fff}
-/* di layar sempit tautan jangkar disembunyikan — dulu membungkus jadi dua baris
-   dan menyisakan "FAQ" sendirian di samping pill. CTA-nya tetap tampil. */
-@media(max-width:760px){.nav a:not(.pill){display:none}}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--body);
+  font: 400 var(--fs-body)/1.65 var(--font-body);
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, p, ul, ol { margin: 0; }
+h1, h2, h3, h4 { color: var(--heading); font-family: var(--font-heading); }
+a { color: inherit; text-decoration: none; transition: color .2s, border-color .2s, background .2s; }
+img, svg { display: block; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 8px; }
 
-/* pill CTA ala referensi: label kiri, lingkaran ikon kanan */
-.pill{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;
-  border-radius:var(--r-pill);padding:6px 7px 6px 16px;font:600 var(--fs-ui)/1 var(--font);
-  min-height:44px;transition:background .14s}
-.pill:hover{background:var(--navy-deep);color:#fff}
-.pill i{flex:none;width:28px;height:28px;border-radius:var(--r-pill);background:#fff;color:var(--navy);display:grid;place-items:center}
-.pill--soft{background:var(--navy-mid)}
-.pill--soft:hover{background:var(--line-dark)}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
 
-/* ---------- CTA selebar wadah: lingkaran ikon kiri, label tengah ---------- */
-/* Default = aksi beli (hijau). Putih di atas --buy = 5.38:1, lolos AA. */
-.cta{display:flex;align-items:center;gap:10px;border-radius:var(--r-pill);padding:7px;
-  font:600 var(--fs-ui)/1 var(--font);min-height:46px;
-  background:var(--buy);color:#fff;transition:background .14s,color .14s,border-color .14s}
-.cta:hover{background:var(--buy-2);color:#fff}
-.cta i{flex:none;width:34px;height:34px;border-radius:var(--r-pill);background:#fff;color:var(--buy);display:grid;place-items:center}
-.cta span{flex:1;text-align:center;padding-right:34px}
-/* sekunder: ambil gratis */
-.cta--ghost{background:var(--card);color:var(--navy);border:1.5px solid var(--navy)}
-.cta--ghost:hover{background:var(--navy);color:#fff}
-.cta--ghost i{background:var(--navy);color:#fff}
-.cta--ghost:hover i{background:#fff;color:var(--navy)}
-/* di atas navy: putih pekat */
-.cta--inv{background:#fff;color:var(--navy)}
-.cta--inv:hover{background:var(--paper);color:var(--navy)}
-.cta--inv i{background:var(--navy);color:#fff}
-/* tombol hijau di atas navy: hijau vs navy cuma 2.64:1, cincin ini yang
-   bikin tepi tombolnya kebaca. Dipakai di hero dan kartu bundle lebar. */
-.hero .cta:not(.cta--inv),.card--wide .cta{box-shadow:0 0 0 1.5px rgba(255,255,255,.3)}
-.cta--auto{display:inline-flex;flex:none;padding:7px 8px 7px 8px}
-.cta--auto span{flex:none;padding:0 16px 0 6px}
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--pad); }
+.sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip {
+  position: absolute; left: 16px; top: -5rem; z-index: 100;
+  background: var(--surface); color: var(--primary); border: 1px solid var(--primary);
+  border-radius: var(--r-pill); padding: 12px 20px; font: 600 var(--fs-ui)/1 var(--font-body);
+  transition: top .2s ease;
+}
+.skip:focus { top: 16px; }
 
-/* ---------- hero ---------- */
-.hero{background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:clamp(24px,3.4vw,40px);margin-top:8px}
-.hero__top{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-bottom:clamp(26px,4vw,46px)}
-.kicker{display:inline-flex;align-items:center;gap:9px;background:var(--navy-mid);border-radius:var(--r-pill);
-  padding:9px 16px;font:600 var(--fs-meta)/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:#fff}
-/* line-height 1.34, bukan .98 dari spec v3.2. Kotak latar elemen inline setinggi
-   kotak em font (~1.15em), jadi di .98 kapsul antarbaris tumpuk ~20px di desktop.
-   1.34 nyisain jarak +3.6px di 390px dan +7.5px di 1280px. Jangan turunkan lagi. */
-.hero h1{font:800 var(--fs-h1)/1.34 var(--font);font-stretch:var(--disp-wd);letter-spacing:-.035em;
-  max-width:17ch;text-wrap:balance}
-/* Kapsul sorot terisi penuh. box-decoration-break:clone bikin tiap baris dapat
-   kapsul utuh sendiri, bukan satu kapsul robek yang ujungnya menggantung. */
-.mark{display:inline;background:var(--accent);border-radius:var(--r-pill);
-  padding:.03em .34em .07em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.hero__lead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
-  gap:22px 40px;padding:clamp(26px,4vw,44px) 0 clamp(24px,3.4vw,38px)}
-.hero__lead p{color:var(--on-navy-2);max-width:46ch}
-.hero__act{display:flex;flex-wrap:wrap;gap:10px}
+/* ---------- SUBTITLE BADGE (KHAS NOXFOLIO) ---------- */
+.sub-title {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(var(--primary-rgb), 0.08); border: 1px solid rgba(var(--primary-rgb), 0.22);
+  border-radius: var(--r-pill); padding: 8px 18px;
+  font: 700 var(--fs-meta)/1 var(--font-heading); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--primary);
+}
+.sub-title svg { fill: currentColor; }
 
-/* strip dampak: pola .row di atas navy */
-.strip{display:grid;gap:10px;border-top:1px solid var(--line-dark);padding:clamp(22px,3vw,30px) 0 0;margin:0;list-style:none}
-@media(min-width:900px){.strip{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* ---------- BUTTONS (.THEME-BTN KHAS NOXFOLIO) ---------- */
+.theme-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--primary); color: var(--on-primary) !important;
+  border-radius: var(--r-pill); padding: 10px 24px;
+  font: 700 var(--fs-ui)/1 var(--font-heading); min-height: 48px;
+  border: 0; cursor: pointer; text-decoration: none;
+  transition: transform .2s, box-shadow .2s, background .2s;
+}
+.theme-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(var(--primary-rgb), 0.32);
+}
+.theme-btn i {
+  flex: none; width: 28px; height: 28px; border-radius: var(--r-pill);
+  background: var(--on-primary); color: var(--primary);
+  display: grid; place-items: center; transition: transform .2s;
+}
+.theme-btn:hover i { transform: rotate(45deg); }
 
-/* ---------- row (kategori, langkah, strip) ---------- */
-.row{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:16px;align-items:center;
-  background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px;color:var(--ink);
-  transition:border-color .14s,transform .14s}
-a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
-.row .ico{width:48px;height:48px;border-radius:var(--r-ico);background:var(--paper-2);color:var(--navy);display:grid;place-items:center}
-.row .t{display:block;font:700 var(--fs-row)/1.2 var(--font);font-stretch:var(--row-wd);letter-spacing:-.025em}
-.row .s{display:block;margin-top:4px;font:500 var(--fs-meta)/1.35 var(--font);color:var(--muted)}
-.row .go{justify-self:end;width:36px;height:36px;border-radius:var(--r-pill);background:var(--navy);color:#fff;display:grid;place-items:center}
-.row--soon{opacity:.6}
-.row--navy{background:var(--navy-mid);border-color:transparent;color:#fff}
-.row--navy .ico{background:rgba(255,255,255,.13);color:#fff}
-.row--navy .s{color:var(--on-navy-2)}
-.row--step{grid-template-columns:44px minmax(0,1fr);background:var(--navy);border-color:transparent;color:#fff;
-  padding:clamp(16px,2.2vw,22px) clamp(18px,2.4vw,26px)}
-.row--step .no{width:44px;height:44px;border-radius:var(--r-pill);background:var(--navy-mid);color:#fff;
-  display:grid;place-items:center;font:700 var(--fs-ui)/1 var(--font);font-variant-numeric:tabular-nums}
-.row--step .t{font:600 var(--fs-step)/1.24 var(--font);font-stretch:var(--card-wd);letter-spacing:-.02em}
-.row--step .s{color:var(--on-navy-2)}
+.theme-btn--outline {
+  background: transparent; color: var(--heading) !important;
+  border: 1.5px solid var(--border-strong);
+}
+.theme-btn--outline:hover {
+  background: rgba(var(--primary-rgb), 0.08);
+  border-color: var(--primary);
+  color: var(--primary) !important;
+  box-shadow: var(--sh-md);
+}
+.theme-btn--outline i {
+  background: var(--chip-fill); color: var(--heading);
+}
+.theme-btn--outline:hover i {
+  background: var(--primary); color: var(--on-primary); transform: translateY(2px);
+}
 
-/* ---------- katalog ---------- */
-.sect{margin-top:var(--sect)}
-.h2{font:700 var(--fs-h2)/1.06 var(--font);font-stretch:var(--sub-wd);letter-spacing:-.03em;
-  margin:16px 0 22px;max-width:24ch;text-wrap:pretty}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
-.chip{font:600 var(--fs-ui)/1 var(--font);white-space:nowrap;min-height:44px;padding:12px 20px;
-  border-radius:var(--r-pill);border:0;background:var(--card);color:var(--muted);cursor:pointer;
-  transition:background .14s,color .14s}
-.chip:hover{background:#E1E8F2}
-.chip.on{background:var(--navy);color:#fff}
-.grid{display:grid;gap:var(--gap);grid-template-columns:repeat(auto-fill,minmax(288px,1fr));margin:0;padding:0;list-style:none}
+.theme-btn--full { width: 100%; justify-content: center; }
 
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px;
-  display:flex;flex-direction:column;gap:16px;transition:border-color .14s,transform .14s}
-.card:hover{border-color:var(--navy);transform:translateY(-3px)}
-.card__hd{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.tag{background:var(--paper-2);color:var(--muted);border-radius:var(--r-pill);padding:7px 14px;
-  font:600 var(--fs-meta)/1 var(--font);letter-spacing:.1em;text-transform:uppercase;max-width:100%}
-.tag--free{background:var(--card);color:var(--buy-2)}
-.card__no{font:600 var(--fs-meta)/1 var(--font);color:var(--muted-2);font-variant-numeric:tabular-nums}
-.card h3{font:700 var(--fs-card)/1.26 var(--font);font-stretch:var(--card-wd);letter-spacing:-.02em}
-.meta{display:flex;flex-wrap:wrap;gap:10px 18px;font:500 var(--fs-meta)/1 var(--font);color:var(--muted);margin:0;padding:0;list-style:none}
-.meta li{display:inline-flex;align-items:center;gap:8px}
-.meta i{flex:none;width:26px;height:26px;border-radius:var(--r-pill);background:var(--paper-2);color:var(--navy);display:grid;place-items:center}
-.card__foot{margin-top:auto;display:flex;flex-direction:column;gap:10px}
-.inset{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-  background:var(--paper-2);border-radius:var(--r-pill);padding:9px 9px 9px 18px}
-.harga{font:800 var(--fs-harga)/1 var(--font);font-stretch:var(--card-wd);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.harga--free{color:var(--buy-2)}
-.inset .tag{background:var(--card)}
+/* ---------- TOMBOL GANTI TEMA ---------- */
+.tema-btn {
+  flex: none; display: inline-grid; place-items: center;
+  width: 44px; height: 44px; min-height: 44px; padding: 0;
+  border-radius: var(--r-pill); border: 1px solid var(--border);
+  background: var(--surface); color: var(--heading);
+  cursor: pointer; transition: background .2s, border-color .2s, color .2s;
+}
+.tema-btn:hover { background: var(--surface-hover); border-color: var(--border-strong); }
+.tema-btn svg { width: 19px; height: 19px; }
+/* Ikon matahari tampil di tema terang, bulan di tema gelap. Yang tampil adalah
+   tujuan kliknya, bukan keadaan sekarang — sama seperti label ariany. */
+.tema-btn .ikon-gelap { display: none; }
+:root[data-theme="dark"] .tema-btn .ikon-terang { display: none; }
+:root[data-theme="dark"] .tema-btn .ikon-gelap { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tema-btn .ikon-terang { display: none; }
+  :root:not([data-theme="light"]) .tema-btn .ikon-gelap { display: block; }
+}
 
-/* ---------- kartu gratis: seluruh permukaan hijau lembut ---------- */
-.card--free{background:var(--free);border-color:var(--free-ln)}
-.card--free:hover{border-color:var(--buy)}
-.card--free .meta i{background:var(--free-2);color:var(--buy-2)}
-.card--free .inset{background:var(--free-2)}
-.card--free .inset .tag{background:var(--free);color:var(--buy-2)}
+/* Transaksi tetap hijau, tidak ikut biru. Di v3.6 hijau berarti "beli / ambil",
+   dan kalau tombol beli ikut --primary dia jadi tidak terbedakan dari tautan
+   navigasi biasa. Pembagian peran ini yang dijaga, bukan warnanya sendiri. */
+.theme-btn--buy { background: var(--buy); color: var(--on-buy) !important; }
+.theme-btn--buy:hover { background: var(--buy-2); box-shadow: 0 8px 22px rgba(var(--buy-rgb), 0.32); }
+.theme-btn--buy i { background: var(--on-buy); color: var(--buy); }
 
-/* kartu bundle lebar */
-.card--wide{background:var(--navy);color:#fff;border:0;border-radius:var(--r-lg);padding:clamp(24px,3.4vw,38px);
-  margin-bottom:var(--gap);display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:clamp(22px,3vw,44px)}
-.card--wide:hover{transform:none}
-.card--wide h3{font:700 clamp(1.6rem,3.2vw,2.4rem)/1.06 var(--font);font-stretch:var(--sub-wd);letter-spacing:-.03em;margin-bottom:16px;max-width:20ch}
-.card--wide p{color:var(--on-navy-2);max-width:42ch}
-.card--wide .col2{display:flex;flex-direction:column;justify-content:flex-end;gap:14px}
-.card--wide .inset{background:var(--navy-mid)}
-.card--wide .inset .tag{background:#fff;color:var(--navy)}
-.card--wide .harga{color:#fff}
-.card--wide .kicker{margin-bottom:18px}
+/* ---------- HEADER ---------- */
+.main-header {
+  position: sticky; top: 0; z-index: 60;
+  background: var(--header-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 16px var(--pad);
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; color: var(--heading);
+}
+.brand-mark {
+  position: relative; width: 34px; height: 34px; border-radius: var(--r-pill);
+  background: var(--surface); border: 1.5px solid var(--border);
+  display: grid; place-items: center; font-weight: 800; font-size: 1.15rem; color: var(--heading);
+}
+.brand-mark::after {
+  content: ""; position: absolute; right: 1px; bottom: 2px;
+  width: 9px; height: 9px; border-radius: var(--r-pill); background: var(--primary);
+}
+.nav-menu { display: flex; align-items: center; gap: 6px; font: 600 var(--fs-ui)/1 var(--font-body); }
+.nav-menu a:not(.theme-btn) {
+  padding: 10px 14px; border-radius: var(--r-pill); color: var(--body);
+  transition: color .2s, background .2s;
+}
+.nav-menu a:not(.theme-btn):hover { color: var(--heading); background: var(--surface-hover); }
 
-.empty{border:1px dashed var(--line);border-radius:var(--r-lg);padding:28px 24px;background:var(--card)}
-.empty p:first-of-type{font:700 var(--fs-card)/1.26 var(--font);font-stretch:var(--card-wd);letter-spacing:-.02em;margin:14px 0 8px}
-.empty p:last-of-type{color:var(--muted);max-width:64ch}
+@media(max-width: 640px) {
+  .theme-btn { padding: 8px 16px; min-height: 42px; font-size: 0.92rem; }
+  .theme-btn i { width: 24px; height: 24px; }
+}
+/* Di bawah 400px, brand + CTA lynk.id + tombol tema butuh 350px sementara
+   ruang yang ada cuma 284px, dan halamannya jadi bisa digeser mendatar. Yang
+   dikorbankan tulisan wordmark-nya, bukan CTA atau tombol tema: tanda "o" tetap
+   bawa identitasnya, dan wordmark utuh masih ada besar di footer. */
+@media(max-width: 400px) {
+  .brand-text { display: none; }
+}
 
-/* ---------- blok navy penuh lebar ---------- */
-.band{background:var(--navy-deep);color:#fff;margin-top:clamp(48px,7vw,80px);padding:clamp(52px,7vw,88px) 0}
-.poster{font:800 var(--fs-poster)/1.02 var(--font);font-stretch:var(--disp-wd);letter-spacing:-.035em;
-  margin:18px 0 clamp(30px,4vw,46px);max-width:21ch;text-wrap:pretty}
-.steps{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+/* Di layar sempit tautan jangkar disembunyikan. Dengan empat tautan + pill
+   lynk.id + tombol tema, barisnya meluber 256px di 390px dan bikin seluruh
+   halaman bisa digeser mendatar. CTA dan tombol tema tetap tampil; jangkarnya
+   masih kejangkau lewat gulir biasa. Aturan yang sama sudah dipakai di v3.6. */
+@media(max-width: 860px) {
+  .nav-menu a:not(.theme-btn) { display: none; }
+}
 
-/* ---------- faq ---------- */
-.faq{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
-.faq+.faq{margin-top:10px}
-.faq[open]{border-color:var(--navy)}
-.faq summary{list-style:none;cursor:pointer;padding:18px 20px;min-height:44px;display:flex;
-  justify-content:space-between;gap:16px;align-items:center;color:var(--ink);
-  font:700 var(--fs-card)/1.3 var(--font);font-stretch:var(--card-wd);letter-spacing:-.02em}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";flex:none;width:36px;height:36px;border-radius:var(--r-pill);
-  background:var(--paper-2);color:var(--navy);display:grid;place-items:center;font:500 var(--fs-harga)/1 var(--font)}
-.faq[open] summary::after{content:"\2212"}
-.faq__a{padding:0 20px 20px;color:var(--muted);max-width:70ch}
+/* ---------- HERO SECTION ---------- */
+.hero-area {
+  position: relative;
+  padding: clamp(36px, 6vw, 68px) 0 clamp(28px, 4vw, 48px);
+}
+.hero-card {
+  position: relative;
+  background: radial-gradient(circle at 80% 20%, rgba(var(--primary-rgb), 0.08) 0%, transparent 60%),
+              var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: clamp(32px, 5vw, 64px);
+  box-shadow: var(--sh-lg);
+}
+.hero-content h1 {
+  font: 800 var(--fs-h1)/1.18 var(--font-heading);
+  letter-spacing: -0.035em; max-width: 19ch; text-wrap: balance;
+  margin: 20px 0 24px;
+}
+/* Sorotan hero pakai --accent, bukan --primary. Waktu lime diganti biru,
+   --primary jadi warna yang sama persis dengan judulnya, jadi frasa yang
+   disorot nggak lagi kelihatan disorot — cuma judul bergaris bawah. --accent
+   memang perannya ini (§3), dan pemakaiannya tetap satu per layar. */
+.text-accent {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--primary-rgb), 0.35);
+  text-underline-offset: 6px;
+}
+.hero-lead-row {
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+  gap: 28px 48px;
+}
+.hero-lead-row p {
+  color: var(--body); font-size: clamp(1.0625rem, 1rem + 0.28vw, 1.25rem);
+  line-height: 1.65; max-width: 48ch;
+}
+.hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
 
-/* ---------- penutup ---------- */
-.outro{background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:clamp(30px,4.6vw,56px);margin-top:var(--sect)}
-.outro .poster{margin:16px 0 clamp(24px,3vw,34px);max-width:20ch}
-.outro__sub{color:var(--on-navy-2);margin-top:14px;max-width:44ch}
-.badge{display:inline-flex;align-items:center;gap:9px;background:var(--navy-mid);border-radius:var(--r-pill);
-  padding:9px 16px;font:600 var(--fs-meta)/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:#fff}
+/* ---------- PETA TAHAPAN (TIMELINE REL GESER) ---------- */
+.sect { margin-top: var(--sect-gap); }
+.sect-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+  gap: 16px; margin-bottom: 24px;
+}
+.h2 {
+  font: 700 var(--fs-h2)/1.15 var(--font-heading);
+  letter-spacing: -0.03em; margin-top: 14px;
+  max-width: 24ch; text-wrap: balance;
+}
 
-/* ---------- footer ---------- */
-.ft{background:var(--navy);color:var(--on-navy-2);border-radius:var(--r-lg) var(--r-lg) 0 0;
-  margin-top:clamp(48px,7vw,78px);padding:clamp(36px,5vw,56px) 0 30px}
-.ft__top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px 40px;align-items:flex-end}
-.wordmark{font:800 var(--fs-mark)/.94 var(--font);font-stretch:var(--disp-wd);letter-spacing:-.04em;color:#fff}
-.wordmark span{display:inline-block;width:.16em;height:.16em;border-radius:var(--r-pill);background:var(--accent)}
-.ft nav{flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:10px;font:600 var(--fs-ui)/1 var(--font)}
-.ft nav a{color:var(--on-navy-2);white-space:nowrap;padding:6px 0}
-.ft nav a:hover{color:#fff}
-.ft .pill--soft{color:#fff;margin-top:4px}
-.rule{height:1px;background:var(--line-dark);margin:30px 0 18px}
-.ft__legal{display:flex;flex-wrap:wrap;gap:6px 20px;margin:14px 0 0;padding:0;list-style:none;font:500 var(--fs-meta)/1.4 var(--font)}
-.ft__legal a{color:var(--on-navy-2)}
-.ft__legal a:hover{color:#fff}
-.ft__kontak{margin-top:12px}
-.ft__kontak a{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.disc{max-width:70ch;font-size:var(--fs-meta);line-height:1.6}
+.tl-rel {
+  position: relative; display: flex; gap: var(--gap); margin: 0 calc(var(--pad) * -1);
+  padding: 8px var(--pad) 20px; list-style: none; overflow-x: auto;
+  overscroll-behavior-x: contain; scroll-snap-type: x proximity;
+  scroll-padding-left: var(--pad); -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent;
+}
+.tl-rel::-webkit-scrollbar { height: 6px; }
+.tl-rel::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: var(--r-pill); }
+.tl-rel::after { content: ""; flex: 0 0 max(0px, calc(100% - clamp(230px, 26vw, 280px) - var(--gap))); }
+
+.tl-card {
+  flex: 0 0 clamp(230px, 26vw, 280px); scroll-snap-align: start;
+  display: flex; flex-direction: column; gap: 10px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 20px 22px 22px;
+  box-shadow: var(--sh-sm);
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.tl-card:hover { transform: translateY(-3px); }
+
+.tl-card-hd { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.tl-no {
+  font: 800 var(--fs-tlno)/1 var(--font-heading);
+  letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: var(--heading);
+}
+.tl-st {
+  display: inline-flex; align-items: center; gap: 6px;
+  font: 700 var(--fs-meta)/1 var(--font-heading); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+}
+.tl-tgl {
+  font: 700 var(--fs-meta)/1.2 var(--font-heading); color: var(--primary);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+/* Titik denyut pakai --accent, satu-satunya di blok ini. Dengan --primary
+   dia jadi navy di atas kartu putih persis kayak judulnya, dan sinyal "tahap
+   ini lagi jalan" — inti dari seluruh fitur — nggak keluar. Jatah merah per
+   layar tetap aman: hero dan peta tahapan nggak pernah satu layar. */
+.tl-dot {
+  flex: none; width: 9px; height: 9px; border-radius: var(--r-pill);
+  background: var(--accent); animation: tl-pulse 2s ease-in-out infinite;
+}
+@keyframes tl-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.85); } }
+
+.tl-nama { font: 700 var(--fs-card-title)/1.28 var(--font-heading); color: var(--heading); }
+.tl-diuji { font-size: var(--fs-meta); line-height: 1.5; color: var(--body); }
+.tl-nota { margin-top: 8px; font-size: var(--fs-meta); line-height: 1.5; color: var(--muted); }
+
+/* Timeline Status States (Noxfolio Dark + Lime) */
+.tl-card[data-s="berlangsung"] {
+  border: 2px solid var(--primary);
+  background: radial-gradient(circle at 90% 10%, rgba(var(--primary-rgb), 0.12) 0%, var(--surface) 70%);
+  box-shadow: 0 10px 30px rgba(var(--primary-rgb), 0.22);
+}
+.tl-card[data-s="berlangsung"] .tl-st { color: var(--primary); font-weight: 800; }
+.tl-card[data-s="berikutnya"] { border-color: var(--border-strong); }
+.tl-card[data-s="berikutnya"] .tl-st { color: var(--heading); }
+
+/* "lewat" duduk di bidang navy, dan bidang itu gelap di KEDUA tema. Token
+   teksnya sudah dialihkan ke set on-dark di blok .band-section di atas.
+   Sengaja TANPA opacity: di mode terang, navy + opacity .78 bikin teksnya
+   jatuh ke 1,18–1,93:1. Kesan redupnya sudah datang dari permukaannya. */
+.tl-card[data-s="lewat"] { background: var(--surface-dark); border-color: transparent; }
+
+/* "nanti" tidak punya permukaan sendiri, cuma garis tepi — itu yang bikin dia
+   mundur tanpa perlu diredupkan habis. Opacity .78, bukan .65: di .65 teks
+   sekundernya cuma 2,78:1 di mode terang. Label statusnya dinaikkan dari
+   --muted ke --body, karena --muted yang diredupkan cuma dapat 3,39:1. */
+.tl-card[data-s="nanti"] { opacity: 0.78; background: transparent; box-shadow: none; }
+.tl-card[data-s="nanti"] .tl-st { color: var(--body); }
+
+/* ---------- REKOMENDASI TAHAP ---------- */
+.rk-foot { margin-top: 24px; }
+.rk-foot a {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--primary); font: 700 var(--fs-ui)/1.2 var(--font-heading);
+  text-decoration: underline; text-underline-offset: 4px;
+}
+.rk-foot a:hover { color: var(--heading); }
+
+/* ---------- STRIP DAMPAK (KENAPA OVERTIMEBOO) ---------- */
+.impact-grid {
+  display: grid; gap: 16px; margin: 0; padding: 0; list-style: none;
+}
+@media(min-width: 860px) {
+  .impact-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.impact-box {
+  display: flex; gap: 18px; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 26px 22px;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.impact-box:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: var(--sh-md);
+}
+.impact-box .ico {
+  flex: none; width: 48px; height: 48px; border-radius: var(--r-sm);
+  background: rgba(var(--primary-rgb), 0.1); border: 1px solid rgba(var(--primary-rgb), 0.25);
+  color: var(--primary); display: grid; place-items: center;
+}
+.impact-box .t {
+  display: block; font: 700 1.18rem/1.3 var(--font-heading);
+  color: var(--heading); letter-spacing: -0.015em; margin-bottom: 6px;
+}
+.impact-box .s {
+  display: block; font: 400 var(--fs-meta)/1.55 var(--font-body);
+  color: var(--body);
+}
+
+/* ---------- KATALOG SECTION ---------- */
+.filter-tabs {
+  display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 32px;
+  padding: 0; list-style: none;
+}
+.tab-chip {
+  font: 600 var(--fs-ui)/1 var(--font-body); white-space: nowrap;
+  min-height: 44px; padding: 12px 22px; border-radius: var(--r-pill);
+  border: 1px solid var(--border); background: var(--surface); color: var(--body);
+  cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .2s;
+}
+.tab-chip:hover {
+  background: var(--surface-2); color: var(--heading); border-color: var(--border-strong);
+}
+.tab-chip.on {
+  background: var(--primary); color: var(--on-primary); border-color: var(--primary);
+  font-weight: 700; box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.28);
+}
+
+.count-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-pill); padding: 7px 16px;
+  font: 600 var(--fs-meta)/1 var(--font-body); color: var(--body);
+}
+.count-pill span { color: var(--primary); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Grid & Cards */
+.product-grid {
+  display: grid; gap: var(--gap);
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  margin: 0; padding: 0; list-style: none;
+}
+
+.product-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 24px;
+  display: flex; flex-direction: column; gap: 18px;
+  box-shadow: var(--sh-sm);
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.product-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--sh-lg);
+}
+
+.card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.card-badge {
+  display: inline-flex; align-items: center;
+  background: var(--chip-fill); border: 1px solid var(--border);
+  color: var(--heading); border-radius: var(--r-pill);
+  padding: 6px 14px; font: 700 var(--fs-meta)/1 var(--font-heading);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.card-badge--bundle {
+  background: rgba(var(--primary-rgb), 0.12); border-color: rgba(var(--primary-rgb), 0.3);
+  color: var(--primary);
+}
+.card-badge--free {
+  background: rgba(var(--primary-rgb), 0.18); border-color: var(--primary);
+  color: var(--primary);
+}
+
+.product-card h3 {
+  font: 700 var(--fs-card-title)/1.32 var(--font-heading);
+  letter-spacing: -0.02em; color: var(--heading);
+}
+
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 14px;
+  font: 500 var(--fs-meta)/1 var(--font-body); color: var(--body);
+  margin: 0; padding: 0; list-style: none;
+}
+.card-meta li { display: inline-flex; align-items: center; gap: 8px; }
+.card-meta i {
+  flex: none; width: 28px; height: 28px; border-radius: var(--r-pill);
+  background: var(--chip-fill); color: var(--primary);
+  display: grid; place-items: center;
+}
+
+.card-foot {
+  margin-top: auto; padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+}
+.price-box { display: flex; flex-direction: column; gap: 2px; }
+.price-label {
+  font: 600 var(--fs-meta)/1 var(--font-body); text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted);
+}
+.price-val {
+  font: 800 var(--fs-harga)/1 var(--font-heading);
+  letter-spacing: -0.03em; font-variant-numeric: tabular-nums;
+  color: var(--heading);
+}
+.price-val--free { color: var(--primary); }
+
+/* Free Card Special */
+.product-card--free {
+  background: linear-gradient(180deg, rgba(var(--primary-rgb), 0.05) 0%, var(--surface) 100%);
+  border-color: rgba(var(--primary-rgb), 0.25);
+}
+.product-card--free:hover { border-color: var(--primary); }
+
+/* Flagship Bundle Lebar (Featured) */
+.wide-card {
+  background: radial-gradient(circle at 90% 10%, rgba(var(--primary-rgb), 0.12) 0%, transparent 60%),
+              var(--surface);
+  border: 1.5px solid rgba(var(--primary-rgb), 0.25);
+  border-radius: var(--r-lg); padding: clamp(28px, 4.5vw, 48px);
+  margin-bottom: var(--gap);
+  display: grid; grid-template-columns: 1fr; gap: 28px;
+  box-shadow: var(--sh-lg);
+}
+@media(min-width: 840px) {
+  .wide-card { grid-template-columns: 1.35fr 1fr; align-items: center; gap: 48px; }
+}
+.wide-card h3 {
+  font: 800 clamp(1.7rem, 3.2vw, 2.3rem)/1.15 var(--font-heading);
+  letter-spacing: -0.03em; margin: 16px 0 14px; color: var(--heading);
+}
+.wide-card p { color: var(--body); font-size: var(--fs-body); line-height: 1.65; }
+.wide-action-box {
+  background: var(--surface-dark); border: 1px solid var(--border-strong);
+  border-radius: var(--r-md); padding: 24px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.wide-price-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+}
+.wide-card .price-val { color: var(--primary); font-size: clamp(1.75rem, 2.6vw, 2.25rem); }
+.wide-badge {
+  background: rgba(var(--primary-rgb), 0.15); border: 1px solid rgba(var(--primary-rgb), 0.35);
+  color: var(--primary); border-radius: var(--r-pill);
+  padding: 6px 14px; font: 700 var(--fs-meta)/1 var(--font-heading);
+}
+
+.empty-state {
+  grid-column: 1 / -1; background: var(--surface); border: 1.5px dashed var(--border);
+  border-radius: var(--r-lg); padding: 44px 24px; text-align: center;
+}
+.empty-state h3 { font: 700 1.3rem var(--font-heading); margin: 14px 0 8px; color: var(--heading); }
+.empty-state p { color: var(--body); max-width: 48ch; margin: 0 auto; }
+
+/* ---------- CARA PAKAI (BAND) ---------- */
+.band-section {
+  background: var(--surface-dark);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-top: var(--sect-gap); padding: clamp(60px, 8vw, 96px) 0;
+}
+.poster-h2 {
+  font: 800 clamp(1.9rem, 4.5vw, 3rem)/1.15 var(--font-heading);
+  letter-spacing: -0.03em; margin: 16px 0 clamp(32px, 4vw, 48px);
+  max-width: 22ch; text-wrap: balance;
+}
+.steps-grid {
+  display: grid; gap: 16px; margin: 0; padding: 0; list-style: none;
+}
+@media(min-width: 768px) {
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.step-card {
+  display: flex; gap: 20px; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: clamp(20px, 2.8vw, 28px);
+  transition: border-color .2s, transform .2s;
+}
+.step-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+.step-number {
+  flex: none; width: 48px; height: 48px; border-radius: var(--r-pill);
+  background: rgba(var(--primary-rgb), 0.1); border: 1px solid rgba(var(--primary-rgb), 0.3);
+  color: var(--primary); display: grid; place-items: center;
+  font: 800 1.25rem/1 var(--font-heading); font-variant-numeric: tabular-nums;
+}
+.step-body .t {
+  display: block; font: 700 1.2rem/1.28 var(--font-heading);
+  letter-spacing: -0.015em; color: var(--heading); margin-bottom: 6px;
+}
+.step-body .s {
+  display: block; font: 400 var(--fs-meta)/1.55 var(--font-body);
+  color: var(--body);
+}
+
+/* ---------- KATEGORI (5 LINI) ---------- */
+.cat-list { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.cat-row {
+  display: grid; grid-template-columns: 50px minmax(0, 1fr) auto; gap: 18px; align-items: center;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 18px 22px; color: var(--heading);
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+a.cat-row:hover {
+  border-color: var(--border-hover); transform: translateY(-3px);
+  box-shadow: var(--sh-md);
+}
+.cat-row .ico {
+  width: 50px; height: 50px; border-radius: var(--r-sm);
+  background: rgba(var(--primary-rgb), 0.1); border: 1px solid rgba(var(--primary-rgb), 0.25);
+  color: var(--primary); display: grid; place-items: center;
+}
+.cat-row .t {
+  display: block; font: 700 1.18rem/1.24 var(--font-heading);
+  letter-spacing: -0.015em; color: var(--heading);
+}
+.cat-row .s {
+  display: block; margin-top: 4px; font: 400 var(--fs-meta)/1.45 var(--font-body);
+  color: var(--body);
+}
+.cat-row .go {
+  justify-self: end; width: 40px; height: 40px; border-radius: var(--r-pill);
+  background: var(--chip-fill); color: var(--primary);
+  display: grid; place-items: center; transition: background .2s, transform .2s;
+}
+a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); transform: translateX(3px); }
+/* .65 bikin keterangannya jatuh ke 3,62:1. .78 lantai yang masih lolos, dan
+   kesan "belum aktif"-nya tetap kebaca karena barisnya nggak bisa diklik. */
+.cat-row--soon { opacity: 0.78; }
+
+/* ---------- FAQ SECTION ---------- */
+.faq-wrap { display: flex; flex-direction: column; gap: 14px; margin-top: 26px; }
+.faq-box {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-md); overflow: hidden;
+  transition: border-color .2s;
+}
+.faq-box[open] { border-color: var(--border-hover); }
+.faq-box summary {
+  list-style: none; cursor: pointer; padding: 22px 24px; min-height: 56px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  font: 700 var(--fs-card-title)/1.32 var(--font-heading); color: var(--heading);
+  letter-spacing: -0.015em;
+}
+.faq-box summary::-webkit-details-marker { display: none; }
+.faq-box summary::after {
+  content: "+"; flex: none; width: 36px; height: 36px; border-radius: var(--r-pill);
+  background: var(--chip-fill); color: var(--primary);
+  display: grid; place-items: center; font: 600 1.35rem/1 var(--font-body);
+  transition: transform .2s, background .2s;
+}
+.faq-box[open] summary::after {
+  content: "\2212"; background: var(--primary); color: var(--on-primary);
+}
+.faq-box .faq-answer {
+  padding: 0 24px 24px; color: var(--body);
+  font-size: var(--fs-body); line-height: 1.7; max-width: 74ch;
+}
+
+/* ---------- PENUTUP (OUTRO) ---------- */
+.outro-card {
+  background: radial-gradient(circle at 10% 90%, rgba(var(--primary-rgb), 0.08) 0%, transparent 60%),
+              var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: clamp(36px, 5.5vw, 64px);
+  margin-top: var(--sect-gap);
+}
+.outro-card .poster-h2 { margin: 18px 0 26px; }
+.outro-sub {
+  color: var(--body); margin-top: 20px; max-width: 52ch;
+  font-size: var(--fs-body); line-height: 1.65;
+}
+
+/* ---------- FOOTER ---------- */
+.main-footer {
+  background: var(--surface-dark); color: var(--body);
+  border-top: 1px solid var(--border);
+  margin-top: clamp(60px, 8vw, 100px);
+  padding: clamp(48px, 6vw, 72px) 0 36px;
+}
+.footer-top {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  gap: 32px 54px; align-items: flex-start;
+}
+.wordmark {
+  font: 800 clamp(2.2rem, 5vw, 3.2rem)/1 var(--font-heading);
+  letter-spacing: -0.04em; color: var(--heading);
+}
+.wordmark span {
+  display: inline-block; width: 0.16em; height: 0.16em;
+  border-radius: var(--r-pill); background: var(--primary); margin-left: 2px;
+}
+.footer-tagline { margin-top: 12px; font-size: var(--fs-body); color: var(--body); }
+.footer-contact { margin-top: 16px; font-size: var(--fs-meta); }
+.footer-contact a {
+  color: var(--primary); text-decoration: underline; text-underline-offset: 4px; font-weight: 600;
+}
+.footer-nav {
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: 14px; font: 600 var(--fs-ui)/1 var(--font-body);
+}
+.footer-nav a { color: var(--body); transition: color .2s; }
+.footer-nav a:hover { color: var(--primary); }
+.footer-nav .theme-btn { margin-top: 6px; }
+
+.footer-divider { height: 1px; background: var(--border); margin: 40px 0 24px; }
+.footer-disc {
+  max-width: 80ch; font-size: var(--fs-meta); line-height: 1.65; color: var(--muted);
+}
+.footer-legal {
+  display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 18px 0 0;
+  padding: 0; list-style: none; font: 500 var(--fs-meta)/1.4 var(--font-body);
+}
+.footer-legal a { color: var(--body); transition: color .2s; }
+.footer-legal a:hover { color: var(--primary); }
 </style>
 </head>
 <body>
 
 <a class="skip" href="#konten">Lompat ke konten</a>
 
-<!-- STRIP JADWAL — BERISI TANGGAL, PUNYA MASA KEDALUWARSA. Lihat README bagian "Banner berjadwal".
-     Sekarang  : SPD 5–6 Sep · Tes teknis minggu ke-3 Sep
-     Setelah 6 Sep  -> "Tes teknis minggu ke-3 Sep · Seleksi psikologi minggu ke-2 Okt · PCPM BI angkatan 41"
-     Setelah Okt    -> hapus seluruh baris ini. -->
-<div class="ticker">SPD 5–6 Sep · Tes teknis minggu ke-3 Sep · PCPM BI angkatan 41</div>
-
-<header class="hd">
-  <div class="hd__in wrap">
-    <span class="brand">
-      <span class="mono" aria-hidden="true">o</span>
-      <span class="brand__n">overtimeboo</span>
-    </span>
-    <nav class="nav" aria-label="Navigasi utama">
+<!-- ============ HEADER ============ -->
+<header class="main-header">
+  <div class="header-inner wrap">
+    <a href="#" class="brand" aria-label="overtimeboo beranda">
+      <span class="brand-mark" aria-hidden="true">o</span>
+      <span class="brand-text">overtimeboo</span>
+    </a>
+    <nav class="nav-menu" aria-label="Navigasi utama">
       <a href="#katalog">Katalog</a>
       <a href="#cara">Cara pakai</a>
       <a href="#kategori">Kategori</a>
       <a href="#faq">FAQ</a>
-      <a class="pill" href="https://lynk.id/overtimeboo" target="_blank" rel="noopener">lynk.id<i aria-hidden="true"><svg width="13" height="13"><use href="#i-ext"/></svg></i></a>
+      <a class="theme-btn" href="https://lynk.id/overtimeboo" target="_blank" rel="noopener">lynk.id<i><svg width="13" height="13"><use href="#i-ext"/></svg></i></a>
+      <button class="tema-btn" id="tema-btn" type="button" aria-label="Ganti ke mode gelap">
+        <svg class="ikon-terang" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="ikon-gelap" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
     </nav>
   </div>
 </header>
@@ -310,72 +867,157 @@ a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
 <main id="konten">
 
   <!-- ============ HERO ============ -->
-  <div class="wrap">
-    <section class="hero" aria-labelledby="h-hero">
-      <div class="hero__top">
-        <span class="kicker">Persiapan PCPM BI · CPNS · BUMN</span>
-      </div>
-      <h1 id="h-hero">Udah latihan banyak, tapi masih <span class="mark">salah di situ-situ aja?</span></h1>
-      <div class="hero__lead">
-        <p>Biasanya bukan karena soalnya kurang. Kamu cuma belum pernah dikasih tahu kenapa jawaban kamu salah.</p>
-        <div class="hero__act">
-          <a class="cta cta--inv cta--auto" href="#katalog"><i aria-hidden="true"><svg width="15" height="15"><use href="#i-down"/></svg></i><span>Lihat katalog</span></a>
-          <a class="cta cta--auto" id="cta-preview-hero" href="#katalog" target="_blank" rel="noopener"><i aria-hidden="true"><svg width="15" height="15"><use href="#i-dl"/></svg></i><span>Ambil preview gratis</span></a>
+  <section class="hero-area">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="sub-title">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+          <span>Persiapan PCPM BI · CPNS · BUMN · TOEFL</span>
+        </div>
+        <div class="hero-content">
+          <h1>Udah latihan banyak, tapi masih <span class="text-accent">salah di situ-situ aja?</span></h1>
+          <div class="hero-lead-row">
+            <p>Biasanya bukan karena soalnya kurang. Kamu cuma belum pernah dikasih tahu kenapa jawaban kamu salah.</p>
+            <div class="hero-btns">
+              <a class="theme-btn" href="#katalog"><i><svg width="15" height="15"><use href="#i-down"/></svg></i><span>Lihat katalog</span></a>
+              <a class="theme-btn theme-btn--outline" id="cta-preview-hero" href="https://lynk.id/overtimeboo/m0jopjxw67q0" target="_blank" rel="noopener"><i><svg width="15" height="15"><use href="#i-dl"/></svg></i><span>Ambil preview gratis</span></a>
+            </div>
+          </div>
         </div>
       </div>
-      <ul class="strip">
-        <li class="row row--navy">
-          <span class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-doc"/></svg></span>
-          <span><span class="t">Kamu tahu kenapa jawabanmu salah</span><span class="s">Tiap nomor ada pembahasannya, sampai ke alasannya.</span></span>
-        </li>
-        <li class="row row--navy">
-          <span class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-layers"/></svg></span>
-          <span><span class="t">Soalnya nggak muter di situ lagi</span><span class="s">Tiap paket digenerate dari bank soal terpisah dan dicek kemiripannya satu per satu sebelum rilis.</span></span>
-        </li>
-        <li class="row row--navy">
-          <span class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-dl"/></svg></span>
-          <span><span class="t">Bisa kamu mulai malam ini juga</span><span class="s">Bayar, file masuk email. Nggak usah daftar akun.</span></span>
-        </li>
-      </ul>
-    </section>
-  </div>
+    </div>
+  </section>
+
+  <!-- ============ PETA TAHAPAN ============ -->
+  <section id="tahapan" class="wrap sect" aria-labelledby="h-tahapan">
+    <div class="sect-header">
+      <div>
+        <div class="sub-title">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+          <span>Peta Tahapan</span>
+        </div>
+        <h2 class="h2" id="h-tahapan">Kamu lagi ada di tahap mana?</h2>
+      </div>
+      <div class="count-pill">
+        <span>Jadwal PCPM Bank Indonesia Angkatan 41</span>
+      </div>
+    </div>
+
+    <ol class="tl-rel" id="tl-rel" role="list" tabindex="0" aria-label="Tahapan seleksi, bisa digeser kiri kanan"></ol>
+    <p class="tl-nota" id="tl-nota">Jadwal mengikuti pengumuman resmi dan bisa berubah. Selalu cek kanal resmi.</p>
+    <div id="tl-habis"></div>
+  </section>
+
+  <!-- ============ REKOMENDASI TAHAP ============ -->
+  <section id="rekomendasi" class="wrap sect" aria-labelledby="h-rekom">
+    <div class="sect-header">
+      <div>
+        <div class="sub-title">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+          <span>Siapin Yang Ini Dulu</span>
+        </div>
+        <h2 class="h2" id="h-rekom"></h2>
+      </div>
+      <div class="count-pill">
+        <span>●</span><span id="rk-num"></span>
+      </div>
+    </div>
+
+    <ul class="product-grid" id="rk-grid"></ul>
+    <p class="rk-foot"><a href="#katalog" data-goto="semua">Lihat semua katalog &rarr;</a></p>
+  </section>
+
+  <!-- ============ STRIP DAMPAK ============ -->
+  <section class="wrap sect" aria-label="Kenapa belajar di overtimeboo">
+    <ul class="impact-grid">
+      <li class="impact-box">
+        <span class="ico" aria-hidden="true"><svg width="22" height="22"><use href="#i-doc"/></svg></span>
+        <div>
+          <span class="t">Kamu tahu kenapa jawabanmu salah</span>
+          <span class="s">Tiap nomor ada pembahasannya, sampai ke alasan logikanya.</span>
+        </div>
+      </li>
+      <li class="impact-box">
+        <span class="ico" aria-hidden="true"><svg width="22" height="22"><use href="#i-layers"/></svg></span>
+        <div>
+          <span class="t">Soalnya nggak muter di situ lagi</span>
+          <span class="s">Tiap paket digenerate dari bank soal terpisah dan dicek kemiripannya satu per satu sebelum rilis.</span>
+        </div>
+      </li>
+      <li class="impact-box">
+        <span class="ico" aria-hidden="true"><svg width="22" height="22"><use href="#i-dl"/></svg></span>
+        <div>
+          <span class="t">Bisa kamu mulai malam ini juga</span>
+          <span class="s">Bayar instan via Lynk, file langsung masuk email. Nggak usah daftar akun.</span>
+        </div>
+      </li>
+    </ul>
+  </section>
 
   <!-- ============ KATALOG ============ -->
   <section id="katalog" class="wrap sect" aria-labelledby="h-katalog">
-    <p class="eyebrow"><span>Katalog</span><span class="num" id="statusbar"></span></p>
-    <h2 class="h2" id="h-katalog">Kamu lagi ngejar tes yang mana?</h2>
-    <ul class="chips" role="group" aria-label="Filter katalog">
-      <li><button class="chip on" type="button" data-f="semua" aria-pressed="true">Semua</button></li>
-      <li><button class="chip" type="button" data-f="pcpm" aria-pressed="false">PCPM</button></li>
-      <li><button class="chip" type="button" data-f="karier" aria-pressed="false">Karier</button></li>
-      <li><button class="chip" type="button" data-f="bundle" aria-pressed="false">Bundle</button></li>
-      <li><button class="chip" type="button" data-f="gratis" aria-pressed="false">Gratis</button></li>
+    <div class="sect-header">
+      <div>
+        <div class="sub-title">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+          <span>Katalog Produk</span>
+        </div>
+        <h2 class="h2" id="h-katalog">Kamu lagi ngejar tes yang mana?</h2>
+      </div>
+      <div class="count-pill">
+        <span>●</span><span id="statusbar">21 produk tersedia</span>
+      </div>
+    </div>
+
+    <!-- Filter Tabs (Noxfolio Style) -->
+    <ul class="filter-tabs" role="group" aria-label="Filter kategori katalog">
+      <li><button class="tab-chip on" type="button" data-f="semua" aria-pressed="true">Semua</button></li>
+      <li><button class="tab-chip" type="button" data-f="pcpm" aria-pressed="false">PCPM</button></li>
+      <li><button class="tab-chip" type="button" data-f="karier" aria-pressed="false">Karier</button></li>
+      <li><button class="tab-chip" type="button" data-f="bundle" aria-pressed="false">Bundle</button></li>
+      <li><button class="tab-chip" type="button" data-f="gratis" aria-pressed="false">Gratis</button></li>
     </ul>
+
     <div id="feature"></div>
-    <ul class="grid" id="grid"></ul>
+    <ul class="product-grid" id="grid"></ul>
   </section>
 
   <!-- ============ CARA PAKAI ============ -->
-  <section id="cara" class="band" aria-labelledby="h-cara">
+  <section id="cara" class="band-section" aria-labelledby="h-cara">
     <div class="wrap">
-      <p class="eyebrow eyebrow--onnavy"><span>Cara pakai</span><span class="num">4 langkah</span></p>
-      <h2 class="poster" id="h-cara">Udah punya filenya. Terus enaknya diapain?</h2>
-      <ol class="steps">
-        <li class="row row--step">
-          <span class="no" aria-hidden="true">01</span>
-          <span><span class="t">Kerjain dulu, kuncinya jangan diintip</span><span class="s">Nggak enak, tapi ini yang bikin kelihatan bolongnya.</span></span>
+      <div class="sub-title">
+        <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+        <span>Cara Pakai · 4 Langkah</span>
+      </div>
+      <h2 class="poster-h2" id="h-cara">Udah punya filenya. Terus enaknya diapain?</h2>
+      <ol class="steps-grid">
+        <li class="step-card">
+          <span class="step-number" aria-hidden="true">01</span>
+          <div class="step-body">
+            <span class="t">Kerjain dulu, kuncinya jangan diintip</span>
+            <span class="s">Nggak enak, tapi ini yang bikin kelihatan bolongnya.</span>
+          </div>
         </li>
-        <li class="row row--step">
-          <span class="no" aria-hidden="true">02</span>
-          <span><span class="t">Baca pembahasan di nomor yang salah</span><span class="s">Di situ kamu baru tahu logikanya beda di mana.</span></span>
+        <li class="step-card">
+          <span class="step-number" aria-hidden="true">02</span>
+          <div class="step-body">
+            <span class="t">Baca pembahasan di nomor yang salah</span>
+            <span class="s">Di situ kamu baru tahu logikanya beda di mana.</span>
+          </div>
         </li>
-        <li class="row row--step">
-          <span class="no" aria-hidden="true">03</span>
-          <span><span class="t">Cari soal berpola sama di paket lain</span><span class="s">Kalau kejebak lagi, berarti belum nempel.</span></span>
+        <li class="step-card">
+          <span class="step-number" aria-hidden="true">03</span>
+          <div class="step-body">
+            <span class="t">Cari soal berpola sama di paket lain</span>
+            <span class="s">Kalau kejebak lagi, berarti belum nempel.</span>
+          </div>
         </li>
-        <li class="row row--step">
-          <span class="no" aria-hidden="true">04</span>
-          <span><span class="t">Besoknya ulang lagi, jangan hari itu</span><span class="s">Jeda semalam bikin ingatannya lebih awet.</span></span>
+        <li class="step-card">
+          <span class="step-number" aria-hidden="true">04</span>
+          <div class="step-body">
+            <span class="t">Besoknya ulang lagi, jangan hari itu</span>
+            <span class="s">Jeda semalam bikin ingatannya lebih awet sampai hari H.</span>
+          </div>
         </li>
       </ol>
     </div>
@@ -383,68 +1025,94 @@ a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
 
   <!-- ============ KATEGORI ============ -->
   <section id="kategori" class="wrap sect" aria-labelledby="h-kategori">
-    <p class="eyebrow"><span>Kategori</span><span class="num">5 lini</span></p>
-    <h2 class="h2" id="h-kategori">Mulai dari yang tanggalnya paling deket.</h2>
-    <ul class="steps" id="grid-kategori"></ul>
+    <div class="sect-header">
+      <div>
+        <div class="sub-title">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+          <span>Kategori · 5 Lini</span>
+        </div>
+        <h2 class="h2" id="h-kategori">Mulai dari yang tanggalnya paling deket.</h2>
+      </div>
+    </div>
+    <ul class="cat-list" id="grid-kategori"></ul>
   </section>
 
   <!-- ============ FAQ ============ -->
   <section id="faq" class="wrap sect" aria-labelledby="h-faq">
-    <p class="eyebrow"><span id="h-faq">FAQ</span><span class="num">5 pertanyaan</span></p>
-    <div style="margin-top:18px">
-      <details class="faq" open>
+    <div class="sub-title">
+      <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+      <span>Pertanyaan Umum</span>
+    </div>
+    <h2 class="h2" id="h-faq">Pertanyaan yang sering ditanyakan</h2>
+    <div class="faq-wrap">
+      <details class="faq-box" open>
         <summary>Cara belinya gimana?</summary>
-        <div class="faq__a"><p>Klik produknya, checkout di lynk.id pakai QRIS, e-wallet, atau transfer bank. Begitu pembayaran masuk, filenya langsung dikirim ke email kamu. Nggak ada admin yang perlu kamu chat dulu.</p></div>
+        <div class="faq-answer">
+          <p>Klik produknya, checkout di lynk.id pakai QRIS, e-wallet, atau transfer bank. Begitu pembayaran masuk, filenya langsung dikirim ke email kamu. Nggak ada admin yang perlu kamu chat dulu.</p>
+        </div>
       </details>
-      <details class="faq">
+      <details class="faq-box">
         <summary>Paket Potensi Dasar ini nyakup tes kepribadian juga nggak?</summary>
-        <div class="faq__a"><p>Nggak. Yang dilatih empat: verbal, numerik, logika, dan figural. Bagian kuesioner kepribadian (Person-Organization Fit, Wartegg, Pauli, DISC, MBTI, Kraepelin) nggak punya jawaban benar atau salah, jadi nggak bisa dilatih pakai bank soal. Kalau itu yang kamu cari, paket ini bukan jawabannya.</p></div>
+        <div class="faq-answer">
+          <p>Nggak. Yang dilatih empat kemampuan kognitif: verbal, numerik, logika, dan figural. Bagian kuesioner kepribadian (Person-Organization Fit, Wartegg, Pauli, DISC, MBTI, Kraepelin) nggak punya jawaban benar atau salah, jadi nggak bisa dilatih pakai bank soal. Kalau itu yang kamu cari, paket ini bukan jawabannya.</p>
+        </div>
       </details>
-      <details class="faq">
+      <details class="faq-box">
         <summary>Kalau nggak cocok gimana?</summary>
-        <div class="faq__a"><p>Produk digital jadi nggak bisa direfund. Biar kamu nggak beli buta, preview gratisnya disediain duluan. Kerjain dulu, lihat isinya, baru putuskan.</p></div>
+        <div class="faq-answer">
+          <p>Produk digital jadi nggak bisa direfund. Biar kamu nggak beli buta, preview gratisnya disediain duluan. Kerjain dulu, lihat isinya, baru putuskan.</p>
+        </div>
       </details>
-      <details class="faq">
+      <details class="faq-box">
         <summary>Boleh dibagi ke temen?</summary>
-        <div class="faq__a"><p>Tiap PDF ada watermark nama pembelinya di dalam, jadi file yang disebar tetap kebaca asalnya dari siapa. Mending ajak temenmu ambil preview gratisnya.</p></div>
+        <div class="faq-answer">
+          <p>Tiap PDF ada watermark nama pembelinya di dalam, jadi file yang disebar tetap kebaca asalnya dari siapa. Mending ajak temenmu ambil preview gratisnya.</p>
+        </div>
       </details>
-      <details class="faq">
+      <details class="faq-box">
         <summary>Kenapa yang dilatih polanya?</summary>
-        <div class="faq__a"><p>Soal aslinya nggak pernah sama persis tiap tahun. Yang balik terus itu cara nyusun jebakannya. Sekali kamu hafal bentuk jebakannya, angka dan katanya boleh ganti.</p></div>
+        <div class="faq-answer">
+          <p>Soal aslinya nggak pernah sama persis tiap tahun. Yang balik terus itu cara nyusun jebakannya. Sekali kamu hafal bentuk jebakannya, angka dan katanya boleh ganti.</p>
+        </div>
       </details>
     </div>
   </section>
 
   <!-- ============ PENUTUP ============ -->
   <div class="wrap">
-    <section class="outro" aria-labelledby="h-outro">
-      <span class="badge">Mulai hari ini</span>
-      <h2 class="poster" id="h-outro">Belum yakin? Wajar kok. Coba yang gratis dulu.</h2>
-      <a class="cta cta--inv cta--auto" id="cta-preview-outro" href="#katalog" target="_blank" rel="noopener"><i aria-hidden="true"><svg width="15" height="15"><use href="#i-dl"/></svg></i><span>Ambil preview gratis</span></a>
-      <p class="outro__sub">20 soal PCPM BI dan 50 soal potensi dasar, lengkap sama pembahasannya. Nol biaya, nol daftar akun.</p>
+    <section class="outro-card" aria-labelledby="h-outro">
+      <div class="sub-title">
+        <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+        <span>Mulai Sekarang</span>
+      </div>
+      <h2 class="poster-h2" id="h-outro">Belum yakin? Wajar kok. Coba yang gratis dulu.</h2>
+      <a class="theme-btn theme-btn--buy" id="cta-preview-outro" href="https://lynk.id/overtimeboo/m0jopjxw67q0" target="_blank" rel="noopener"><i><svg width="15" height="15"><use href="#i-dl"/></svg></i><span>Ambil preview gratis</span></a>
+      <p class="outro-sub">20 soal PCPM BI dan 50 soal potensi dasar, lengkap dengan kunci dan pembahasannya. Nol biaya, nol daftar akun.</p>
     </section>
   </div>
 
 </main>
 
-<footer class="ft">
+<!-- ============ FOOTER ============ -->
+<footer class="main-footer">
   <div class="wrap">
-    <div class="ft__top">
-      <div style="min-width:0">
+    <div class="footer-top">
+      <div>
         <div class="wordmark">overtimeboo<span aria-hidden="true"></span></div>
-        <p style="margin-top:14px">Your best study companion.</p>
-        <p class="ft__kontak">tanya-tanya: <a href="https://www.threads.com/@bukanordalpcpmbi" target="_blank" rel="noopener">threads @bukanordalpcpmbi</a></p>
+        <p class="footer-tagline">Your best study companion.</p>
+        <p class="footer-contact">Tanya-tanya: <a href="https://www.threads.com/@bukanordalpcpmbi" target="_blank" rel="noopener">Threads @bukanordalpcpmbi</a></p>
       </div>
-      <nav aria-label="Navigasi footer">
+      <nav class="footer-nav" aria-label="Navigasi footer">
         <a href="#katalog">Katalog</a>
         <a href="#cara">Cara pakai</a>
         <a href="#kategori">Kategori</a>
-        <a class="pill pill--soft" href="https://lynk.id/overtimeboo" target="_blank" rel="noopener">lynk.id<i aria-hidden="true"><svg width="13" height="13"><use href="#i-ext"/></svg></i></a>
+        <a href="#faq">FAQ</a>
+        <a class="theme-btn" href="https://lynk.id/overtimeboo" target="_blank" rel="noopener">lynk.id<i><svg width="13" height="13"><use href="#i-ext"/></svg></i></a>
       </nav>
     </div>
-    <div class="rule"></div>
-    <p class="disc">Seluruh soal disusun sendiri. Ini BUKAN bocoran soal seleksi mana pun, dan tidak berafiliasi dengan BKN, KemenPANRB, FHCI, Bank Indonesia, ETS, maupun BUMN mana pun.</p>
-    <ul class="ft__legal">
+    <div class="footer-divider"></div>
+    <p class="footer-disc">Seluruh soal disusun sendiri. Ini BUKAN bocoran soal seleksi mana pun, dan tidak berafiliasi dengan BKN, KemenPANRB, FHCI, Bank Indonesia, ETS, maupun BUMN mana pun.</p>
+    <ul class="footer-legal">
       <li><a href="https://lynk.id/overtimeboo/terms_of_service" target="_blank" rel="noopener">Ketentuan layanan</a></li>
       <li><a href="https://lynk.id/overtimeboo/privacy_policy" target="_blank" rel="noopener">Kebijakan privasi</a></li>
       <li><a href="https://lynk.id/overtimeboo/refund_policy" target="_blank" rel="noopener">Kebijakan retur dana</a></li>
@@ -452,6 +1120,7 @@ a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
   </div>
 </footer>
 
+<!-- SVG ICONS SPRITE -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h6"/><path d="M9 13h6"/><path d="M9 17h4"/></symbol>
 <symbol id="i-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
@@ -459,6 +1128,9 @@ a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
 <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></symbol>
 <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol>
 <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></symbol>
 <symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect x="2" y="8" width="20" height="14" rx="2"/></symbol>
 <symbol id="i-bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M10 21v-6h4v6"/></symbol>
 <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></symbol>
@@ -466,29 +1138,8 @@ a.row:hover{border-color:var(--navy);transform:translateY(-2px)}
 
 <script>
 /* ============================================================
-   CARA NAMBAH / EDIT LISTING
-   Cukup edit array PRODUK. Jangan sentuh HTML.
-   Status bar, jumlah kartu, dan subjudul kategori ngitung sendiri.
-
-   { judul:"", harga:0, kategori:"pcpm", tag:[], meta:["",""], url:"" },
-
-   kategori : "pcpm" | "karier", ATAU array ["pcpm","karier"] kalau produknya
-              melayani dua jalur sekaligus (materi potensi dasar melayani SPD
-              PCPM dan GAT BUMN). Tidak perlu chip baru.
-   harga    : angka polos. 0 = gratis, tombol jadi "Ambil gratis"
-   tag      : "bundle" / "hemat" / "gratis"
-   meta     : 2 keterangan pendek, tampil sebagai ikon + label di kartu
-   url      : link listing Lynk lengkap pakai https://
-              KOSONGKAN kalau listingnya belum ada. Kartu dengan url kosong
-              sengaja tidak dirender — aturan "jangan naikkan kartu tanpa URL
-              Lynk yang valid" dijaga kode, bukan ingatan. Isi url-nya, kartunya
-              muncul sendiri.
-
-   PRODUK[0] tampil sebagai kartu navy lebar di filter Semua & Bundle.
-   Kalau flagship-nya ganti, pindahkan objeknya ke urutan pertama.
-
-   Habis edit: simpan -> Cloudflare -> New deployment -> drag folder.
-   Kalau harga berubah di Lynk, ganti di sini di hari yang sama.
+   DATA PRODUK OVERTIMEBOO
+   21 Listing Aktif terverifikasi ke Lynk.id
    ============================================================ */
 const PRODUK = [
   { judul:"Bundle Lengkap PCPM BI — 5 Paket + 2 Modul", harga:35000, kategori:"pcpm", tag:["bundle","hemat"], meta:["200 soal","2 modul bonus"], url:"https://lynk.id/overtimeboo/y5le31x7yq6w" },
@@ -505,30 +1156,22 @@ const PRODUK = [
   { judul:"PCPM BI Bahasa Inggris — Paket 4", harga:10000, kategori:"pcpm", tag:[], meta:["50 soal","PDF"], url:"https://lynk.id/overtimeboo/e6rje4308nk8" },
   { judul:"PCPM BI Bahasa Inggris — Paket 5", harga:10000, kategori:"pcpm", tag:[], meta:["50 soal","PDF"], url:"https://lynk.id/overtimeboo/58zpkrw8znwj" },
   { judul:"Preview Gratis — 50 Soal Potensi Dasar PCPM BI", harga:0, kategori:["pcpm","karier"], tag:["gratis"], meta:["50 soal","5 materi"], url:"https://lynk.id/overtimeboo/jd979xm4m39x" },
-
-  /* ---- LINI POTENSI DASAR — live 4 Sep 2026 -----------------------------------
-     Materi verbal, numerik, logika, dan spasial: melayani SPD PCPM sekaligus
-     seleksi aptitude lain, makanya kategorinya dua-duanya.
-     Judul & harga di sini WAJIB sama dengan judul & harga listing di Lynk.
-     Kalau diubah di Lynk, ubah di sini di hari yang sama. */
   { judul:"Bundle Potensi Dasar — 700 Soal + 5 Modul", harga:30000, kategori:["pcpm","karier"], tag:["bundle","hemat"], meta:["700 soal","5 modul bonus"], url:"https://lynk.id/overtimeboo/503964dv58zz" },
-  { judul:"Drill Numerik Potensi Dasar — 100 Soal Fokus",harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/np84r0p3040e" },
-  { judul:"Drill Verbal Potensi Dasar — 100 Soal Fokus",harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/3znmweyz8l44" },
-  { judul:"Drill Sinonim Potensi Dasar — 100 Soal Fokus",harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/6lqmj7z62y08" },
-  { judul:"Drill Silogisme Potensi Dasar — 100 Soal Fokus",harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/m9j4kwzrlvxx" },
-  { judul:"Drill Spasial Potensi Dasar",     harga:10000, kategori:["pcpm","karier"], tag:[], meta:["84 soal unik","PDF"], url:"https://lynk.id/overtimeboo/wqjy42l4kq1o" },
-
-  { judul:"Persiapan Tes TOEFL ITP — 300 Soal + Modul Grammar", harga:25000, kategori:"karier", tag:["bundle"], meta:["300 soal","+ modul grammar"], url:"https://lynk.id/overtimeboo/v349ng9nw490" },
+  { judul:"Drill Numerik Potensi Dasar — 100 Soal Fokus", harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/np84r0p3040e" },
+  { judul:"Drill Verbal Potensi Dasar — 100 Soal Fokus", harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/3znmweyz8l44" },
+  { judul:"Drill Sinonim Potensi Dasar — 100 Soal Fokus", harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/6lqmj7z62y08" },
+  { judul:"Drill Silogisme Potensi Dasar — 100 Soal Fokus", harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/m9j4kwzrlvxx" },
+  { judul:"Drill Spasial Potensi Dasar", harga:10000, kategori:["pcpm","karier"], tag:[], meta:["84 soal unik","PDF"], url:"https://lynk.id/overtimeboo/wqjy42l4kq1o" },
+  { judul:"Persiapan Tes TOEFL ITP — 300 Soal + Modul Grammar", harga:25000, kategori:"karier", tag:["bundle"], meta:["300 soal","+ modul grammar"], url:"https://lynk.id/overtimeboo/v349ng9nw490" }
 ];
 
-/* Diurutkan dari tanggal tes yang paling dekat. Kalau jadwalnya lewat, urutannya ikut digeser. */
+/* Diurutkan dari tanggal tes yang paling dekat */
 const KATEGORI = [
   { id:"karier",   nama:"Potensi Dasar",            ket:"SPD PCPM 5–6 September · verbal, numerik, logika, figural", ikon:"i-brief", aksi:"filter" },
   { id:"pcpm",     nama:"PCPM BI + Bahasa Inggris", ket:"Seleksi Pengetahuan Teknis minggu ke-3 September",          ikon:"i-doc",   aksi:"filter" },
   { id:"psikotes", nama:"Psikotes",                 ket:"Seleksi Psikologi PCPM minggu ke-2 Oktober",                ikon:"i-bank",  aksi:"segera" },
   { id:"cpns",     nama:"CPNS SKD 2026",            ket:"SKD Sekolah Kedinasan 22 Sep – 7 Okt 2026",                 ikon:"i-cal",   aksi:"segera" },
   { id:"karier",   nama:"TOEFL ITP",                ket:"Tanpa tanggal, kebutuhan sepanjang tahun",                  ikon:"i-doc",   aksi:"filter" },
-  /* dua baris di atas menunjuk chip Karier yang sama: itu disengaja, keduanya pintu masuk berbeda ke rak yang sama. */
 ];
 
 const kat = p => Array.isArray(p.kategori) ? p.kategori : [p.kategori];
@@ -537,45 +1180,73 @@ const PREVIEW_POTENSI = PRODUK.find(p => p.url && p.harga === 0 && /Potensi Dasa
 
 const rp = n => n === 0 ? "Gratis" : "Rp" + n.toLocaleString("id-ID");
 const esc = s => String(s).replace(/[&<>"]/g, m => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[m]));
-const ikonMeta = t => /PDF/i.test(t) ? "i-dl" : /modul|paket/i.test(t) ? "i-layers" : "i-doc";
+const ikonMeta = t => /PDF/i.test(t) ? "i-doc" : /modul|paket/i.test(t) ? "i-layers" : "i-check";
 const svg = (id, s) => `<svg width="${s}" height="${s}" aria-hidden="true"><use href="#${id}"/></svg>`;
 
 function labelTag(p){
-  if (p.tag.includes("gratis")) return { txt:"Gratis", cls:"tag--free" };
-  if (p.tag.includes("bundle")) return { txt: p.tag.includes("hemat") ? "Bundle · hemat" : "Bundle", cls:"" };
-  return { txt: kat(p).includes("pcpm") ? "PCPM" : "Karier", cls:"" };
+  if (p.tag.includes("gratis")) return { txt: "Preview Gratis", cls: "card-badge--free" };
+  if (p.tag.includes("bundle")) return { txt: p.tag.includes("hemat") ? "Bundle · Hemat" : "Bundle", cls: "card-badge--bundle" };
+  if (kat(p).includes("pcpm") && kat(p).includes("karier")) return { txt: "Potensi Dasar", cls: "" };
+  if (kat(p).includes("pcpm")) return { txt: "PCPM BI", cls: "" };
+  return { txt: "Karier", cls: "" };
 }
 
-function kartu(p, i){
+function kartu(p){
   const t = labelTag(p), gratis = p.harga === 0;
-  return `<li class="card${gratis ? " card--free" : ""}">
-    <div class="card__hd"><span class="tag ${t.cls}">${esc(t.txt)}</span><span class="card__no">${String(i + 1).padStart(2, "0")}</span></div>
+  return `<li class="product-card${gratis ? " product-card--free" : ""}">
+    <div class="card-top">
+      <span class="card-badge ${t.cls}">${esc(t.txt)}</span>
+    </div>
     <h3>${esc(p.judul)}</h3>
-    <ul class="meta">${p.meta.map(m => `<li><i>${svg(ikonMeta(m), 13)}</i>${esc(m)}</li>`).join("")}</ul>
-    <div class="card__foot">
-      <div class="inset"><span class="harga ${gratis ? "harga--free" : ""}">${rp(p.harga)}</span><span class="tag">Kunci + pembahasan</span></div>
-      <a class="cta" href="${p.url}" target="_blank" rel="noopener"><i>${svg(gratis ? "i-dl" : "i-ext", 15)}</i><span>${gratis ? "Ambil gratis" : "Checkout"}</span><span class="sr"> — ${esc(p.judul)}</span></a>
+    <ul class="card-meta">${p.meta.map(m => `<li><i>${svg(ikonMeta(m), 14)}</i><span>${esc(m)}</span></li>`).join("")}</ul>
+    <div class="card-foot">
+      <div class="price-box">
+        <span class="price-label">${gratis ? "Akses" : "Investasi"}</span>
+        <span class="price-val ${gratis ? "price-val--free" : ""}">${rp(p.harga)}</span>
+      </div>
+      <a class="theme-btn theme-btn--buy" href="${p.url}" target="_blank" rel="noopener">
+        <i>${svg(gratis ? "i-dl" : "i-ext", 14)}</i>
+        <span>${gratis ? "Ambil gratis" : "Beli di Lynk"}</span>
+        <span class="sr"> — ${esc(p.judul)}</span>
+      </a>
     </div>
   </li>`;
 }
 
 function kartuLebar(p){
-  return `<article class="card card--wide">
+  return `<article class="wide-card">
     <div>
-      <span class="kicker">Bundle · hemat</span>
+      <div class="sub-title">
+        <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+        <span>Bundle Utama · Paling Lengkap</span>
+      </div>
       <h3>${esc(p.judul)}</h3>
-      <p>200 soal Tes Pengetahuan Umum dan kebanksentralan, plus 2 modul belajar sebagai bonus. Satu file per paket, watermark per pembeli.</p>
+      <p>200 soal Tes Pengetahuan Umum & kebanksentralan, plus 2 modul belajar esensial. Tiap paket digenerate dari bank soal terpisah dan dicek kemiripannya satu per satu sebelum rilis, lengkap dengan kunci dan pembahasan sampai ke alasan logisnya.</p>
     </div>
-    <div class="col2">
-      <div class="inset"><span class="harga">${rp(p.harga)}</span><span class="tag">Kunci + pembahasan</span></div>
-      <a class="cta" href="${p.url}" target="_blank" rel="noopener"><i>${svg("i-ext", 16)}</i><span>Checkout</span><span class="sr"> — ${esc(p.judul)}</span></a>
+    <div class="wide-action-box">
+      <div class="wide-price-row">
+        <div>
+          <span class="price-label">Total Investasi</span>
+          <div class="price-val">${rp(p.harga)}</div>
+        </div>
+        <span class="wide-badge">Hemat 30%</span>
+      </div>
+      <a class="theme-btn theme-btn--buy theme-btn--full" href="${p.url}" target="_blank" rel="noopener">
+        <i>${svg("i-ext", 16)}</i>
+        <span>Beli Bundle Lengkap di Lynk</span>
+        <span class="sr"> — ${esc(p.judul)}</span>
+      </a>
     </div>
   </article>`;
 }
 
-/* url kosong = listing belum ada = kartunya tidak pernah dirender. */
 const tayang = p => Boolean(p.url);
-const cocok = (p, f) => f === "semua" || (f === "bundle" || f === "gratis" ? p.tag.includes(f) : kat(p).includes(f));
+const cocok = (p, f) => {
+  if (f === "semua") return true;
+  if (f === "bundle" || f === "gratis") return p.tag.includes(f);
+  return kat(p).includes(f);
+};
+
 const grid = document.getElementById("grid");
 const feature = document.getElementById("feature");
 const statusbar = document.getElementById("statusbar");
@@ -585,13 +1256,19 @@ function render(f){
   const pakaiFeature = (f === "semua" || f === "bundle") && list[0] === PRODUK[0];
   feature.innerHTML = pakaiFeature ? kartuLebar(PRODUK[0]) : "";
   const sisa = pakaiFeature ? list.slice(1) : list;
-  grid.innerHTML = sisa.length ? sisa.map(kartu).join("")
-    : (pakaiFeature ? "" : `<li class="empty"><span class="tag">Kosong</span><p>Belum ada produk di filter ini.</p><p>Coba filter lain, atau ambil preview gratisnya dulu.</p></li>`);
-  statusbar.textContent = list.length + " produk";
+
+  grid.innerHTML = sisa.length ? sisa.map(kartu).join("") : `
+    <li class="empty-state">
+      <span class="card-badge">Kosong</span>
+      <h3>Belum ada produk di filter ini.</h3>
+      <p>Coba pilih filter kategori lain di atas, atau ambil preview gratisnya terlebih dahulu.</p>
+    </li>`;
+
+  statusbar.textContent = list.length + " produk tersedia";
 }
 
 function setFilter(f){
-  document.querySelectorAll(".chip").forEach(c => {
+  document.querySelectorAll(".tab-chip").forEach(c => {
     const on = c.dataset.f === f;
     c.classList.toggle("on", on);
     c.setAttribute("aria-pressed", on);
@@ -599,26 +1276,176 @@ function setFilter(f){
   render(f);
 }
 
-document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => setFilter(c.dataset.f)));
+document.querySelectorAll(".tab-chip").forEach(c => {
+  c.addEventListener("click", () => setFilter(c.dataset.f));
+});
 
+/* ============================================================
+   KATEGORI 5 LINI (Interaktif ke Katalog)
+   ============================================================ */
 document.getElementById("grid-kategori").innerHTML = KATEGORI.map(k => {
-  const isi = `<span class="ico">${svg(k.ikon, 20)}</span><span><span class="t">${esc(k.nama)}</span><span class="s">${esc(k.ket)}</span></span>`;
+  const isi = `<span class="ico">${svg(k.ikon, 22)}</span><span><span class="t">${esc(k.nama)}</span><span class="s">${esc(k.ket)}</span></span>`;
   if (k.aksi === "filter")
-    return `<li><a class="row" href="#katalog" data-goto="${k.id}">${isi}<span class="go">${svg("i-chev", 16)}</span></a></li>`;
+    return `<li><a class="cat-row" href="#katalog" data-goto="${k.id}">${isi}<span class="go">${svg("i-chev", 16)}</span></a></li>`;
   if (k.aksi === "preview" && PREVIEW_POTENSI)
-    return `<li><a class="row" href="${PREVIEW_POTENSI.url}" target="_blank" rel="noopener">${isi}<span class="go">${svg("i-dl", 16)}</span></a></li>`;
-  return `<li><div class="row row--soon">${isi}<span class="tag">Segera</span></div></li>`;
+    return `<li><a class="cat-row" href="${PREVIEW_POTENSI.url}" target="_blank" rel="noopener">${isi}<span class="go">${svg("i-dl", 16)}</span></a></li>`;
+  return `<li><div class="cat-row cat-row--soon">${isi}<span class="card-badge">Segera</span></div></li>`;
 }).join("");
 
-if (PREVIEW_PCPM) ["cta-preview-hero", "cta-preview-outro"].forEach(id => { document.getElementById(id).href = PREVIEW_PCPM.url; });
+/* ============================================================
+   PETA TAHAPAN & REKOMENDASI PER TAHAP
+   ============================================================ */
+const TAHAPAN = [
+  { id:"adm", no:"01", nama:"Seleksi administrasi", label:"Agustus", mulai:"2026-08-01", selesai:"2026-08-31",
+    diuji:"Berkas dan syarat dasar.", produk:[] },
+  { id:"spd", no:"02", nama:"SPD / potensi dasar", label:"5–6 Sep", mulai:"2026-09-05", selesai:"2026-09-06",
+    diuji:"Verbal, numerik, logika, figural.", produk:["503964dv58zz","jd979xm4m39x"] },
+  { id:"teknis", no:"03", nama:"Tes teknis", label:"Minggu ke-3 Sep", mulai:"2026-09-14", selesai:"2026-09-20",
+    diuji:"Kebanksentralan, ekonomi, dan Bahasa Inggris.", produk:["y5le31x7yq6w","rwrq6zgwj75y","m0jopjxw67q0"] },
+  { id:"psiko", no:"04", nama:"Seleksi psikologi", label:"Minggu ke-2 Okt", mulai:"2026-10-05", selesai:"2026-10-11",
+    diuji:"Tes kemampuan lanjutan. Bagian kuesioner kepribadian nggak bisa dilatih pakai bank soal.", produk:[] },
+  { id:"wawancara", no:"05", nama:"Wawancara", label:"Akhir Okt", mulai:"2026-10-19", selesai:"2026-10-31",
+    diuji:"Wawancara dan diskusi kelompok.", produk:[] },
+];
 
-const halus = (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth";
+const hariIso = d => new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
+
+function statusTahap(list, hariIni = new Date()){
+  const t = hariIso(hariIni);
+  let ada = false;
+  return list.map(x => {
+    if (t > x.selesai) return { ...x, status:"lewat" };
+    if (t >= x.mulai)  return { ...x, status:"berlangsung" };
+    if (!ada) { ada = true; return { ...x, status:"berikutnya" }; }
+    return { ...x, status:"nanti" };
+  });
+}
+
+const TL = statusTahap(TAHAPAN);
+/* Tahap sorotan: yang berlangsung, kalau tidak ada ambil yang berikutnya.
+   SENGAJA tanpa fallback ke TL[1]. Kalau semua tahap sudah lewat, SOROT harus
+   undefined supaya blok keadaan-habis di bawah yang jalan. Fallback bikin
+   halaman menyorot SPD selamanya dan menayangkan jadwal basi — persis masalah
+   yang bikin peta tahapan ini dibuat. */
+const SOROT = TL.find(x => x.status === "berlangsung") || TL.find(x => x.status === "berikutnya");
+const ST = { lewat:"Selesai", berlangsung:"Berlangsung", berikutnya:"Berikutnya", nanti:"Nanti" };
+
+function jarakTeks(x){
+  if (x.status === "berlangsung") return "lagi berlangsung";
+  const h = Math.round((new Date(x.mulai + "T00:00:00") - new Date(hariIso(new Date()) + "T00:00:00")) / 864e5);
+  return h <= 1 ? "besok" : h <= 6 ? "sekitar seminggu lagi" : h <= 20 ? "sekitar dua minggu lagi"
+    : h <= 45 ? "sekitar sebulan lagi" : "tahap lanjutan";
+}
+
+function kartuTahap(x){
+  const tanda = x.status === "berlangsung" ? '<span class="tl-dot" aria-hidden="true"></span>'
+    : x.status === "lewat" ? svg("i-check", 12) : "";
+  return `<li class="tl-card" role="listitem" data-s="${x.status}"${x === SOROT ? ' aria-current="step"' : ""}>
+    <span class="tl-card-hd"><span class="tl-no">${esc(x.no)}</span><span class="tl-st">${tanda}${ST[x.status]}</span></span>
+    <span class="tl-tgl">${esc(x.label)}</span>
+    <h3 class="tl-nama">${esc(x.nama)}</h3>
+    <p class="tl-diuji">${esc(x.diuji)}</p></li>`;
+}
+
+const slugLynk = u => String(u || "").split("/").pop();
+const tlRel = document.getElementById("tl-rel");
+
+if (tlRel && !SOROT) {
+  /* Semua tahap sudah lewat. Jadwal basi tidak boleh tampil sama sekali —
+     seluruh blok diganti satu kartu. Ini yang bikin fiturnya aman ditinggal
+     tanpa diurus sampai angkatan berikutnya. */
+  tlRel.hidden = true;
+  const nota = document.getElementById("tl-nota");
+  const rekom = document.getElementById("rekomendasi");
+  if (nota) nota.hidden = true;
+  if (rekom) rekom.hidden = true;
+  const habis = document.getElementById("tl-habis");
+  if (habis) habis.innerHTML =
+    `<div class="empty-state">
+      <h3>Angkatan 41 sudah selesai.</h3>
+      <p>Materinya tetap kepakai buat angkatan berikutnya dan seleksi lain.</p>
+      <p class="rk-foot"><a href="#katalog" data-goto="semua">Lihat katalog &rarr;</a></p>
+    </div>`;
+} else if (tlRel) {
+  tlRel.innerHTML = TL.map(kartuTahap).join("");
+  const rekomH2 = document.getElementById("h-rekom");
+  if (rekomH2) rekomH2.textContent = `${SOROT.nama}, ${jarakTeks(SOROT)}`;
+
+  const pilih = SOROT.produk
+    .map(sl => PRODUK.find(p => tayang(p) && slugLynk(p.url) === sl))
+    .filter(Boolean).slice(0, 3);
+
+  const rkNum = document.getElementById("rk-num");
+  if (rkNum) rkNum.textContent = pilih.length ? pilih.length + " produk" : "belum listing";
+
+  /* Tahap yang produknya belum listing tidak boleh jadi jalan buntu. Daripada
+     menampilkan produk acak seolah-olah itu materi tahap ini, kartunya bilang
+     apa adanya dan tetap ngasih satu langkah lanjut. */
+  const rkGrid = document.getElementById("rk-grid");
+  const pv = PREVIEW_POTENSI || PREVIEW_PCPM;
+  if (rkGrid) rkGrid.innerHTML = pilih.length ? pilih.map(kartu).join("")
+    : `<li class="product-card">
+        <div class="card-top"><span class="card-badge">Segera</span></div>
+        <h3>Materi buat tahap ini lagi disiapin.</h3>
+        <p style="color:var(--body);font-size:var(--fs-meta);line-height:1.5">Sementara, preview gratisnya udah bisa kamu ambil.</p>
+        <div class="card-foot">${pv ? `<a class="theme-btn theme-btn--buy theme-btn--full" href="${pv.url}" target="_blank" rel="noopener"><i>${svg("i-dl", 14)}</i><span>Ambil preview gratis</span></a>` : ""}</div>
+      </li>`;
+
+  /* Rel digeser supaya tahap sorotan ada di kiri layar begitu halaman dibuka.
+     scrollLeft langsung, bukan scrollIntoView (itu ikut narik halaman turun)
+     dan bukan di dalam rAF (rAF tidak jalan di tab latar, jadi relnya diam
+     di awal sampai tabnya dibuka lalu melompat). */
+  const k = tlRel.querySelector('[aria-current="step"]');
+  if (k) tlRel.scrollLeft = k.offsetLeft - (parseFloat(getComputedStyle(tlRel).paddingLeft) || 0);
+}
+
+if (PREVIEW_PCPM) {
+  const h = document.getElementById("cta-preview-hero");
+  const o = document.getElementById("cta-preview-outro");
+  if (h) h.href = PREVIEW_PCPM.url;
+  if (o) o.href = PREVIEW_PCPM.url;
+}
+
+const halus = (typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth";
 document.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", e => {
   e.preventDefault();
   setFilter(b.dataset.goto);
   document.getElementById("katalog").scrollIntoView({ behavior: halus, block: "start" });
 }));
 
+/* ---------- GANTI TEMA ----------
+   Tiga keadaan: ikut sistem (tidak ada data-theme), dipaksa terang, dipaksa
+   gelap. Tombolnya cuma bolak-balik antara terang dan gelap; "ikut sistem"
+   adalah keadaan awal sebelum pengunjung pernah memilih.
+   Semua akses localStorage dibungkus try/catch — di mode penyamaran dan
+   sebagian browser dia melempar, dan itu bakal mematikan sisa script ini. */
+const temaBtn = document.getElementById("tema-btn");
+const temaSistemGelap = () => window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches;
+const temaSekarang = () => document.documentElement.dataset.theme || (temaSistemGelap() ? "dark" : "light");
+
+function labeliTemaBtn(){
+  if (!temaBtn) return;
+  const keGelap = temaSekarang() !== "dark";
+  temaBtn.setAttribute("aria-label", keGelap ? "Ganti ke mode gelap" : "Ganti ke mode terang");
+}
+labeliTemaBtn();
+
+if (temaBtn) temaBtn.addEventListener("click", () => {
+  const baru = temaSekarang() === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = baru;
+  try { localStorage.setItem("tema", baru); } catch (e) {}
+  labeliTemaBtn();
+});
+
+/* Kalau pengunjung belum pernah memilih, ikuti sistem waktu setelan OS-nya
+   berubah tanpa perlu muat ulang. */
+if (window.matchMedia) {
+  const mq = matchMedia("(prefers-color-scheme: dark)");
+  const ubah = () => { if (!document.documentElement.dataset.theme) labeliTemaBtn(); };
+  mq.addEventListener ? mq.addEventListener("change", ubah) : mq.addListener(ubah);
+}
+
+// Inisialisasi katalog
 render("semua");
 </script>
 </body>

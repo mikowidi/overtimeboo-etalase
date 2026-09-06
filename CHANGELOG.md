@@ -8,6 +8,111 @@ riwayatnya tidak dibaca sebagai jejak kerja harian.
 
 ---
 
+## v3.7 — 6 September 2026 — **peta tahapan, rekomendasi per tahap, dan dua tema**
+Pengunjung sekarang lihat dia lagi di tahap seleksi mana, lalu langsung dapat
+produk untuk tahap itu, tanpa harus turun ke katalog. Penyaringan yang tadinya
+dikerjakan pengunjung pindah ke halaman.
+
+- **peta tahapan naik**, rel geser kiri-kanan berisi 5 tahap PCPM BI angkatan 41.
+  Geser mendatar, bukan tumpuk vertikal: 5 kartu ditumpuk ke bawah cuma
+  manjangin halaman tanpa nambah informasi. Waktu halaman dibuka, relnya sudah
+  digeser sendiri supaya tahap yang lagi jalan ada di kiri layar — pengunjung
+  nggak perlu nyari.
+- **status nggak pernah ditulis manual.** `lewat / berlangsung / berikutnya /
+  nanti` dihitung dari tanggal tiap halaman dibuka. Kalau semua tahap sudah
+  lewat, seluruh blok ganti sendiri jadi kartu "angkatan 41 sudah selesai".
+  Ini yang bikin fiturnya aman ditinggal tanpa diurus.
+- **banner `<div class="ticker">` dihapus** berikut aturan CSS-nya. Isinya sama
+  dengan peta tahapan, dan tanggal yang ditulis di dua tempat itu cara jadi
+  salah. README bagian 12 ditulis ulang mengikuti ini.
+- **blok "Siapin yang ini dulu"** di bawah peta, terikat ke tahap sorotan,
+  maksimal 3 kartu. Kartunya dirender pakai fungsi kartu katalog yang sama —
+  satu sumber, satu tampilan, bukan komponen kedua.
+- **tahap tanpa listing nggak jadi jalan buntu.** `psiko` dan `wawancara`
+  belum punya produk, jadi kartunya berbunyi "materi lagi disiapin" dengan
+  tombol preview gratis, bukan tombol mati. Opsi B di handoff v3.7 §1.1.
+- **strip dampak turun satu tingkat**, dari dalam hero ke bawah blok
+  rekomendasi. Pertanyaan "kenapa beli di sini" baru relevan setelah pengunjung
+  tahu "kapan tesnya".
+- **tanggal `wawancara` belum diverifikasi** ke pengumuman resmi. Empat tahap
+  lain cocok dengan tabel rujukan di README bagian 12. Betulkan sebelum deploy.
+
+Tiga hal sengaja menyimpang dari handoff v3.7, alasannya dicatat di komentar
+kode dan README bagian 12:
+- **kartu `lewat` nggak dikasih opacity 0.55** seperti tabel §5. Di angka itu
+  teksnya jatuh jauh di bawah lantai kontras 4.5:1 yang dipatok §5 juga.
+  Kesan redupnya diambil dari permukaan navy-nya, kontras terendah 6.57:1.
+- **geser awal nggak dibungkus `requestAnimationFrame`** seperti §5.
+  rAF nggak jalan di tab latar, jadi relnya bakal diam di awal sampai tabnya
+  dibuka lalu melompat. Lebar kartu dikunci `flex-basis`, nggak berubah waktu
+  font masuk, jadi nggak ada yang perlu ditunggu.
+- **tanggal dihitung lokal, bukan `toISOString()`** seperti §4. toISOString
+  memakai UTC, jadi buat pemakai WIB/WITA/WIT timeline-nya telat sehari tiap pagi.
+
+### Tema: style Noxfolio, tone biru, gelap + terang
+
+Tampilannya dibangun ulang di atas style template Noxfolio, tapi aksen lime-nya
+dibuang seluruhnya dan tone-nya tetap biru seperti v3.6, supaya nyambung sama
+situs yang pembeli sudah lihat tiga minggu terakhir. Font pindah ke DM Sans +
+Inter. Sekarang ada mode gelap dan terang, dua-duanya biru.
+
+- **toggle tema di header**, sebelah pill lynk.id. Tiga keadaan: ikut sistem
+  (default), dipaksa terang, dipaksa gelap. Pilihannya disimpan di
+  `localStorage` dan dipasang lewat script inline di `<head>` sebelum paint,
+  jadi tidak ada kedip putih waktu memuat. Semua akses `localStorage` dibungkus
+  `try/catch` — di mode penyamaran dia melempar dan bisa mematikan seluruh
+  script halaman.
+- **22 nilai `rgba(201,243,29,a)` yang ditulis langsung** di luar `:root`
+  diubah jadi `rgba(var(--primary-rgb), a)`. Kalau cuma `--primary` yang
+  diganti, glow tombol, isian chip aktif, dan garis tepi kartu tetap lime.
+  Ikut dibereskan: 6 `#070707`, 27 putih harfiah, 6 overlay putih, latar
+  header `rgba(19,19,19,.92)`, dan 8 bayangan hitam — semuanya jadi token.
+- **satu set token `--on-dark-*`** untuk bidang yang navy di kedua tema
+  (band cara pakai, footer, kotak aksi bundle, kartu tahapan `lewat`). Tanpa
+  ini, di mode terang teks footer cuma 1,39:1 dan harga di kotak bundle
+  1,00:1 — navy di atas navy, betul-betul tak terlihat.
+- **tombol transaksi tetap hijau** (`.theme-btn--buy`), tidak ikut biru.
+  Biru = merek dan navigasi, hijau = beli dan ambil gratis. Kalau disamakan,
+  tombol beli tidak terbedakan dari tautan biasa.
+- **dua `<meta name="theme-color">`** dibedakan `media=`, menggantikan
+  `#131313` sisa Noxfolio.
+
+Yang diperbaiki sambil jalan, semuanya cacat yang terbawa dari berkas Antigravity:
+
+- **klaim "tanpa pengulangan soal" dicabut** dari deskripsi bundle unggulan.
+  Itu varian dari "nol pengulangan antar paket" yang sudah dicabut di v3.6
+  karena tidak bisa dipertahankan lintas lini. Diganti klaim proses yang memang
+  dikerjakan pipeline QC-nya.
+- **fallback `|| TL[1]` di `SOROT` dihapus.** Dengan fallback itu, blok
+  keadaan-habis tidak pernah jalan: kalau semua tahap sudah lewat halaman malah
+  menyorot SPD 5–6 Sep selamanya dan menayangkan jadwal basi — persis masalah
+  yang bikin peta tahapan ini dibuat. Kartu "Angkatan 41 sudah selesai"
+  dikembalikan.
+- **tahap tanpa listing tidak lagi menampilkan produk acak.** Sebelumnya
+  `psiko` dan `wawancara` memunculkan tiga bundle yang tidak ada
+  hubungannya, seolah-olah itu materi tahap tersebut. Sekarang kartunya bilang
+  apa adanya + tombol preview gratis.
+- **header meluber 256px di 390px** karena empat tautan jangkar + pill lynk.id
+  + tombol tema baru. Tautan jangkar disembunyikan di bawah 860px, wordmark
+  disembunyikan di bawah 400px. Nol scroll mendatar di 320/390/401/861/1280px.
+- **opacity .65 dinaikkan ke .78** di kartu tahapan `nanti` dan baris
+  kategori "Segera". Di .65 teks sekundernya cuma 2,78–3,62:1.
+- **label harga 0,8rem (12,8px) dinaikkan ke `--fs-meta`**, mengembalikan
+  lantai 14px yang berlaku di situs ini.
+
+Kontras diukur ulang di halaman jadi, bukan disalin dari tabel. Terendah di
+mode terang 4,95:1, di mode gelap 4,75:1. Rincian per keadaan di README bagian
+12 dan 13.
+
+Ukuran: `index.html` 40,5 KB (v3.6 live) → 66,4 KB, +25,9 KB mentah,
++5,7 KB setelah gzip. Naiknya dari dua hal yang memang ditambah — peta tahapan
+plus rekomendasi, dan sistem dua tema — bukan dari template Noxfolio yang ikut
+terbawa. Anggaran +8 KB di handoff v3.7 sebelumnya sudah tidak berlaku untuk
+pass ini; kalau ukuran mau ditekan, komentar penjelas yang paling gampang
+dipangkas dan hampir tidak berpengaruh setelah gzip.
+
+---
+
 ## v3.6 — 4 September 2026 — **siap deploy**
 Koreksi timeline SPD, pencabutan satu klaim yang tidak bisa dipertahankan, dan
 lini Potensi Dasar naik. Listing Lynk-nya selesai dibuat Deus sore 4 Sep, jadi

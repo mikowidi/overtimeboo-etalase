@@ -299,32 +299,131 @@ tidak ada tagihan yang bisa membengkak diam-diam.
 
 ---
 
-## 12. Banner berjadwal — WAJIB DICEK TIAP DUA MINGGU
+## 12. Peta tahapan — tanggal, dan kenapa nggak perlu dicek tiap dua minggu
 
-Baris paling atas `index.html` (`<div class="ticker">`) memuat **tanggal seleksi
-yang sedang berjalan**. Itu satu-satunya bagian situs yang bisa jadi salah tanpa
-ada yang menyentuhnya, dan salahnya merugikan: kalau tanggalnya sudah lewat,
-pengunjung membaca tesnya sebagai sudah selesai lalu menutup halaman.
+Banner berjadwal (`<div class="ticker">`) **sudah dihapus** per 6 Sep 2026,
+diganti peta tahapan di bawah hero. Alasannya bukan estetika: banner itu satu-
+satunya bagian situs yang bisa jadi salah tanpa ada yang menyentuhnya, dan
+salahnya merugikan — kalau tanggalnya sudah lewat, pengunjung membaca tesnya
+sebagai sudah selesai lalu menutup halaman. Itu pernah kejadian: per 4 Sep 2026
+banner masih berbunyi `TPD ~1 Sep · Tes teknis 2–20 Sep`, dua-duanya salah.
 
-Ini pernah kejadian. Per 4 Sep 2026 banner masih berbunyi `TPD ~1 Sep · Tes
-teknis 2–20 Sep`, dua-duanya salah, sementara SPD-nya justru tanggal 5–6 Sep.
+Peta tahapan menutup lubang itu dengan **nggak pernah menyimpan status**. Yang
+ditulis cuma tanggal; label `Berlangsung` / `Berikutnya` / `Selesai` / `Nanti`
+dihitung dari tanggal hari ini tiap kali halaman dibuka (`statusTahap()`).
+Kalau semua tahap sudah lewat, seluruh blok ganti sendiri jadi kartu "angkatan
+41 sudah selesai" — jadwal basi nggak akan pernah tampil.
+
+**Yang masih perlu diurus manusia:** isi array `TAHAPAN` di `index.html`.
+Itu satu-satunya tempat tanggal seleksi ditulis.
 
 **Jadwal PCPM BI angkatan 41 (rujukan resmi):**
 
-| Tahap | Pelaksanaan | Banner jadi |
+| Tahap | Pelaksanaan | id di `TAHAPAN` |
 |---|---|---|
-| Seleksi Potensi Dasar | 5–6 Sep 2026 | `SPD 5–6 Sep · Tes teknis minggu ke-3 Sep · PCPM BI angkatan 41` |
-| Seleksi Pengetahuan Teknis (termasuk B. Inggris) | minggu ke-3 Sep 2026 | `Tes teknis minggu ke-3 Sep · Seleksi psikologi minggu ke-2 Okt · PCPM BI angkatan 41` |
-| Seleksi Psikologi | minggu ke-2 Okt 2026 | — |
-| Setelah Oktober | — | **hapus seluruh baris `<div class="ticker">`** |
+| Seleksi administrasi | Agustus 2026 | `adm` |
+| Seleksi Potensi Dasar | 5–6 Sep 2026 | `spd` |
+| Seleksi Pengetahuan Teknis (termasuk B. Inggris) | minggu ke-3 Sep 2026 | `teknis` |
+| Seleksi Psikologi | minggu ke-2 Okt 2026 | `psiko` |
+| Wawancara | akhir Okt 2026 | `wawancara` |
 
-Aturannya: banner hanya boleh menyebut tahap yang **belum lewat**. Kalau ragu,
-hapus barisnya — halaman tanpa banner lebih baik daripada halaman dengan tanggal
-basi.
+Tanggal `wawancara` **belum punya rujukan resmi** — angkanya perkiraan dari
+catatan kerja. Begitu pengumumannya keluar, betulkan `mulai`/`selesai`-nya.
+Kalau sebuah tanggal belum pasti, tulis rentang longgar di `label`
+("Minggu ke-3 Sep") dan isi `mulai`/`selesai` dengan perkiraan paling aman.
+
+Tahap yang produknya belum listing (`psiko`, `wawancara`) dibiarkan
+`produk:[]`. Kartunya otomatis jadi "materi lagi disiapin" + tombol preview
+gratis, bukan tombol mati. Begitu listingnya jadi, tempel slug Lynk-nya ke
+`produk` dan kartunya muncul sendiri.
+
+### Kontras kartu tahapan
+
+Diukur di halaman jadi, bukan dihitung di atas kertas, di kedua tema. Angka ini
+yang dijaga kalau warnanya diutak-atik.
+
+| Status | Tampilan | Terang | Gelap |
+|---|---|---|---|
+| `lewat` | permukaan `--surface-dark` + token on-dark, **tanpa opacity** | 5,96:1 | 7,79:1 |
+| `berlangsung` | kartu `--surface`, garis tepi `--primary` 2px, titik denyut | 8,95:1 | 7,91:1 |
+| `berikutnya` | kartu `--surface`, garis tepi `--border-strong` | 10,24:1 | 6,46:1 |
+| `nanti` | transparan, opacity .78, label status dinaikkan ke `--body` | 4,95:1 | 5,31:1 |
+
+Tiga jebakan yang sudah kena, jangan diulang:
+
+- **`lewat` tidak boleh dikasih opacity.** Permukaannya navy di kedua tema.
+  Di mode terang, navy + opacity .78 bikin teksnya jatuh ke 1,18–1,93:1. Kesan
+  redupnya sudah datang dari permukaannya sendiri.
+- **label status kartu `nanti` pakai `--body`, bukan `--muted`.**
+  `--muted` yang diredupkan ke .78 cuma dapat 3,39:1.
+- **opacity jangan turun di bawah .72.** Versi Antigravity memakai .65 untuk
+  `nanti` dan untuk baris kategori "Segera"; dua-duanya jatuh di bawah
+  4,5:1 di mode terang.
 
 ---
 
-## 13. Belum dikerjakan
+## 13. Dua tema — terang dan gelap
+
+Tiga keadaan, bukan dua:
+
+| Keadaan | Penanda di `<html>` | Kapan |
+|---|---|---|
+| Ikut sistem | tidak ada atribut | default, sebelum pengunjung pernah memilih |
+| Dipaksa terang | `data-theme="light"` | pengunjung menekan toggle |
+| Dipaksa gelap | `data-theme="dark"` | pengunjung menekan toggle |
+
+Susunan CSS-nya berurutan dan urutannya penting:
+
+```
+:root                                   -> SELURUH token versi terang
+@media (prefers-color-scheme: dark)
+  :root:not([data-theme="light"])       -> token yang berubah
+:root[data-theme="dark"]                -> token yang sama, menang atas media
+```
+
+**Aturan keras: setiap token wajib punya nilai di `:root` polos.** Kalau sebuah
+warna cuma hidup di dalam blok media atau `[data-theme]`, mode terang bolong.
+Ini bukan teori — waktu pass ini dikerjakan, `--border-hover` sempat kebuang
+dari `:root` dan lima aturan hover kehilangan warnanya tanpa error apa pun.
+
+### Bidang navy: kenapa ada set token kedua
+
+`.band-section`, `.main-footer`, `.wide-action-box`, dan kartu tahapan
+`lewat` berlatar navy **di kedua tema**. Token teks biasa tidak jalan di sana:
+di mode terang, `--body` (#33415C) di atas navy cuma **1,39:1**, dan harga di
+kotak bundle sempat navy-di-atas-navy alias **1,00:1** — betul-betul tak terlihat.
+
+Makanya ada satu set `--on-dark-*` yang dialihkan sekali lewat selektor
+gabungan, dan seluruh isi bidang itu ikut otomatis. Kalau nanti ada bidang navy
+baru, **tambahkan selektornya ke daftar itu**, jangan menambal warnanya satu-satu.
+
+### Pembagian peran warna
+
+| Peran | Token | Dipakai untuk |
+|---|---|---|
+| Merek & navigasi | `--primary` | pill lynk.id, "Lihat katalog", tautan |
+| Transaksi | `--buy` | tombol Beli dan Ambil gratis (`.theme-btn--buy`) |
+| Sorotan | `--accent` | dipakai sangat hemat |
+
+Jangan bikin tombol beli ikut `--primary`. Kalau warnanya sama, tombol beli
+dan tautan navigasi jadi tidak terbedakan.
+
+### Yang gampang lupa
+
+- Tema dipasang lewat script inline kecil di `<head>`, **sebelum paint**.
+  Kalau dipindah ke akhir `<body>`, halaman berkedip putih dulu.
+- Semua akses `localStorage` dibungkus `try/catch`. Di mode penyamaran dia
+  melempar, dan tanpa catch seluruh script di halaman ikut mati.
+- Ada **dua** `<meta name="theme-color">`, dibedakan `media=`. Satu saja
+  bikin bilah alamat HP salah warna di salah satu tema.
+- Aksen lime Noxfolio (`#C9F31D`) dibuang total, termasuk **22 nilai
+  `rgba(201,243,29,a)` yang ditulis langsung di luar `:root`**. Semuanya
+  sekarang `rgba(var(--primary-rgb), a)`. Kalau menambah efek transparan baru,
+  pakai bentuk itu juga, jangan menulis angka warnanya lagi.
+
+---
+
+## 14. Belum dikerjakan
 
 Sengaja ditunda, bukan kelupaan:
 
