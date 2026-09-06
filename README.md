@@ -344,42 +344,49 @@ yang dijaga kalau warnanya diutak-atik.
 
 | Status | Tampilan | Terang | Gelap |
 |---|---|---|---|
-| `lewat` | permukaan `--surface-dark` + token on-dark, **tanpa opacity** | 5,96:1 | 7,79:1 |
-| `berlangsung` | kartu `--surface`, garis tepi `--primary` 2px, titik denyut | 8,95:1 | 7,91:1 |
-| `berikutnya` | kartu `--surface`, garis tepi `--border-strong` | 10,24:1 | 6,46:1 |
-| `nanti` | transparan, opacity .78, label status dinaikkan ke `--body` | 4,95:1 | 5,31:1 |
+| tahap **sorotan** | blok padat `--hi-bg`, selalu kebalikan halaman | 12,40:1 | 15,15:1 |
+| `lewat` | outline, garis `--border-strong`, teks muted | 5,30:1 | 7,30:1 |
+| `nanti` | outline, garis `--border` paling tipis | 5,30:1 | 7,30:1 |
+
+Blok sorotan dikunci ke `[aria-current="step"]`, **bukan** ke
+`[data-s="berlangsung"]`. Sering ada hari di mana nggak ada tahap yang lagi
+jalan sama sekali — mis. 7 Sep 2026, SPD sudah lewat dan tes teknis baru 14 Sep.
+Kalau dikunci ke "berlangsung", di hari-hari itu nggak ada satu kartu pun yang
+menonjol, padahal justru tahap berikutnya yang paling perlu dilihat.
 
 Tiga jebakan yang sudah kena, jangan diulang:
 
-- **`lewat` tidak boleh dikasih opacity.** Permukaannya navy di kedua tema.
-  Di mode terang, navy + opacity .78 bikin teksnya jatuh ke 1,18–1,93:1. Kesan
-  redupnya sudah datang dari permukaannya sendiri.
-- **label status kartu `nanti` pakai `--body`, bukan `--muted`.**
-  `--muted` yang diredupkan ke .78 cuma dapat 3,39:1.
-- **opacity jangan turun di bawah .72.** Versi Antigravity memakai .65 untuk
-  `nanti` dan untuk baris kategori "Segera"; dua-duanya jatuh di bawah
-  4,5:1 di mode terang.
+- **Kartu yang sudah lewat jangan dikasih blok penuh.** Sempat dibikin blok navy
+  dan hasilnya tahap yang sudah selesai malah paling menarik mata. Sekarang
+  outline muted; yang dapat blok cuma tahap sorotan.
+- **Opacity jangan dipakai buat meredupkan kartu.** Versi sebelumnya pakai .65
+  dan .78; di angka itu teks sekundernya jatuh ke 2,78-3,62:1. Sekarang nol
+  opacity di kartu tahapan — redupnya datang dari warna teks dan garis tepi.
+- **Blok sorotan wajib membalik token aksinya juga**, bukan cuma latar dan teks.
+  Sempat ketinggalan `--primary`, dan sub-judul di kartu unggulan jadi navy
+  di atas navy alias **1,00:1** — betul-betul tak terlihat.
 
 ---
 
 ## 13. Dua tema — terang dan gelap
 
-Tiga keadaan, bukan dua:
+**Default situs ini TERANG**, apa pun setelan OS pengunjung. Gelap cuma aktif
+kalau pengunjung menekan toggle sendiri. Ini keputusan sadar dan beda dari
+handoff v3.7 §4 yang minta "ikut sistem": pengunjung yang HP-nya gelap sempat
+lihat situsnya langsung gelap padahal identitas mereknya terang.
 
 | Keadaan | Penanda di `<html>` | Kapan |
 |---|---|---|
-| Ikut sistem | tidak ada atribut | default, sebelum pengunjung pernah memilih |
-| Dipaksa terang | `data-theme="light"` | pengunjung menekan toggle |
-| Dipaksa gelap | `data-theme="dark"` | pengunjung menekan toggle |
-
-Susunan CSS-nya berurutan dan urutannya penting:
+| Terang | tidak ada atribut | default, dan setelah toggle dibalik ke terang |
+| Gelap | `data-theme="dark"` | pengunjung menekan toggle |
 
 ```
-:root                                   -> SELURUH token versi terang
-@media (prefers-color-scheme: dark)
-  :root:not([data-theme="light"])       -> token yang berubah
-:root[data-theme="dark"]                -> token yang sama, menang atas media
+:root                       -> SELURUH token versi terang (default)
+:root[data-theme="dark"]    -> token yang berubah, cuma waktu toggle dinyalakan
 ```
+
+**Nol `@media (prefers-color-scheme)` untuk warna, nol `matchMedia` warna di JS.**
+Kalau suatu hari mau balik ikut setelan OS, itu yang perlu dipasang lagi.
 
 **Aturan keras: setiap token wajib punya nilai di `:root` polos.** Kalau sebuah
 warna cuma hidup di dalam blok media atau `[data-theme]`, mode terang bolong.

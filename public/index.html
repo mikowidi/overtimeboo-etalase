@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>overtimeboo — bank soal PCPM BI, potensi dasar, psikotes, CPNS</title>
 <meta name="description" content="Bank soal PCPM Bank Indonesia, potensi dasar, psikotes, TOEFL ITP, dan CPNS SKD. Kunci dan pembahasan di tiap nomor. Format PDF, dikirim otomatis.">
-<meta name="theme-color" content="#ECF0F6" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#071A36" media="(prefers-color-scheme: dark)">
+<!-- Satu meta saja: warna bilah alamat ikut TEMA SITUS, bukan setelan OS.
+     Diperbarui lewat JS tiap toggle ditekan. -->
+<meta name="theme-color" content="#ECF0F6" id="meta-tema">
 <link rel="canonical" href="https://overtime-boo.gulliveragent.workers.dev/">
 <link rel="icon" href="favicon.png" type="image/png">
 <meta property="og:type" content="website">
@@ -27,7 +28,7 @@
 
 <!-- Tema dipasang sebelum paint supaya tidak ada kedip putih. Sengaja inline
      dan sengaja di <head>, bukan di akhir <body>. -->
-<script>try{var t=localStorage.getItem("tema");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{var t=localStorage.getItem("tema");if(t==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
 
 <style>
 /* ============================================================================
@@ -79,6 +80,27 @@
   --buy-rgb: 15, 122, 74;
   --on-buy: #FFFFFF;
   --accent: #C0392B;
+  --accent-rgb: 192, 57, 43;
+
+  /* --- blok sorotan: selalu kebalikan dari halaman ---
+     Dipakai kartu tahapan yang sedang berlangsung dan kartu bundle unggulan.
+     Di tema terang bloknya navy, di tema gelap bloknya terang. Yang dijaga
+     bukan warnanya, tapi selalu paling kontras terhadap latar sekitarnya. */
+  --hi-bg: #0E2A55;
+  --hi-ink: #FFFFFF;
+  --hi-body: #B9C6DC;
+  --hi-muted: #9AA9C2;
+  --hi-line: rgba(255, 255, 255, 0.22);
+  /* Warna aksi di DALAM blok sorotan. Karena bloknya kebalikan halaman,
+     isinya juga harus kebalikan: di tema terang bloknya navy, jadi tombol
+     dan pill di dalamnya pakai biru terang + hijau terang. */
+  --hi-primary: #6FB3FF;
+  --hi-primary-rgb: 111, 179, 255;
+  --hi-on-primary: #0A1D3A;
+  --hi-buy: #3FD68B;
+  --hi-buy-2: #5FE0A0;
+  --hi-buy-rgb: 63, 214, 139;
+  --hi-on-buy: #0A1D3A;
 
   /* --- teks di atas bidang navy --- */
   /* Dipakai di .band-section, .main-footer, dan kartu tahapan "lewat". Bidang
@@ -122,50 +144,23 @@
   --fs-tlno: clamp(2rem, 4.2vw, 2.8rem);
 }
 
-/* Token gelap ditulis sekali, dipakai dua kali: sekali buat yang ikut sistem,
-   sekali buat yang memaksa lewat toggle. Urutannya penting — blok [data-theme]
-   harus terakhir supaya pilihan manual menang atas preferensi sistem. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #071A36;
-    --surface: #0E2A55;
-    --surface-2: #173A6B;
-    --surface-dark: #05132A;
-    --surface-hover: rgba(255, 255, 255, 0.06);
-    --chip-fill: rgba(255, 255, 255, 0.08);
-    --header-bg: rgba(7, 26, 54, 0.88);
-    --heading: #FFFFFF;
-    --body: #B9C6DC;
-    --muted: #8A96AC;
-    --muted-2: #6B7A93;
-    --border: rgba(255, 255, 255, 0.10);
-    --border-strong: rgba(255, 255, 255, 0.20);
-    --primary: #6FB3FF;
-    --primary-hover: #8AC2FF;
-    --primary-rgb: 111, 179, 255;
-    --on-primary: #0A1D3A;
-    --buy: #3FD68B;
-    --buy-2: #5FE0A0;
-    --buy-rgb: 63, 214, 139;
-    --on-buy: #0A1D3A;
-    --accent: #FF7A6B;
-    --sh-sm: 0 8px 24px rgba(0, 0, 0, 0.25);
-    --sh-md: 0 12px 30px rgba(0, 0, 0, 0.35);
-    --sh-lg: 0 20px 48px rgba(0, 0, 0, 0.50);
-  }
-}
-
+/* Tema gelap HANYA aktif kalau pengunjung menekan toggle. Sengaja TIDAK ikut
+   prefers-color-scheme: default situs ini terang, apa pun setelan OS-nya. Ini
+   beda dari handoff v3.7 §4, dan memang diminta begitu. */
 :root[data-theme="dark"] {
   --bg: #071A36;
-  --surface: #0E2A55;
-  --surface-2: #173A6B;
+  /* Dinaikkan dari #0E2A55: di nilai lama kartu cuma 1,22:1 terhadap latar,
+     nggak kebaca sebagai bidang terpisah. #143866 = 1,48:1, dan itu batas
+     paling tegas yang masih ngasih --accent lolos 4,5:1 di atasnya (4,61). */
+  --surface: #143866;
+  --surface-2: #1E4A82;
   --surface-dark: #05132A;
   --surface-hover: rgba(255, 255, 255, 0.06);
   --chip-fill: rgba(255, 255, 255, 0.08);
   --header-bg: rgba(7, 26, 54, 0.88);
   --heading: #FFFFFF;
   --body: #B9C6DC;
-  --muted: #8A96AC;
+  --muted: #9AA9C2;          /* #8A96AC cuma 4,20:1 di atas --surface baru */
   --muted-2: #6B7A93;
   --border: rgba(255, 255, 255, 0.10);
   --border-strong: rgba(255, 255, 255, 0.20);
@@ -178,9 +173,48 @@
   --buy-rgb: 63, 214, 139;
   --on-buy: #0A1D3A;
   --accent: #FF7A6B;
+  --accent-rgb: 255, 122, 107;
+  --hi-bg: #EAF0F9;
+  --hi-ink: #0A1D3A;
+  --hi-body: #33415C;
+  --hi-muted: #56637A;
+  --hi-line: rgba(10, 29, 58, 0.16);
+  --hi-primary: #0E2A55;
+  --hi-primary-rgb: 14, 42, 85;
+  --hi-on-primary: #FFFFFF;
+  --hi-buy: #0F7A4A;
+  --hi-buy-2: #0B6E3F;
+  --hi-buy-rgb: 15, 122, 74;
+  --hi-on-buy: #FFFFFF;
   --sh-sm: 0 8px 24px rgba(0, 0, 0, 0.25);
   --sh-md: 0 12px 30px rgba(0, 0, 0, 0.35);
   --sh-lg: 0 20px 48px rgba(0, 0, 0, 0.50);
+}
+
+/* Blok sorotan. Latarnya selalu kebalikan halaman — navy di tema terang,
+   terang di tema gelap — jadi seluruh token teks di dalamnya ikut dibalik.
+   Ini yang bikin kartu unggulan di tema gelap nggak lagi menyatu sama latar
+   (dulu cuma 1,22:1) dan tahap yang lagi berlangsung langsung ketahuan. */
+.wide-card,
+.tl-card[aria-current="step"] {
+  --surface: var(--hi-bg);
+  --surface-2: var(--hi-bg);
+  --heading: var(--hi-ink);
+  --body: var(--hi-body);
+  --muted: var(--hi-muted);
+  --border: var(--hi-line);
+  --border-strong: var(--hi-line);
+  --chip-fill: var(--hi-line);
+  --primary: var(--hi-primary);
+  --primary-rgb: var(--hi-primary-rgb);
+  --primary-hover: var(--hi-primary);
+  --on-primary: var(--hi-on-primary);
+  --buy: var(--hi-buy);
+  --buy-2: var(--hi-buy-2);
+  --buy-rgb: var(--hi-buy-rgb);
+  --on-buy: var(--hi-on-buy);
+  background: var(--hi-bg);
+  color: var(--hi-body);
 }
 
 /* Bidang navy: gelap di kedua tema, jadi tokennya dialihkan sekali di sini
@@ -188,8 +222,7 @@
    footer cuma 1,39:1 — praktis tidak terlihat. */
 .band-section,
 .main-footer,
-.wide-action-box,
-.tl-card[data-s="lewat"] {
+.wide-action-box {
   --heading: var(--on-dark-heading);
   --body: var(--on-dark-body);
   --muted: var(--on-dark-muted);
@@ -245,7 +278,6 @@ img, svg { display: block; }
   font: 700 var(--fs-meta)/1 var(--font-heading); letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--primary);
 }
-.sub-title svg { fill: currentColor; }
 
 /* ---------- BUTTONS (.THEME-BTN KHAS NOXFOLIO) ---------- */
 .theme-btn {
@@ -256,17 +288,24 @@ img, svg { display: block; }
   border: 0; cursor: pointer; text-decoration: none;
   transition: transform .2s, box-shadow .2s, background .2s;
 }
+/* --- Animasi tombol: dua gaya, mengikuti referensi ---
+   Gaya "Next"   -> SEMUA tombol kecuali checkout. Cirinya cincin cahaya di
+                    sekeliling tombol, dan ikonnya maju ke kanan.
+   Gaya "Submit" -> KHUSUS tombol checkout, di .theme-btn--buy di bawah.
+                    Pil padat: nol cincin cahaya, nol putar ikon. */
 .theme-btn:hover {
   background: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(var(--primary-rgb), 0.32);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.20),
+              0 10px 26px rgba(var(--primary-rgb), 0.34);
 }
 .theme-btn i {
   flex: none; width: 28px; height: 28px; border-radius: var(--r-pill);
   background: var(--on-primary); color: var(--primary);
-  display: grid; place-items: center; transition: transform .2s;
+  display: grid; place-items: center;
+  transition: transform .28s cubic-bezier(.22, 1, .36, 1);
 }
-.theme-btn:hover i { transform: rotate(45deg); }
+.theme-btn:hover i { transform: translateX(4px); }
 
 .theme-btn--outline {
   background: transparent; color: var(--heading) !important;
@@ -302,17 +341,21 @@ img, svg { display: block; }
 .tema-btn .ikon-gelap { display: none; }
 :root[data-theme="dark"] .tema-btn .ikon-terang { display: none; }
 :root[data-theme="dark"] .tema-btn .ikon-gelap { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .tema-btn .ikon-terang { display: none; }
-  :root:not([data-theme="light"]) .tema-btn .ikon-gelap { display: block; }
-}
 
 /* Transaksi tetap hijau, tidak ikut biru. Di v3.6 hijau berarti "beli / ambil",
    dan kalau tombol beli ikut --primary dia jadi tidak terbedakan dari tautan
    navigasi biasa. Pembagian peran ini yang dijaga, bukan warnanya sendiri. */
 .theme-btn--buy { background: var(--buy); color: var(--on-buy) !important; }
-.theme-btn--buy:hover { background: var(--buy-2); box-shadow: 0 8px 22px rgba(var(--buy-rgb), 0.32); }
+/* Gaya "Submit": pil padat. Nol cincin cahaya, ikonnya diam. Yang berubah cuma
+   warnanya menguat dan tombolnya terangkat sedikit. Sengaja dibedakan dari
+   tombol navigasi supaya aksi bayar terasa lebih tegas, bukan lebih ramai. */
+.theme-btn--buy:hover {
+  background: var(--buy-2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(var(--buy-rgb), 0.30);
+}
 .theme-btn--buy i { background: var(--on-buy); color: var(--buy); }
+.theme-btn--buy:hover i { transform: none; }
 
 /* ---------- HEADER ---------- */
 .main-header {
@@ -392,7 +435,11 @@ img, svg { display: block; }
 .text-accent {
   color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: rgba(var(--primary-rgb), 0.35);
+  /* Garisnya merah juga, cuma nada lebih muda dari teksnya — 38% alpha.
+     Sengaja pakai --accent-rgb, bukan --primary-rgb: sebelumnya garisnya
+     kebiruan dan nggak nyambung sama warna teks yang disorot. */
+  text-decoration-color: rgba(var(--accent-rgb), 0.38);
+  text-decoration-thickness: 3px;
   text-underline-offset: 6px;
 }
 .hero-lead-row {
@@ -467,27 +514,39 @@ img, svg { display: block; }
 .tl-nota { margin-top: 8px; font-size: var(--fs-meta); line-height: 1.5; color: var(--muted); }
 
 /* Timeline Status States (Noxfolio Dark + Lime) */
-.tl-card[data-s="berlangsung"] {
-  border: 2px solid var(--primary);
-  background: radial-gradient(circle at 90% 10%, rgba(var(--primary-rgb), 0.12) 0%, var(--surface) 70%);
-  box-shadow: 0 10px 30px rgba(var(--primary-rgb), 0.22);
+.tl-card[aria-current="step"] {
+  border-color: transparent;
+  box-shadow: var(--sh-md);
 }
-.tl-card[data-s="berlangsung"] .tl-st { color: var(--primary); font-weight: 800; }
-.tl-card[data-s="berikutnya"] { border-color: var(--border-strong); }
-.tl-card[data-s="berikutnya"] .tl-st { color: var(--heading); }
+.tl-card[aria-current="step"] .tl-no,
+.tl-card[aria-current="step"] .tl-nama { color: var(--hi-ink); }
+.tl-card[aria-current="step"] .tl-tgl,
+.tl-card[aria-current="step"] .tl-st { color: var(--hi-ink); font-weight: 800; }
+.tl-card[aria-current="step"] .tl-diuji { color: var(--hi-body); }
 
-/* "lewat" duduk di bidang navy, dan bidang itu gelap di KEDUA tema. Token
-   teksnya sudah dialihkan ke set on-dark di blok .band-section di atas.
-   Sengaja TANPA opacity: di mode terang, navy + opacity .78 bikin teksnya
-   jatuh ke 1,18–1,93:1. Kesan redupnya sudah datang dari permukaannya. */
-.tl-card[data-s="lewat"] { background: var(--surface-dark); border-color: transparent; }
+/* Yang sudah lewat cuma outline muted, bukan blok penuh — dia sudah selesai,
+   nggak perlu menarik mata. Yang berlangsung dapat blok paling kontras. */
+.tl-card[data-s="lewat"]:not([aria-current="step"]) {
+  background: transparent; box-shadow: none;
+  border-color: var(--border-strong); color: var(--muted);
+}
+.tl-card[data-s="lewat"] .tl-no,
+.tl-card[data-s="lewat"] .tl-nama { color: var(--body); }
+.tl-card[data-s="lewat"] .tl-tgl,
+.tl-card[data-s="lewat"] .tl-diuji,
+.tl-card[data-s="lewat"] .tl-st { color: var(--muted); }
 
-/* "nanti" tidak punya permukaan sendiri, cuma garis tepi — itu yang bikin dia
-   mundur tanpa perlu diredupkan habis. Opacity .78, bukan .65: di .65 teks
-   sekundernya cuma 2,78:1 di mode terang. Label statusnya dinaikkan dari
-   --muted ke --body, karena --muted yang diredupkan cuma dapat 3,39:1. */
-.tl-card[data-s="nanti"] { opacity: 0.78; background: transparent; box-shadow: none; }
-.tl-card[data-s="nanti"] .tl-st { color: var(--body); }
+/* "nanti" paling mundur: outline paling tipis. */
+.tl-card[data-s="nanti"]:not([aria-current="step"]) {
+  background: transparent; box-shadow: none; opacity: 1;
+  border-color: var(--border);
+}
+.tl-card[data-s="nanti"] .tl-no,
+.tl-card[data-s="nanti"] .tl-nama { color: var(--body); }
+.tl-card[data-s="nanti"] .tl-tgl,
+.tl-card[data-s="nanti"] .tl-diuji,
+.tl-card[data-s="nanti"] .tl-st { color: var(--muted); }
+
 
 /* ---------- REKOMENDASI TAHAP ---------- */
 .rk-foot { margin-top: 24px; }
@@ -630,17 +689,18 @@ img, svg { display: block; }
 .price-val--free { color: var(--primary); }
 
 /* Free Card Special */
+/* Gradiennya ditumpuk DI ATAS --surface, bukan menggantikannya. Versi lama
+   mulai dari nyaris transparan, jadi di tema gelap bagian atas kartu ini
+   nggak punya isian sama sekali dan nempel sama latar halaman. */
 .product-card--free {
-  background: linear-gradient(180deg, rgba(var(--primary-rgb), 0.05) 0%, var(--surface) 100%);
-  border-color: rgba(var(--primary-rgb), 0.25);
+  background: linear-gradient(180deg, rgba(var(--primary-rgb), 0.12) 0%, rgba(var(--primary-rgb), 0) 100%), var(--surface);
+  border-color: rgba(var(--primary-rgb), 0.32);
 }
 .product-card--free:hover { border-color: var(--primary); }
 
 /* Flagship Bundle Lebar (Featured) */
 .wide-card {
-  background: radial-gradient(circle at 90% 10%, rgba(var(--primary-rgb), 0.12) 0%, transparent 60%),
-              var(--surface);
-  border: 1.5px solid rgba(var(--primary-rgb), 0.25);
+  border: 1.5px solid var(--hi-line);
   border-radius: var(--r-lg); padding: clamp(28px, 4.5vw, 48px);
   margin-bottom: var(--gap);
   display: grid; grid-template-columns: 1fr; gap: 28px;
@@ -871,7 +931,6 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
     <div class="wrap">
       <div class="hero-card">
         <div class="sub-title">
-          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
           <span>Persiapan PCPM BI · CPNS · BUMN · TOEFL</span>
         </div>
         <div class="hero-content">
@@ -892,14 +951,7 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
   <section id="tahapan" class="wrap sect" aria-labelledby="h-tahapan">
     <div class="sect-header">
       <div>
-        <div class="sub-title">
-          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-          <span>Peta Tahapan</span>
-        </div>
-        <h2 class="h2" id="h-tahapan">Kamu lagi ada di tahap mana?</h2>
-      </div>
-      <div class="count-pill">
-        <span>Jadwal PCPM Bank Indonesia Angkatan 41</span>
+        <h2 class="h2" id="h-tahapan">Timeline PCPM BI</h2>
       </div>
     </div>
 
@@ -913,8 +965,7 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
     <div class="sect-header">
       <div>
         <div class="sub-title">
-          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
-          <span>Siapin Yang Ini Dulu</span>
+          <span>Coming Next</span>
         </div>
         <h2 class="h2" id="h-rekom"></h2>
       </div>
@@ -959,7 +1010,6 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
     <div class="sect-header">
       <div>
         <div class="sub-title">
-          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
           <span>Katalog Produk</span>
         </div>
         <h2 class="h2" id="h-katalog">Kamu lagi ngejar tes yang mana?</h2>
@@ -986,7 +1036,6 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
   <section id="cara" class="band-section" aria-labelledby="h-cara">
     <div class="wrap">
       <div class="sub-title">
-        <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
         <span>Cara Pakai · 4 Langkah</span>
       </div>
       <h2 class="poster-h2" id="h-cara">Udah punya filenya. Terus enaknya diapain?</h2>
@@ -1028,7 +1077,6 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
     <div class="sect-header">
       <div>
         <div class="sub-title">
-          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
           <span>Kategori · 5 Lini</span>
         </div>
         <h2 class="h2" id="h-kategori">Mulai dari yang tanggalnya paling deket.</h2>
@@ -1040,7 +1088,6 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
   <!-- ============ FAQ ============ -->
   <section id="faq" class="wrap sect" aria-labelledby="h-faq">
     <div class="sub-title">
-      <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
       <span>Pertanyaan Umum</span>
     </div>
     <h2 class="h2" id="h-faq">Pertanyaan yang sering ditanyakan</h2>
@@ -1082,7 +1129,6 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
   <div class="wrap">
     <section class="outro-card" aria-labelledby="h-outro">
       <div class="sub-title">
-        <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
         <span>Mulai Sekarang</span>
       </div>
       <h2 class="poster-h2" id="h-outro">Belum yakin? Wajar kok. Coba yang gratis dulu.</h2>
@@ -1201,7 +1247,6 @@ function kartu(p){
     <ul class="card-meta">${p.meta.map(m => `<li><i>${svg(ikonMeta(m), 14)}</i><span>${esc(m)}</span></li>`).join("")}</ul>
     <div class="card-foot">
       <div class="price-box">
-        <span class="price-label">${gratis ? "Akses" : "Investasi"}</span>
         <span class="price-val ${gratis ? "price-val--free" : ""}">${rp(p.harga)}</span>
       </div>
       <a class="theme-btn theme-btn--buy" href="${p.url}" target="_blank" rel="noopener">
@@ -1217,7 +1262,6 @@ function kartuLebar(p){
   return `<article class="wide-card">
     <div>
       <div class="sub-title">
-        <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
         <span>Bundle Utama · Paling Lengkap</span>
       </div>
       <h3>${esc(p.judul)}</h3>
@@ -1226,7 +1270,6 @@ function kartuLebar(p){
     <div class="wide-action-box">
       <div class="wide-price-row">
         <div>
-          <span class="price-label">Total Investasi</span>
           <div class="price-val">${rp(p.harga)}</div>
         </div>
         <span class="wide-badge">Hemat 30%</span>
@@ -1330,13 +1373,6 @@ const TL = statusTahap(TAHAPAN);
 const SOROT = TL.find(x => x.status === "berlangsung") || TL.find(x => x.status === "berikutnya");
 const ST = { lewat:"Selesai", berlangsung:"Berlangsung", berikutnya:"Berikutnya", nanti:"Nanti" };
 
-function jarakTeks(x){
-  if (x.status === "berlangsung") return "lagi berlangsung";
-  const h = Math.round((new Date(x.mulai + "T00:00:00") - new Date(hariIso(new Date()) + "T00:00:00")) / 864e5);
-  return h <= 1 ? "besok" : h <= 6 ? "sekitar seminggu lagi" : h <= 20 ? "sekitar dua minggu lagi"
-    : h <= 45 ? "sekitar sebulan lagi" : "tahap lanjutan";
-}
-
 function kartuTahap(x){
   const tanda = x.status === "berlangsung" ? '<span class="tl-dot" aria-hidden="true"></span>'
     : x.status === "lewat" ? svg("i-check", 12) : "";
@@ -1369,7 +1405,9 @@ if (tlRel && !SOROT) {
 } else if (tlRel) {
   tlRel.innerHTML = TL.map(kartuTahap).join("");
   const rekomH2 = document.getElementById("h-rekom");
-  if (rekomH2) rekomH2.textContent = `${SOROT.nama}, ${jarakTeks(SOROT)}`;
+  /* Nama materinya saja. Kata "lagi berlangsung" dibuang: statusnya sudah
+     kelihatan di kartu tahapan di atasnya, nggak perlu diulang di sini. */
+  if (rekomH2) rekomH2.textContent = SOROT.nama;
 
   const pilih = SOROT.produk
     .map(sl => PRODUK.find(p => tayang(p) && slugLynk(p.url) === sl))
@@ -1420,30 +1458,25 @@ document.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click"
    Semua akses localStorage dibungkus try/catch — di mode penyamaran dan
    sebagian browser dia melempar, dan itu bakal mematikan sisa script ini. */
 const temaBtn = document.getElementById("tema-btn");
-const temaSistemGelap = () => window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches;
-const temaSekarang = () => document.documentElement.dataset.theme || (temaSistemGelap() ? "dark" : "light");
+const metaTema = document.getElementById("meta-tema");
+/* Default TERANG, bukan ikut setelan OS. Tanpa data-theme berarti terang. */
+const temaSekarang = () => document.documentElement.dataset.theme === "dark" ? "dark" : "light";
 
 function labeliTemaBtn(){
-  if (!temaBtn) return;
-  const keGelap = temaSekarang() !== "dark";
-  temaBtn.setAttribute("aria-label", keGelap ? "Ganti ke mode gelap" : "Ganti ke mode terang");
+  const gelap = temaSekarang() === "dark";
+  if (temaBtn) temaBtn.setAttribute("aria-label", gelap ? "Ganti ke mode terang" : "Ganti ke mode gelap");
+  /* Warna bilah alamat HP ikut tema situs, bukan setelan OS. */
+  if (metaTema) metaTema.setAttribute("content", gelap ? "#071A36" : "#ECF0F6");
 }
 labeliTemaBtn();
 
 if (temaBtn) temaBtn.addEventListener("click", () => {
-  const baru = temaSekarang() === "dark" ? "light" : "dark";
-  document.documentElement.dataset.theme = baru;
-  try { localStorage.setItem("tema", baru); } catch (e) {}
+  const gelapBaru = temaSekarang() !== "dark";
+  if (gelapBaru) document.documentElement.dataset.theme = "dark";
+  else delete document.documentElement.dataset.theme;
+  try { localStorage.setItem("tema", gelapBaru ? "dark" : "light"); } catch (e) {}
   labeliTemaBtn();
 });
-
-/* Kalau pengunjung belum pernah memilih, ikuti sistem waktu setelan OS-nya
-   berubah tanpa perlu muat ulang. */
-if (window.matchMedia) {
-  const mq = matchMedia("(prefers-color-scheme: dark)");
-  const ubah = () => { if (!document.documentElement.dataset.theme) labeliTemaBtn(); };
-  mq.addEventListener ? mq.addEventListener("change", ubah) : mq.addListener(ubah);
-}
 
 // Inisialisasi katalog
 render("semua");

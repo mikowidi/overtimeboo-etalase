@@ -100,6 +100,30 @@ Yang diperbaiki sambil jalan, semuanya cacat yang terbawa dari berkas Antigravit
 - **label harga 0,8rem (12,8px) dinaikkan ke `--fs-meta`**, mengembalikan
   lantai 14px yang berlaku di situs ini.
 
+### Putaran umpan balik Deus (7 Sep)
+
+- **default TERANG, bukan ikut setelan OS.** Pengunjung yang HP-nya gelap sempat
+  langsung dapat situs gelap. Sekarang gelap cuma aktif lewat toggle. Seluruh
+  `@media (prefers-color-scheme)` dan `matchMedia` warna dicabut, dan
+  `<meta name="theme-color">` jadi satu yang diperbarui JS tiap toggle.
+- **garis bawah sorotan hero jadi merah** dengan nada lebih muda dari teksnya
+  (`rgba(var(--accent-rgb), .38)`). Sebelumnya kebiruan dan nggak nyambung.
+- **ikon bintang dihapus** dari semua sub-judul (8 di HTML, 1 di template JS).
+- **animasi tombol dipisah dua gaya.** Navigasi: cincin cahaya + ikon maju ke
+  kanan. Checkout: pil padat, nol cincin, ikon diam.
+- **"Siapin Yang Ini Dulu" jadi "Coming Next"**, dan judul di bawahnya cuma nama
+  materinya. Kata "lagi berlangsung" dibuang, `jarakTeks()` ikut dihapus.
+- **kata "Investasi" dan "Akses" dicabut** dari kartu produk dan kartu unggulan.
+- **seksi timeline dirapikan**: sub-judul "Peta Tahapan" dan pill "Jadwal PCPM
+  Bank Indonesia Angkatan 41" dihapus, judulnya jadi "Timeline PCPM BI".
+- **kartu tahap yang sudah lewat jadi outline muted**, bukan blok navy penuh.
+  Yang dapat blok cuma tahap sorotan, dan bloknya selalu kebalikan halaman:
+  navy di tema terang, terang di tema gelap.
+- **kontras katalog di tema gelap dibetulkan.** `--surface` dinaikkan dari
+  #0E2A55 ke #143866 (1,22:1 -> 1,48:1 terhadap latar), kartu unggulan jadi blok
+  terang (15,15:1), dan gradien kartu gratis ditumpuk di atas `--surface`
+  karena versi lama mulai dari transparan dan bagian atasnya nggak punya isian.
+
 Kontras diukur ulang di halaman jadi, bukan disalin dari tabel. Terendah di
 mode terang 4,95:1, di mode gelap 4,75:1. Rincian per keadaan di README bagian
 12 dan 13.
