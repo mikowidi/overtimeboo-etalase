@@ -8,6 +8,53 @@ riwayatnya tidak dibaca sebagai jejak kerja harian.
 
 ---
 
+## v3.8 — 18 September 2026 — **timeline sampai Desember, dan dua klaim yang dicabut**
+Hasil audit 18 Sep (laporan lengkap di `04-web-etalase/audit-180926/`). Tiga
+masalah yang kelihatan pengunjung diperbaiki, plus urutan katalog sekarang ikut
+tahap yang lagi jalan.
+
+- **tanggal tes teknis diperbaiki.** Array masih pakai jendela lama 14–20 Sep
+  warisan "minggu ke-3 Sep", jadi halaman masang badge BERLANGSUNG buat tes yang
+  baru mulai besoknya. Jadwal resmi 19–20 Sep, dan labelnya sekarang tanggal
+  pasti, bukan nama minggu.
+- **timeline diperpanjang sampai tahap akhir Desember**, dari 5 kartu jadi 7.
+  Tahap terakhir yang lama selesai 31 Okt, artinya sejak 1 Nov seluruh blok
+  ganti sendiri jadi kartu "angkatan 41 sudah selesai" — lima minggu sebelum
+  seleksinya benar-benar kelar. Yang ditambah: kesehatan & psikiatri, wawancara
+  pra tahap akhir, dan tahap akhir. Tahap pengumuman sengaja tidak dimasukkan;
+  yang ditampilkan cuma tahap yang peserta datangi.
+- **kartu preview gratis Bahasa Inggris masuk katalog** dan masuk daftar produk
+  tahap tes teknis. Listing-nya sudah hidup di Lynk tapi belum pernah muncul di
+  etalase. Daftar rekomendasi per tahap naik dari 3 ke 4 kartu supaya dua
+  preview dan dua bundle muat sekaligus di minggu tes.
+- **dua klaim dicabut.** "Dicek kemiripannya satu per satu sebelum rilis"
+  (muncul di strip dampak dan kartu unggulan) tidak berlaku untuk semua produk:
+  drill spasial 84 unik dari 100, figural psikotes 24 dari 32, dan keunikan
+  gambar tidak pernah dicek sebelum 4 Sep. Diganti klaim yang lolos audit:
+  kunci disebar rata per huruf, dan trik nebak opsi terpanjang tidak lebih baik
+  daripada nebak acak. FAQ "boleh dibagi ke temen" berhenti menjanjikan
+  watermark nama pembeli di tiap PDF — produk lini Potensi Dasar dikirim sebagai
+  ZIP, dan Lynk mem-watermark PDF, bukan isi arsip. Belum terbukti, jadi tidak
+  diklaim.
+- **urutan katalog ikut tahapan.** Diturunkan dari tahap sorotan di array
+  `TAHAPAN` yang sama, bukan dari logika tanggal kedua: selama tes teknis
+  urutannya PCPM, English satuan, Potensi Dasar, lain-lain; setelah tahap itu
+  lewat, English satuan turun paling bawah dan Potensi Dasar naik ke tengah.
+  Preview gratis selalu duluan di dalam lininya.
+- **kartu unggulan dikunci ke slug**, bukan ke `PRODUK[0]`. Begitu urutannya
+  bisa berubah, posisi array berhenti berarti "kartu unggulan". Pencarian
+  preview juga pindah dari pola judul ke slug — pola `/PCPM BI/` pecah begitu
+  preview kedua yang judulnya juga memuat "PCPM BI" masuk array.
+- **jumlah soal unik dicantumkan** di kartu bundle Potensi Dasar: 700 nomor,
+  676 unik. Dihitung ulang dari JSON sumber hari ini, bukan disalin dari
+  dokumen handoff. Irisan antara set Potensi Dasar dan set psikotes nol, jadi
+  676 itu angka final, bukan batas atas.
+
+Belum dikerjakan, menunggu keputusan: teks `<title>`/meta dan hero eyebrow yang
+masih menyebut CPNS, eyebrow "Coming Next", CTA penutup yang menjanjikan dua
+preview lewat satu tombol, dan tanggal yang masih ditulis kedua kali di
+deskripsi kartu Kategori.
+
 ## v3.7 — 6 September 2026 — **peta tahapan, rekomendasi per tahap, dan dua tema**
 Pengunjung sekarang lihat dia lagi di tahap seleksi mana, lalu langsung dapat
 produk untuk tahap itu, tanpa harus turun ke katalog. Penyaringan yang tadinya

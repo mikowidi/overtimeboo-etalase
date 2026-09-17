@@ -1045,8 +1045,8 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
       <li class="impact-box">
         <span class="ico" aria-hidden="true"><svg width="22" height="22"><use href="#i-layers"/></svg></span>
         <div>
-          <span class="t">Soalnya nggak muter di situ lagi</span>
-          <span class="s">Tiap paket digenerate dari bank soal terpisah dan dicek kemiripannya satu per satu sebelum rilis.</span>
+          <span class="t">Kuncinya nggak bisa ditebak dari pola</span>
+          <span class="s">Jawaban benar disebar rata per huruf, dan trik nebak opsi terpanjang nggak lebih bagus daripada nebak acak.</span>
         </div>
       </li>
       <li class="impact-box">
@@ -1069,7 +1069,7 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
         <h2 class="h2" id="h-katalog">Mau belajar apa hari ini?</h2>
       </div>
       <div class="count-pill">
-        <span>●</span><span id="statusbar">21 produk tersedia</span>
+        <span>●</span><span id="statusbar">22 produk tersedia</span>
       </div>
     </div>
 
@@ -1167,7 +1167,7 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
       <details class="faq-box">
         <summary>Boleh dibagi ke temen?</summary>
         <div class="faq-answer">
-          <p>Tiap PDF ada watermark nama pembelinya di dalam, jadi file yang disebar tetap kebaca asalnya dari siapa. Mending ajak temenmu ambil preview gratisnya.</p>
+          <p>Preview gratisnya emang buat disebar, silakan. Yang berbayar mending jangan: harganya udah ditekan serendah mungkin biar temenmu sanggup beli sendiri, bukan biar dibagi rame-rame.</p>
         </div>
       </details>
       <details class="faq-box">
@@ -1245,6 +1245,7 @@ const PRODUK = [
   { judul:"Bundle Lengkap PCPM BI — 5 Paket + 2 Modul", harga:35000, kategori:"pcpm", tag:["bundle","hemat"], meta:["200 soal","2 modul bonus"], url:"https://lynk.id/overtimeboo/y5le31x7yq6w" },
   { judul:"Bundle Bank Soal PCPM BI — Bahasa Inggris", harga:25000, kategori:"pcpm", tag:["bundle"], meta:["250 soal","5 paket"], url:"https://lynk.id/overtimeboo/rwrq6zgwj75y" },
   { judul:"Preview Gratis — 20 Soal PCPM BI", harga:0, kategori:"pcpm", tag:["gratis"], meta:["20 soal","TPU & kebanksentralan"], url:"https://lynk.id/overtimeboo/m0jopjxw67q0" },
+  { judul:"Preview Gratis — 10 Soal Bahasa Inggris PCPM BI", harga:0, kategori:"pcpm", tag:["gratis"], meta:["10 soal","2 passage reading"], url:"https://lynk.id/overtimeboo/5gk386v1wx8d" },
   { judul:"Bank Soal PCPM BI — Paket 1", harga:10000, kategori:"pcpm", tag:[], meta:["40 soal","PDF"], url:"https://lynk.id/overtimeboo/y7l2olg22yd6" },
   { judul:"Bank Soal PCPM BI — Paket 2", harga:10000, kategori:"pcpm", tag:[], meta:["40 soal","PDF"], url:"https://lynk.id/overtimeboo/p401v0g4199p" },
   { judul:"Bank Soal PCPM BI — Paket 3", harga:10000, kategori:"pcpm", tag:[], meta:["40 soal","PDF"], url:"https://lynk.id/overtimeboo/qq0980x494p8" },
@@ -1256,7 +1257,7 @@ const PRODUK = [
   { judul:"PCPM BI Bahasa Inggris — Paket 4", harga:10000, kategori:"pcpm", tag:[], meta:["50 soal","PDF"], url:"https://lynk.id/overtimeboo/e6rje4308nk8" },
   { judul:"PCPM BI Bahasa Inggris — Paket 5", harga:10000, kategori:"pcpm", tag:[], meta:["50 soal","PDF"], url:"https://lynk.id/overtimeboo/58zpkrw8znwj" },
   { judul:"Preview Gratis — 50 Soal Potensi Dasar PCPM BI", harga:0, kategori:["pcpm","karier"], tag:["gratis"], meta:["50 soal","5 materi"], url:"https://lynk.id/overtimeboo/jd979xm4m39x" },
-  { judul:"Bundle Potensi Dasar — 700 Soal + 5 Modul", harga:30000, kategori:["pcpm","karier"], tag:["bundle","hemat"], meta:["700 soal","5 modul bonus"], url:"https://lynk.id/overtimeboo/503964dv58zz" },
+  { judul:"Bundle Potensi Dasar — 700 Soal + 5 Modul", harga:30000, kategori:["pcpm","karier"], tag:["bundle","hemat"], meta:["700 soal (676 unik)","5 modul bonus"], url:"https://lynk.id/overtimeboo/503964dv58zz" },
   { judul:"Drill Numerik Potensi Dasar — 100 Soal Fokus", harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/np84r0p3040e" },
   { judul:"Drill Verbal Potensi Dasar — 100 Soal Fokus", harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/3znmweyz8l44" },
   { judul:"Drill Sinonim Potensi Dasar — 100 Soal Fokus", harga:10000, kategori:["pcpm","karier"], tag:[], meta:["100 soal","PDF"], url:"https://lynk.id/overtimeboo/6lqmj7z62y08" },
@@ -1275,8 +1276,13 @@ const KATEGORI = [
 ];
 
 const kat = p => Array.isArray(p.kategori) ? p.kategori : [p.kategori];
-const PREVIEW_PCPM = PRODUK.find(p => p.url && p.harga === 0 && /PCPM BI/.test(p.judul));
-const PREVIEW_POTENSI = PRODUK.find(p => p.url && p.harga === 0 && /Potensi Dasar/.test(p.judul));
+const slugLynk = u => String(u || "").split("/").pop();
+/* Dicari lewat slug, bukan lewat pola judul. Pencarian pola judul pecah begitu
+   preview kedua yang judulnya juga memuat "PCPM BI" masuk array — dan itu
+   persis yang terjadi waktu preview Bahasa Inggris ditambahkan. */
+const bySlug = sl => PRODUK.find(p => p.url && slugLynk(p.url) === sl);
+const PREVIEW_PCPM = bySlug("m0jopjxw67q0");
+const PREVIEW_POTENSI = bySlug("jd979xm4m39x");
 
 const rp = n => n === 0 ? "Gratis" : "Rp" + n.toLocaleString("id-ID");
 const esc = s => String(s).replace(/[&<>"]/g, m => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[m]));
@@ -1319,7 +1325,7 @@ function kartuLebar(p){
         <span>Bundle Utama · Paling Lengkap</span>
       </div>
       <h3>${esc(p.judul)}</h3>
-      <p>200 soal Tes Pengetahuan Umum & kebanksentralan, plus 2 modul belajar esensial. Tiap paket digenerate dari bank soal terpisah dan dicek kemiripannya satu per satu sebelum rilis, lengkap dengan kunci dan pembahasan sampai ke alasan logisnya.</p>
+      <p>200 soal Tes Pengetahuan Umum & kebanksentralan, plus 2 modul belajar esensial. Jawaban benar disebar rata per huruf, dan tiap nomor ada kunci plus pembahasan sampai ke alasan logisnya.</p>
     </div>
     <div class="wide-action-box">
       <div class="wide-price-row">
@@ -1349,10 +1355,13 @@ const feature = document.getElementById("feature");
 const statusbar = document.getElementById("statusbar");
 
 function render(f){
-  const list = PRODUK.filter(p => tayang(p) && cocok(p, f));
-  const pakaiFeature = (f === "semua" || f === "bundle") && list[0] === PRODUK[0];
-  feature.innerHTML = pakaiFeature ? kartuLebar(PRODUK[0]) : "";
-  const sisa = pakaiFeature ? list.slice(1) : list;
+  const list = KATALOG.filter(p => tayang(p) && cocok(p, f));
+  /* Kartu unggulan dikunci ke slug, bukan ke posisi array. Urutan katalog
+     sekarang ikut tahap yang lagi jalan, jadi PRODUK[0] nggak lagi berarti
+     "kartu unggulan". */
+  const unggul = (f === "semua" || f === "bundle") ? list.find(p => slugLynk(p.url) === UNGGULAN) : null;
+  feature.innerHTML = unggul ? kartuLebar(unggul) : "";
+  const sisa = unggul ? list.filter(p => p !== unggul) : list;
 
   grid.innerHTML = sisa.length ? sisa.map(kartu).join("") : `
     <li class="empty-state">
@@ -1395,14 +1404,18 @@ document.getElementById("grid-kategori").innerHTML = KATEGORI.map(k => {
 const TAHAPAN = [
   { id:"adm", no:"01", nama:"Seleksi administrasi", label:"Agustus", mulai:"2026-08-01", selesai:"2026-08-31",
     diuji:"Berkas dan syarat dasar.", produk:[] },
-  { id:"spd", no:"02", nama:"SPD / potensi dasar", label:"5–6 Sep", mulai:"2026-09-05", selesai:"2026-09-06",
+  { id:"spd", no:"02", nama:"SPD / potensi dasar", label:"5\u20136 Sep", mulai:"2026-09-05", selesai:"2026-09-06",
     diuji:"Verbal, numerik, logika, figural.", produk:["503964dv58zz","jd979xm4m39x"] },
-  { id:"teknis", no:"03", nama:"Tes teknis", label:"Minggu ke-3 Sep", mulai:"2026-09-14", selesai:"2026-09-20",
-    diuji:"Kebanksentralan, ekonomi, dan Bahasa Inggris.", produk:["y5le31x7yq6w","rwrq6zgwj75y","m0jopjxw67q0"] },
-  { id:"psiko", no:"04", nama:"Seleksi psikologi", label:"Minggu ke-2 Okt", mulai:"2026-10-05", selesai:"2026-10-11",
+  { id:"teknis", no:"03", nama:"Tes teknis", label:"19\u201320 Sep", mulai:"2026-09-19", selesai:"2026-09-20",
+    diuji:"Kebanksentralan, ekonomi, dan Bahasa Inggris.", produk:["m0jopjxw67q0","5gk386v1wx8d","y5le31x7yq6w","rwrq6zgwj75y"] },
+  { id:"psiko", no:"04", nama:"Seleksi psikologi", label:"Minggu ke-2 Okt", mulai:"2026-10-05", selesai:"2026-10-14",
     diuji:"Tes kemampuan lanjutan. Bagian kuesioner kepribadian nggak bisa dilatih pakai bank soal.", produk:[] },
-  { id:"wawancara", no:"05", nama:"Wawancara", label:"Akhir Okt", mulai:"2026-10-19", selesai:"2026-10-31",
-    diuji:"Wawancara dan diskusi kelompok.", produk:[] },
+  { id:"sehat", no:"05", nama:"Kesehatan & psikiatri", label:"Minggu ke-5 Okt", mulai:"2026-10-26", selesai:"2026-11-01",
+    diuji:"Pemeriksaan tatap muka. Nggak ada yang bisa disiapin pakai bank soal.", produk:[] },
+  { id:"wawancara", no:"06", nama:"Wawancara pra tahap akhir", label:"Minggu ke-3 Nov", mulai:"2026-11-09", selesai:"2026-11-21",
+    diuji:"Wawancara sebelum tahap akhir.", produk:[] },
+  { id:"akhir", no:"07", nama:"Tahap akhir", label:"Minggu ke-1 Des", mulai:"2026-11-30", selesai:"2026-12-07",
+    diuji:"Tahap terakhir seleksi. Tanggal pengumuman hasil akhir belum diumumkan.", produk:[] },
 ];
 
 const hariIso = d => new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
@@ -1427,6 +1440,39 @@ const TL = statusTahap(TAHAPAN);
 const SOROT = TL.find(x => x.status === "berlangsung") || TL.find(x => x.status === "berikutnya");
 const ST = { lewat:"Selesai", berlangsung:"Berlangsung", berikutnya:"Berikutnya", nanti:"Nanti" };
 
+/* ---------- URUTAN KATALOG IKUT TAHAPAN ----------
+   E3 (18 Sep): kartu Potensi Dasar diturunkan selama sisa siklus 41, bukan
+   dihapus. E4 (18 Sep): English satuan tetap naik selama tes teknis, baru
+   turun setelah tahap itu lewat.
+   Urutannya diturunkan dari SOROT — tahap yang sama yang dipakai timeline.
+   SENGAJA nggak ada tanggal kedua di sini. Satu-satunya sumber tanggal tetap
+   array TAHAPAN di atas; begitu tanggalnya diperbarui, urutan kartu ikut
+   sendiri. */
+const UNGGULAN = "y5le31x7yq6w";
+const ENGLISH_SATUAN = ["xmzo9ong0l7x","kl0m1yv8238q","n839nj3eplwv","e6rje4308nk8","58zpkrw8znwj"];
+const lini = p => {
+  if (ENGLISH_SATUAN.includes(slugLynk(p.url))) return "english";
+  const k = kat(p);
+  if (k.includes("pcpm") && k.includes("karier")) return "potensi";
+  if (k.includes("pcpm")) return "pcpm";
+  return "lain";
+};
+const URUT = {
+  spd:    ["potensi","pcpm","english","lain"],
+  teknis: ["pcpm","english","potensi","lain"],
+  lewat:  ["pcpm","potensi","lain","english"],
+};
+const urutan = URUT[SOROT ? SOROT.id : "lewat"] || URUT.lewat;
+/* Kunci urut: lini, lalu gratis duluan di dalam lini, lalu urutan asli array
+   supaya sisanya tetap stabil dan bisa diprediksi dari sumbernya. */
+const KATALOG = PRODUK
+  .map((p, i) => [p, i])
+  .sort((a, b) =>
+    (urutan.indexOf(lini(a[0])) - urutan.indexOf(lini(b[0]))) ||
+    ((a[0].tag.includes("gratis") ? 0 : 1) - (b[0].tag.includes("gratis") ? 0 : 1)) ||
+    (a[1] - b[1]))
+  .map(x => x[0]);
+
 function kartuTahap(x){
   const tanda = x.status === "berlangsung" ? '<span class="tl-dot" aria-hidden="true"></span>'
     : x.status === "lewat" ? svg("i-check", 12) : "";
@@ -1442,7 +1488,6 @@ function kartuTahap(x){
     <p class="tl-diuji">${esc(x.diuji)}</p></li>`;
 }
 
-const slugLynk = u => String(u || "").split("/").pop();
 const tlRel = document.getElementById("tl-rel");
 
 if (tlRel && !SOROT) {
@@ -1470,7 +1515,7 @@ if (tlRel && !SOROT) {
 
   const pilih = SOROT.produk
     .map(sl => PRODUK.find(p => tayang(p) && slugLynk(p.url) === sl))
-    .filter(Boolean).slice(0, 3);
+    .filter(Boolean).slice(0, 4);
 
   const rkNum = document.getElementById("rk-num");
   if (rkNum) rkNum.textContent = pilih.length ? pilih.length + " produk" : "belum listing";
