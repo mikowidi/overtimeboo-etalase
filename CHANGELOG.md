@@ -8,6 +8,18 @@ riwayatnya tidak dibaca sebagai jejak kerja harian.
 
 ---
 
+## v3.8.1 — 29 September 2026 — **tanggal psikologi dipastikan**
+Portal PCPM BI 41 naikin tahap psikologi dari nama minggu jadi tanggal pasti.
+Dibaca langsung dari portal hari ini.
+
+- **Seleksi psikologi: 7 sampai 11 Oktober**, sebelumnya "Minggu ke-2 Okt"
+  dengan jendela 5 sampai 14 Okt. Jendela lama bikin badge BERLANGSUNG nyala
+  dua hari sebelum tesnya jalan, masalah yang sama persis dengan tes teknis
+  di v3.8.
+- Pengumuman hasil tes teknis juga sudah pasti 29 September, tapi tahap
+  pengumuman tetap tidak dimasukkan ke array sesuai keputusan B1 (18 Sep):
+  yang ditampilkan cuma tahap yang peserta datangi.
+
 ## v3.8 — 18 September 2026 — **timeline sampai Desember, dan dua klaim yang dicabut**
 Hasil audit 18 Sep (laporan lengkap di `04-web-etalase/audit-180926/`). Tiga
 masalah yang kelihatan pengunjung diperbaiki, plus urutan katalog sekarang ikut
