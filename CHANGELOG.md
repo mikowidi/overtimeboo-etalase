@@ -8,6 +8,25 @@ riwayatnya tidak dibaca sebagai jejak kerja harian.
 
 ---
 
+## v3.9 — 26 November 2026 — **fokus CPNS 2026**
+Pendaftaran CPNS 2026 dibuka 27 Nov, SKD rencana Jan sampai Mar 2027. Situs
+dirombak supaya lini CPNS yang paling depan.
+
+- Halaman baru: `/tryout/` (tryout mini gratis 30 soal, 27 menit) dan
+  `/simulasi/` (simulasi CAT 110 soal, isi terenkripsi, dibuka pakai kode
+  akses di halaman 2 PDF). Dua-duanya statis, tanpa backend.
+- Hero, judul halaman, dan meta deskripsi pindah ke CPNS. Tombol utama ke
+  tryout gratis, tombol kedua memfilter katalog ke CPNS.
+- Peta tahapan diganti timeline CPNS 2026 (5 tahap, tanggal rencana pemerintah
+  per 26 Nov). Status tetap dihitung dari tanggal hari ini.
+- 5 kartu CPNS (tryout mini + bundle + 3 paket) di urutan paling atas katalog.
+  Kartu unggulan jadi Bundle Tryout SKD CPNS. Teks dan badge kartu unggulan
+  sekarang diambil dari data produk (`desk`, `hemat`), bukan ditulis mati.
+- Strip "kunci disebar rata per huruf" diganti "Simulasi CAT, bukan cuma PDF":
+  klaim kunci rata tidak berlaku untuk TIU CPNS Paket 1.
+- FAQ: dua pertanyaan CPNS (cara masuk simulasi, passing grade yang dipakai).
+- Kategori: keterangan bertanggal September dibuang.
+
 ## v3.8.1 — 29 September 2026 — **tanggal psikologi dipastikan**
 Portal PCPM BI 41 naikin tahap psikologi dari nama minggu jadi tanggal pasti.
 Dibaca langsung dari portal hari ini.
