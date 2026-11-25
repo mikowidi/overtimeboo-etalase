@@ -39,6 +39,12 @@ riwayatnya tidak dibaca sebagai jejak kerja harian.
   - Meta deskripsi: "coba 30 soal gratis" dipindah ke depan supaya nggak
     kepotong di hasil pencarian.
   - "Halaman simulasi" di FAQ jadi tautan ke /simulasi/.
+  - FAQ "kenapa yang dilatih polanya": klaim mutlak soal tes resmi ("nggak
+    pernah sama persis tiap tahun") diganti kalimat tentang paket kami sendiri.
+  - Cara pakai langkah 3: pembeli satu paket diarahkan ke tryout gratis atau
+    paket lain di katalog. Klaim "subtopiknya sama" dicek dari JSON: ketiga
+    paket memuat 21 subtopik yang sama.
+- Deploy otomatis dari GitHub aktif (README bagian 9).
 
 ## v3.9 — 26 November 2026 — **fokus CPNS 2026**
 Pendaftaran CPNS 2026 dibuka 27 Nov, SKD rencana Jan sampai Mar 2027. Situs

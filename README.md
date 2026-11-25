@@ -254,17 +254,14 @@ bebas.
 
 ---
 
-## 9. Opsional: deploy otomatis dari Git
+## 9. Deploy otomatis dari Git (aktif sejak 26 Nov 2026)
 
-Sekarang deploy-nya manual (`wrangler deploy`), dan untuk proyek sekecil ini itu
-cukup. Kalau nanti ingin setiap `git push` otomatis naik ke produksi:
+Worker `overtime-boo` sudah tersambung ke repo GitHub ini. Setiap push ke `main`
+langsung naik ke produksi, jadi `wrangler deploy` manual nggak perlu lagi.
 
-Dasbor Cloudflare → Worker `overtime-boo` → **Settings** → **Build** → hubungkan
-repositori GitHub. Setelah itu setiap push ke `main` memicu deploy.
-
-**Jangan dipasang sekarang.** Untuk satu berkas yang jarang berubah, satu
-perintah manual lebih sederhana dan lebih mudah dibatalkan daripada pipeline yang
-harus diurus.
+Konsekuensinya: yang di-push ke `main` langsung tayang tanpa langkah cek. Kalau
+ada yang salah, rollback dari dasbor Cloudflare (Worker → Deployments) atau
+`npx wrangler rollback`, lalu perbaiki dan push lagi.
 
 ---
 
