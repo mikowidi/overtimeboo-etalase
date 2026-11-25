@@ -8,6 +8,24 @@ riwayatnya tidak dibaca sebagai jejak kerja harian.
 
 ---
 
+## v3.10 — 26 November 2026 — **ilustrasi hero, halaman dipangkas**
+- Hero dapat ilustrasi tampilan simulasi CAT (timer, soal, pilihan, kisi nomor,
+  skor per subtes dengan garis ambang). SVG inline, warnanya ambil dari token
+  tema, jadi ikut terang/gelap tanpa berkas gambar. Bar TIU sengaja di bawah
+  ambang, nyambung ke judul "mentok di subtes yang sama". Tanpa angka skor.
+- H1 dikecilkan di layar lebar supaya muat dua kolom bareng ilustrasi.
+- Seksi "Siapin Sekarang" dibuang: isinya 4 kartu CPNS yang sama persis dengan
+  katalog di bawahnya.
+- Seksi "Kategori · 5 Lini" dibuang: fungsinya sama dengan chip filter katalog,
+  dan baris Psikotes "Segera" adalah janji yang menggantung.
+- Katalog dibuka di filter CPNS (chip CPNS paling kiri), kartu unggulan bundle
+  CPNS ikut tampil di filter CPNS.
+- Label kecil generik di atas judul seksi dibuang (Katalog Produk, Cara Pakai,
+  Pertanyaan Umum, Mulai Sekarang, Bundle Utama). Judulnya sudah cukup.
+- Badge tryout mini: "Preview Gratis" jadi "Tryout Gratis".
+- Footer: tagline Inggris diganti kalimat Indonesia yang menyebut isi toko,
+  tautan Kategori dibuang.
+
 ## v3.9 — 26 November 2026 — **fokus CPNS 2026**
 Pendaftaran CPNS 2026 dibuka 27 Nov, SKD rencana Jan sampai Mar 2027. Situs
 dirombak supaya lini CPNS yang paling depan.

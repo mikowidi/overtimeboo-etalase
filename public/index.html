@@ -506,6 +506,50 @@ img, svg { display: block; }
 }
 .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
 
+
+/* ---------- ILUSTRASI HERO (v3.10) ----------
+   SVG inline, warnanya ambil dari token tema, jadi ikut terang/gelap tanpa
+   berkas gambar terpisah. Isinya tampilan simulasi CAT yang memang dijual:
+   timer, soal, pilihan, kisi nomor, dan skor per subtes dengan garis ambang.
+   Sengaja tanpa angka skor supaya tidak terbaca sebagai klaim hasil. */
+.hero-grid { display: grid; gap: 36px; align-items: center; }
+@media (min-width: 980px) {
+  .hero-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; }
+  .hero-grid .hero-content h1 { font-size: clamp(2.4rem, 3.9vw, 3.6rem); max-width: 16ch; }
+}
+.hero-ilu { width: 100%; max-width: 480px; height: auto; display: block; margin-inline: auto; }
+@media (max-width: 979px) { .hero-ilu { max-width: 360px; } }
+.hero-ilu text { font-family: var(--font-body); }
+.il-win rect, .il-score rect { fill: var(--surface); stroke: var(--border); stroke-width: 1.2; }
+.il-shc { flood-color: #0A1D3A; flood-opacity: 0.13; }
+:root[data-theme="dark"] .il-shc { flood-opacity: 0.45; }
+.il-h { font-size: 13px; font-weight: 700; fill: var(--heading); }
+.il-tag { fill: rgba(var(--primary-rgb), 0.12); }
+.il-tagt { font-size: 10px; font-weight: 700; fill: var(--primary); letter-spacing: 0.04em; }
+.il-timer { fill: rgba(var(--accent-rgb), 0.12); }
+.il-clock { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+.il-hand { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; }
+.il-timert { font-size: 13px; font-weight: 800; fill: var(--accent); font-variant-numeric: tabular-nums; }
+.il-div { fill: var(--border); }
+.il-ln { fill: var(--border); }
+.il-opt > rect:first-child { fill: var(--surface-2); stroke: var(--border); }
+.il-opt circle { fill: var(--surface); stroke: var(--border); }
+.il-opt text { font-size: 9.5px; font-weight: 700; fill: var(--muted); }
+.il-opt--on > rect:first-child { fill: rgba(var(--primary-rgb), 0.10); stroke: var(--primary); }
+.il-opt--on circle { fill: var(--primary); stroke: var(--primary); }
+.il-opt--on text { fill: var(--surface); }
+.il-opt--on .il-ln { fill: rgba(var(--primary-rgb), 0.35); }
+.il-nb { fill: var(--surface-2); stroke: var(--border); }
+.il-nb--a { fill: rgba(var(--primary-rgb), 0.55); stroke: none; }
+.il-nb--d { fill: rgba(var(--accent-rgb), 0.55); stroke: none; }
+.il-nb--c { fill: var(--surface); stroke: var(--primary); stroke-width: 2; }
+.il-st { font-size: 11px; font-weight: 700; fill: var(--muted); }
+.il-lab { font-size: 10px; font-weight: 700; fill: var(--heading); }
+.il-track { fill: var(--surface-2); }
+.il-fill { fill: var(--buy); }
+.il-fill--low { fill: var(--accent); }
+.il-tick { fill: var(--heading); opacity: 0.55; }
+
 /* ---------- PETA TAHAPAN (TIMELINE REL GESER) ---------- */
 .sect { margin-top: var(--sect-gap); }
 .sect-header {
@@ -830,40 +874,7 @@ img, svg { display: block; }
   color: var(--body);
 }
 
-/* ---------- KATEGORI (5 LINI) ---------- */
-.cat-list { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
-.cat-row {
-  display: grid; grid-template-columns: 50px minmax(0, 1fr) auto; gap: 18px; align-items: center;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--r-md); padding: 18px 22px; color: var(--heading);
-  transition: border-color .2s, transform .2s, box-shadow .2s;
-}
-a.cat-row:hover {
-  border-color: var(--border-hover); transform: translateY(-3px);
-  box-shadow: var(--sh-md);
-}
-.cat-row .ico {
-  width: 50px; height: 50px; border-radius: var(--r-sm);
-  background: rgba(var(--primary-rgb), 0.1); border: 1px solid rgba(var(--primary-rgb), 0.25);
-  color: var(--primary); display: grid; place-items: center;
-}
-.cat-row .t {
-  display: block; font: 700 1.18rem/1.24 var(--font-heading);
-  letter-spacing: -0.015em; color: var(--heading);
-}
-.cat-row .s {
-  display: block; margin-top: 4px; font: 400 var(--fs-meta)/1.45 var(--font-body);
-  color: var(--body);
-}
-.cat-row .go {
-  justify-self: end; width: 40px; height: 40px; border-radius: var(--r-pill);
-  background: var(--chip-fill); color: var(--primary);
-  display: grid; place-items: center; transition: background .2s, transform .2s;
-}
-a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); transform: translateX(3px); }
-/* .65 bikin keterangannya jatuh ke 3,62:1. .78 lantai yang masih lolos, dan
-   kesan "belum aktif"-nya tetap kebaca karena barisnya nggak bisa diklik. */
-.cat-row--soon { opacity: 0.78; }
+
 
 /* ---------- FAQ SECTION ---------- */
 .faq-wrap { display: flex; flex-direction: column; gap: 14px; margin-top: 26px; }
@@ -985,8 +996,9 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
     <div class="wrap">
       <div class="hero-card">
         <div class="sub-title">
-          <span>SKD CPNS 2026 · Simulasi CAT Online</span>
+          <span>SKD CPNS 2026 · CAT online</span>
         </div>
+        <div class="hero-grid">
         <div class="hero-content">
           <h1>Udah latihan SKD banyak, tapi skornya <span class="text-accent">mentok di subtes yang sama?</span></h1>
           <div class="hero-lead-row">
@@ -996,6 +1008,25 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
               <a class="theme-btn theme-btn--outline" href="#katalog" data-goto="cpns"><i><svg width="15" height="15"><use href="#i-down"/></svg></i><span>Lihat paket CPNS</span></a>
             </div>
           </div>
+        </div>
+        <svg class="hero-ilu" viewBox="-22 0 444 386" aria-hidden="true" focusable="false">
+  <defs><filter id="il-sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow class="il-shc" dx="0" dy="8" stdDeviation="9"/></filter></defs>
+  <g class="il-win" filter="url(#il-sh)"><rect x="50" y="14" width="350" height="300" rx="18"/></g>
+  <text class="il-h" x="72" y="46">Soal 12 dari 110</text>
+  <rect class="il-tag" x="196" y="32" width="36" height="20" rx="10"/><text class="il-tagt" x="214" y="46" text-anchor="middle">TIU</text>
+  <rect class="il-timer" x="300" y="30" width="80" height="24" rx="12"/>
+  <circle class="il-clock" cx="316" cy="42" r="6"/><path class="il-hand" d="M316 38.5v3.5l2.5 1.5"/>
+  <text class="il-timert" x="328" y="47">84:12</text>
+  <rect class="il-div" x="72" y="68" width="306" height="1"/>
+  <rect class="il-ln" x="72" y="84" width="300" height="8" rx="4"/>
+  <rect class="il-ln" x="72" y="100" width="268" height="8" rx="4"/>
+  <rect class="il-ln" x="72" y="116" width="180" height="8" rx="4"/>
+  <g class="il-opt"><rect x="72" y="136" width="306" height="20" rx="10"/><circle cx="84" cy="146" r="7"/><text x="84" y="149.5" text-anchor="middle">A</text><rect class="il-ln" x="100" y="143" width="170" height="6" rx="3"/></g><g class="il-opt"><rect x="72" y="161" width="306" height="20" rx="10"/><circle cx="84" cy="171" r="7"/><text x="84" y="174.5" text-anchor="middle">B</text><rect class="il-ln" x="100" y="168" width="210" height="6" rx="3"/></g><g class="il-opt il-opt--on"><rect x="72" y="186" width="306" height="20" rx="10"/><circle cx="84" cy="196" r="7"/><text x="84" y="199.5" text-anchor="middle">C</text><rect class="il-ln" x="100" y="193" width="150" height="6" rx="3"/></g><g class="il-opt"><rect x="72" y="211" width="306" height="20" rx="10"/><circle cx="84" cy="221" r="7"/><text x="84" y="224.5" text-anchor="middle">D</text><rect class="il-ln" x="100" y="218" width="230" height="6" rx="3"/></g><g class="il-opt"><rect x="72" y="236" width="306" height="20" rx="10"/><circle cx="84" cy="246" r="7"/><text x="84" y="249.5" text-anchor="middle">E</text><rect class="il-ln" x="100" y="243" width="120" height="6" rx="3"/></g>
+  <rect class="il-nb il-nb--a" x="72" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--a" x="91" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--a" x="110" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--d" x="129" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--a" x="148" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--a" x="167" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--a" x="186" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--a" x="205" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--a" x="224" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--a" x="243" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--a" x="262" y="276" width="14" height="14" rx="4"/><rect class="il-nb il-nb--c" x="281" y="276" width="14" height="14" rx="4"/><rect class="il-nb" x="300" y="276" width="14" height="14" rx="4"/><rect class="il-nb" x="319" y="276" width="14" height="14" rx="4"/><rect class="il-nb" x="338" y="276" width="14" height="14" rx="4"/><rect class="il-nb" x="357" y="276" width="14" height="14" rx="4"/>
+  <g class="il-score" filter="url(#il-sh)"><rect x="0" y="230" width="190" height="112" rx="14"/></g>
+  <text class="il-st" x="16" y="252">Skor per subtes</text>
+  <text class="il-lab" x="16" y="273">TWK</text><rect class="il-track" x="54" y="266" width="120" height="8" rx="4"/><rect class="il-fill" x="54" y="266" width="94" height="8" rx="4"/><rect class="il-tick" x="105" y="263" width="2" height="14" rx="1"/><text class="il-lab" x="16" y="295">TIU</text><rect class="il-track" x="54" y="288" width="120" height="8" rx="4"/><rect class="il-fill il-fill--low" x="54" y="288" width="40" height="8" rx="4"/><rect class="il-tick" x="108" y="285" width="2" height="14" rx="1"/><text class="il-lab" x="16" y="317">TKP</text><rect class="il-track" x="54" y="310" width="120" height="8" rx="4"/><rect class="il-fill" x="54" y="310" width="101" height="8" rx="4"/><rect class="il-tick" x="142" y="307" width="2" height="14" rx="1"/>
+</svg>
         </div>
       </div>
     </div>
@@ -1012,24 +1043,6 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
     <ol class="tl-rel" id="tl-rel" role="list" tabindex="0" aria-label="Tahapan seleksi, bisa digeser kiri kanan"></ol>
     <p class="tl-nota" id="tl-nota">Jadwal rencana pemerintah per 26 November 2026 dan bisa berubah. Tanggal pastinya selalu cek di sscasn.bkn.go.id.</p>
     <div id="tl-habis"></div>
-  </section>
-
-  <!-- ============ REKOMENDASI TAHAP ============ -->
-  <section id="rekomendasi" class="wrap sect" aria-labelledby="h-rekom">
-    <div class="sect-header">
-      <div>
-        <div class="sub-title">
-          <span id="rk-eyebrow">Siapin Sekarang</span>
-        </div>
-        <h2 class="h2" id="h-rekom"></h2>
-      </div>
-      <div class="count-pill">
-        <span>●</span><span id="rk-num"></span>
-      </div>
-    </div>
-
-    <ul class="product-grid" id="rk-grid"></ul>
-    <p class="rk-foot"><a href="#katalog" data-goto="semua">Lihat semua katalog &rarr;</a></p>
   </section>
 
   <!-- ============ STRIP DAMPAK ============ -->
@@ -1063,20 +1076,17 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
   <section id="katalog" class="wrap sect" aria-labelledby="h-katalog">
     <div class="sect-header">
       <div>
-        <div class="sub-title">
-          <span>Katalog Produk</span>
-        </div>
         <h2 class="h2" id="h-katalog">Mau belajar apa hari ini?</h2>
       </div>
       <div class="count-pill">
-        <span>●</span><span id="statusbar">27 produk tersedia</span>
+        <span>●</span><span id="statusbar">5 produk tersedia</span>
       </div>
     </div>
 
     <!-- Filter Tabs (Noxfolio Style) -->
     <ul class="filter-tabs" role="group" aria-label="Filter kategori katalog">
-      <li><button class="tab-chip on" type="button" data-f="semua" aria-pressed="true">Semua</button></li>
-      <li><button class="tab-chip" type="button" data-f="cpns" aria-pressed="false">CPNS</button></li>
+      <li><button class="tab-chip on" type="button" data-f="cpns" aria-pressed="true">CPNS</button></li>
+      <li><button class="tab-chip" type="button" data-f="semua" aria-pressed="false">Semua</button></li>
       <li><button class="tab-chip" type="button" data-f="pcpm" aria-pressed="false">PCPM</button></li>
       <li><button class="tab-chip" type="button" data-f="karier" aria-pressed="false">Karier</button></li>
       <li><button class="tab-chip" type="button" data-f="bundle" aria-pressed="false">Bundle</button></li>
@@ -1090,9 +1100,6 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
   <!-- ============ CARA PAKAI ============ -->
   <section id="cara" class="band-section" aria-labelledby="h-cara">
     <div class="wrap">
-      <div class="sub-title">
-        <span>Cara Pakai · 4 Langkah</span>
-      </div>
       <h2 class="poster-h2" id="h-cara">Udah punya filenya. Terus enaknya diapain?</h2>
       <ol class="steps-grid">
         <li class="step-card">
@@ -1127,24 +1134,8 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
     </div>
   </section>
 
-  <!-- ============ KATEGORI ============ -->
-  <section id="kategori" class="wrap sect" aria-labelledby="h-kategori">
-    <div class="sect-header">
-      <div>
-        <div class="sub-title">
-          <span>Kategori · 5 Lini</span>
-        </div>
-        <h2 class="h2" id="h-kategori">Mulai dari yang tanggalnya paling deket.</h2>
-      </div>
-    </div>
-    <ul class="cat-list" id="grid-kategori"></ul>
-  </section>
-
   <!-- ============ FAQ ============ -->
   <section id="faq" class="wrap sect" aria-labelledby="h-faq">
-    <div class="sub-title">
-      <span>Pertanyaan Umum</span>
-    </div>
     <h2 class="h2" id="h-faq">Pertanyaan yang sering ditanyakan</h2>
     <div class="faq-wrap">
       <details class="faq-box" open>
@@ -1195,9 +1186,6 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
   <!-- ============ PENUTUP ============ -->
   <div class="wrap">
     <section class="outro-card" aria-labelledby="h-outro">
-      <div class="sub-title">
-        <span>Mulai Sekarang</span>
-      </div>
       <h2 class="poster-h2" id="h-outro">Belum yakin? Wajar kok. Coba yang gratis dulu.</h2>
       <a class="theme-btn theme-btn--buy" href="/tryout/"><i><svg width="15" height="15"><use href="#i-chev"/></svg></i><span>Coba tryout SKD gratis</span></a>
       <p class="outro-sub">30 soal SKD format CAT, 27 menit, skor dan pembahasan langsung keluar. Nol biaya, nol daftar akun. Preview gratis PCPM BI dan potensi dasar juga ada di katalog.</p>
@@ -1212,13 +1200,12 @@ a.cat-row:hover .go { background: var(--primary); color: var(--on-primary); tran
     <div class="footer-top">
       <div>
         <div class="wordmark">overtimeboo<span aria-hidden="true"></span></div>
-        <p class="footer-tagline">Your best study companion.</p>
+        <p class="footer-tagline">Bank soal dan tryout buat seleksi CPNS, PCPM BI, dan potensi dasar.</p>
         <p class="footer-contact">Tanya-tanya: <a href="https://www.threads.com/@bukanordalpcpmbi" target="_blank" rel="noopener">Threads @bukanordalpcpmbi</a></p>
       </div>
       <nav class="footer-nav" aria-label="Navigasi footer">
         <a href="#katalog">Katalog</a>
         <a href="#cara">Cara pakai</a>
-        <a href="#kategori">Kategori</a>
         <a href="#faq">FAQ</a>
         <a class="theme-btn" href="https://lynk.id/overtimeboo" target="_blank" rel="noopener">lynk.id<i><svg width="13" height="13"><use href="#i-ext"/></svg></i></a>
       </nav>
@@ -1287,31 +1274,15 @@ const PRODUK = [
   { judul:"Persiapan Tes TOEFL ITP — 300 Soal + Modul Grammar", harga:25000, kategori:"karier", tag:["bundle"], meta:["300 soal","+ modul grammar"], url:"https://lynk.id/overtimeboo/v349ng9nw490" }
 ];
 
-/* Diurutkan dari tanggal tes yang paling dekat */
-const KATEGORI = [
-  { id:"cpns",     nama:"CPNS SKD 2026",            ket:"Pendaftaran dibuka 27 Nov · SKD rencana Jan–Mar 2027",       ikon:"i-cal",   aksi:"filter" },
-  { id:"karier",   nama:"Potensi Dasar",            ket:"Verbal, numerik, logika, figural",                         ikon:"i-brief", aksi:"filter" },
-  { id:"pcpm",     nama:"PCPM BI + Bahasa Inggris", ket:"TPU, kebanksentralan, reading Bahasa Inggris",              ikon:"i-doc",   aksi:"filter" },
-  { id:"psikotes", nama:"Psikotes",                 ket:"Tes kemampuan kognitif, sekarang ikut di bundle Potensi Dasar", ikon:"i-bank",  aksi:"segera" },
-  { id:"karier",   nama:"TOEFL ITP",                ket:"Tanpa tanggal, kebutuhan sepanjang tahun",                  ikon:"i-doc",   aksi:"filter" },
-];
-
 const kat = p => Array.isArray(p.kategori) ? p.kategori : [p.kategori];
 const slugLynk = u => String(u || "").split("/").pop();
-/* Dicari lewat slug, bukan lewat pola judul. Pencarian pola judul pecah begitu
-   preview kedua yang judulnya juga memuat "PCPM BI" masuk array — dan itu
-   persis yang terjadi waktu preview Bahasa Inggris ditambahkan. */
-const bySlug = sl => PRODUK.find(p => p.url && slugLynk(p.url) === sl);
-const PREVIEW_PCPM = bySlug("m0jopjxw67q0");
-const PREVIEW_POTENSI = bySlug("jd979xm4m39x");
-
 const rp = n => n === 0 ? "Gratis" : "Rp" + n.toLocaleString("id-ID");
 const esc = s => String(s).replace(/[&<>"]/g, m => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[m]));
 const ikonMeta = t => /PDF/i.test(t) ? "i-doc" : /modul|paket/i.test(t) ? "i-layers" : "i-check";
 const svg = (id, s) => `<svg width="${s}" height="${s}" aria-hidden="true"><use href="#${id}"/></svg>`;
 
 function labelTag(p){
-  if (p.tag.includes("gratis")) return { txt: "Preview Gratis", cls: "card-badge--free" };
+  if (p.tag.includes("gratis")) return { txt: p.url.startsWith("/") ? "Tryout Gratis" : "Preview Gratis", cls: "card-badge--free" };
   if (p.tag.includes("bundle")) return { txt: p.tag.includes("hemat") ? "Bundle · Hemat" : "Bundle", cls: "card-badge--bundle" };
   if (kat(p).includes("cpns")) return { txt: "CPNS SKD", cls: "" };
   if (kat(p).includes("pcpm") && kat(p).includes("karier")) return { txt: "Potensi Dasar", cls: "" };
@@ -1343,9 +1314,6 @@ function kartu(p){
 function kartuLebar(p){
   return `<article class="wide-card">
     <div>
-      <div class="sub-title">
-        <span>Bundle Utama · Paling Lengkap</span>
-      </div>
       <h3>${esc(p.judul)}</h3>
       <p>${esc(p.desk || "")}</p>
     </div>
@@ -1381,7 +1349,7 @@ function render(f){
   /* Kartu unggulan dikunci ke slug, bukan ke posisi array. Urutan katalog
      sekarang ikut tahap yang lagi jalan, jadi PRODUK[0] nggak lagi berarti
      "kartu unggulan". */
-  const unggul = (f === "semua" || f === "bundle") ? list.find(p => slugLynk(p.url) === UNGGULAN) : null;
+  const unggul = (f === "semua" || f === "bundle" || f === "cpns") ? list.find(p => slugLynk(p.url) === UNGGULAN) : null;
   feature.innerHTML = unggul ? kartuLebar(unggul) : "";
   const sisa = unggul ? list.filter(p => p !== unggul) : list;
 
@@ -1409,34 +1377,22 @@ document.querySelectorAll(".tab-chip").forEach(c => {
 });
 
 /* ============================================================
-   KATEGORI 5 LINI (Interaktif ke Katalog)
-   ============================================================ */
-document.getElementById("grid-kategori").innerHTML = KATEGORI.map(k => {
-  const isi = `<span class="ico">${svg(k.ikon, 22)}</span><span><span class="t">${esc(k.nama)}</span><span class="s">${esc(k.ket)}</span></span>`;
-  if (k.aksi === "filter")
-    return `<li><a class="cat-row" href="#katalog" data-goto="${k.id}">${isi}<span class="go">${svg("i-chev", 16)}</span></a></li>`;
-  if (k.aksi === "preview" && PREVIEW_POTENSI)
-    return `<li><a class="cat-row" href="${PREVIEW_POTENSI.url}" target="_blank" rel="noopener">${isi}<span class="go">${svg("i-dl", 16)}</span></a></li>`;
-  return `<li><div class="cat-row cat-row--soon">${isi}<span class="card-badge">Segera</span></div></li>`;
-}).join("");
-
-/* ============================================================
-   PETA TAHAPAN & REKOMENDASI PER TAHAP
+   PETA TAHAPAN
    ============================================================ */
 const TAHAPAN = [
   /* CPNS 2026 (sumber: KemenPANRB via Kontan dan Liputan6, 25 Nov 2026). Tanggal
      selain 27 Nov masih rencana; batas akhir tiap tahap diperkirakan. Status
      tetap dihitung dari tanggal hari ini, jadi blok ini aman ditinggal. */
   { id:"umum", no:"01", nama:"Pengumuman & buat akun SSCASN", label:"23\u201326 Nov", mulai:"2026-11-23", selesai:"2026-11-26",
-    diuji:"Formasi diumumkan, akun SSCASN dibuat.", produk:["/tryout/","8mgxnzeg156j","rkgqj0dq8kqr","8vrx0ejper44"] },
+    diuji:"Formasi diumumkan, akun SSCASN dibuat." },
   { id:"daftar", no:"02", nama:"Pendaftaran", label:"Mulai 27 Nov", mulai:"2026-11-27", selesai:"2026-12-06",
-    diuji:"Pilih formasi dan unggah berkas di SSCASN.", produk:["/tryout/","8mgxnzeg156j","rkgqj0dq8kqr","8vrx0ejper44"] },
+    diuji:"Pilih formasi dan unggah berkas di SSCASN." },
   { id:"adm", no:"03", nama:"Seleksi administrasi", label:"Desember", mulai:"2026-12-07", selesai:"2026-12-31",
-    diuji:"Berkas dan syarat jabatan.", produk:["/tryout/","8mgxnzeg156j","rkgqj0dq8kqr","8vrx0ejper44"] },
+    diuji:"Berkas dan syarat jabatan." },
   { id:"skd", no:"04", nama:"SKD (CAT)", label:"Jan\u2013Mar 2027", mulai:"2027-01-04", selesai:"2027-03-31",
-    diuji:"TWK 30, TIU 35, TKP 45 soal dalam 100 menit.", produk:["/tryout/","8mgxnzeg156j","rkgqj0dq8kqr","8vrx0ejper44"] },
+    diuji:"TWK 30, TIU 35, TKP 45 soal dalam 100 menit." },
   { id:"skb", no:"05", nama:"SKB", label:"Setelah lolos SKD", mulai:"2027-02-01", selesai:"2027-03-31",
-    diuji:"Materi sesuai jabatan, beda tiap instansi. Di luar cakupan paket kami.", produk:[] },
+    diuji:"Materi sesuai jabatan, beda tiap instansi. Di luar cakupan paket kami." },
 ];
 
 const hariIso = d => new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
@@ -1518,9 +1474,7 @@ if (tlRel && !SOROT) {
      tanpa diurus sampai angkatan berikutnya. */
   tlRel.hidden = true;
   const nota = document.getElementById("tl-nota");
-  const rekom = document.getElementById("rekomendasi");
   if (nota) nota.hidden = true;
-  if (rekom) rekom.hidden = true;
   const habis = document.getElementById("tl-habis");
   if (habis) habis.innerHTML =
     `<div class="empty-state">
@@ -1530,33 +1484,6 @@ if (tlRel && !SOROT) {
     </div>`;
 } else if (tlRel) {
   tlRel.innerHTML = TL.map(kartuTahap).join("");
-  const rekomH2 = document.getElementById("h-rekom");
-  /* Nama materinya saja. Kata "lagi berlangsung" dibuang: statusnya sudah
-     kelihatan di kartu tahapan di atasnya, nggak perlu diulang di sini. */
-  if (rekomH2) rekomH2.textContent = "Mulai latihan SKD dari sini";
-  const rkEyebrow = document.getElementById("rk-eyebrow");
-  if (rkEyebrow) rkEyebrow.textContent = (SOROT.status === "berlangsung" ? "Sekarang: " : "Berikutnya: ") + SOROT.nama;
-
-  const pilih = SOROT.produk
-    .map(sl => PRODUK.find(p => tayang(p) && (slugLynk(p.url) === sl || p.url === sl)))
-    .filter(Boolean).slice(0, 4);
-
-  const rkNum = document.getElementById("rk-num");
-  if (rkNum) rkNum.textContent = pilih.length ? pilih.length + " produk" : "belum listing";
-
-  /* Tahap yang produknya belum listing tidak boleh jadi jalan buntu. Daripada
-     menampilkan produk acak seolah-olah itu materi tahap ini, kartunya bilang
-     apa adanya dan tetap ngasih satu langkah lanjut. */
-  const rkGrid = document.getElementById("rk-grid");
-  const pv = PREVIEW_POTENSI || PREVIEW_PCPM;
-  if (rkGrid) rkGrid.innerHTML = pilih.length ? pilih.map(kartu).join("")
-    : `<li class="product-card">
-        <div class="card-top"><span class="card-badge">Segera</span></div>
-        <h3>Materi buat tahap ini lagi disiapin.</h3>
-        <p style="color:var(--body);font-size:var(--fs-meta);line-height:1.5">Sementara, preview gratisnya udah bisa kamu ambil.</p>
-        <div class="card-foot">${pv ? `<a class="theme-btn theme-btn--buy theme-btn--full" href="${pv.url}" target="_blank" rel="noopener"><i>${svg("i-dl", 14)}</i><span>Download</span></a>` : ""}</div>
-      </li>`;
-
   /* Rel digeser supaya tahap sorotan ada di kiri layar begitu halaman dibuka.
      scrollLeft langsung, bukan scrollIntoView (itu ikut narik halaman turun)
      dan bukan di dalam rAF (rAF tidak jalan di tab latar, jadi relnya diam
@@ -1600,8 +1527,8 @@ if (temaBtn) temaBtn.addEventListener("click", () => {
   labeliTemaBtn();
 });
 
-// Inisialisasi katalog
-render("semua");
+// Katalog dibuka di filter CPNS
+setFilter("cpns");
 </script>
 </body>
 </html>
