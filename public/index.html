@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>overtimeboo — tryout SKD CPNS 2026 + simulasi CAT online</title>
-<meta name="description" content="Tryout SKD CPNS 2026 format CAT: 110 soal per paket, simulasi online 100 menit, skor TWK, TIU, TKP langsung keluar, pembahasan tiap nomor. Coba 30 soal gratis. Ada juga PCPM BI, potensi dasar, dan TOEFL ITP.">
+<meta name="description" content="Tryout SKD CPNS 2026 format CAT, coba 30 soal gratis. Paket 110 soal dengan simulasi online 100 menit, skor TWK, TIU, TKP langsung keluar, pembahasan tiap nomor. Ada juga PCPM BI, Potensi Dasar, dan TOEFL ITP.">
 <!-- Satu meta saja: warna bilah alamat ikut TEMA SITUS, bukan setelan OS.
      Diperbarui lewat JS tiap toggle ditekan. -->
 <meta name="theme-color" content="#ECF0F6" id="meta-tema">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="overtimeboo">
 <meta property="og:title" content="overtimeboo — tryout SKD CPNS 2026 + simulasi CAT online">
-<meta property="og:description" content="Tryout SKD CPNS 2026 format CAT: 110 soal per paket, simulasi online 100 menit, skor langsung keluar, pembahasan tiap nomor. Coba 30 soal gratis.">
+<meta property="og:description" content="Tryout SKD CPNS 2026 format CAT, coba 30 soal gratis. Paket 110 soal dengan simulasi online 100 menit, skor langsung keluar, pembahasan tiap nomor.">
 <meta property="og:url" content="https://overtime-boo.gulliveragent.workers.dev/">
 <!-- Nama berkas dinaikkan versinya (og.png -> og-v2.png) supaya WhatsApp,
      Threads, dan Facebook berhenti menyajikan gambar lama dari cache. Gambar
@@ -332,6 +332,7 @@ img, svg { display: block; }
   font: 700 var(--fs-ui)/1 var(--font-heading); letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--on-primary);
 }
+@media (max-width: 420px) { .sub-title { padding: 10px 16px; letter-spacing: 0.05em; white-space: nowrap; } }
 
 /* ---------- BUTTONS (.THEME-BTN KHAS NOXFOLIO) ---------- */
 .theme-btn {
@@ -877,6 +878,7 @@ img, svg { display: block; }
 
 
 /* ---------- FAQ SECTION ---------- */
+.faq-answer a { color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .faq-wrap { display: flex; flex-direction: column; gap: 14px; margin-top: 26px; }
 .faq-box {
   background: var(--surface); border: 1px solid var(--border);
@@ -1000,7 +1002,7 @@ img, svg { display: block; }
         </div>
         <div class="hero-grid">
         <div class="hero-content">
-          <h1>Udah latihan SKD banyak, tapi skornya <span class="text-accent">mentok di subtes yang sama?</span></h1>
+          <h1>Tryout SKD yang nunjukin <span class="text-accent">di subtes mana skormu mentok</span></h1>
           <div class="hero-lead-row">
             <p>Kerjain tryout 110 soal format CAT, online, pakai timer 100 menit. Skor TWK, TIU, TKP langsung keluar, lengkap sama pembahasan dan materi yang perlu kamu latih.</p>
             <div class="hero-btns">
@@ -1036,12 +1038,12 @@ img, svg { display: block; }
   <section id="tahapan" class="wrap sect" aria-labelledby="h-tahapan">
     <div class="sect-header">
       <div>
-        <h2 class="h2" id="h-tahapan">Timeline CPNS 2026</h2>
+        <h2 class="h2" id="h-tahapan">Tahapan CPNS 2026, dari pengumuman sampai SKB</h2>
       </div>
     </div>
 
     <ol class="tl-rel" id="tl-rel" role="list" tabindex="0" aria-label="Tahapan seleksi, bisa digeser kiri kanan"></ol>
-    <p class="tl-nota" id="tl-nota">Jadwal rencana pemerintah per 26 November 2026 dan bisa berubah. Tanggal pastinya selalu cek di sscasn.bkn.go.id.</p>
+    <p class="tl-nota" id="tl-nota">Jadwal rencana pemerintah per 26 November 2026 dan bisa berubah. Tanggal pastinya cek di sscasn.bkn.go.id.</p>
     <div id="tl-habis"></div>
   </section>
 
@@ -1058,8 +1060,8 @@ img, svg { display: block; }
       <li class="impact-box">
         <span class="ico" aria-hidden="true"><svg width="22" height="22"><use href="#i-layers"/></svg></span>
         <div>
-          <span class="t">Simulasi CAT, bukan cuma PDF</span>
-          <span class="s">Tiap paket CPNS bisa dikerjain online: satu soal per layar, timer 100 menit, skor langsung keluar begitu dikumpulin.</span>
+          <span class="t">Paket CPNS ada PDF plus simulasi CAT-nya</span>
+          <span class="s">Tiap paket bisa dikerjain online: satu soal per layar, timer 100 menit, skor langsung keluar begitu dikumpulin.</span>
         </div>
       </li>
       <li class="impact-box">
@@ -1076,7 +1078,7 @@ img, svg { display: block; }
   <section id="katalog" class="wrap sect" aria-labelledby="h-katalog">
     <div class="sect-header">
       <div>
-        <h2 class="h2" id="h-katalog">Mau belajar apa hari ini?</h2>
+        <h2 class="h2" id="h-katalog">Tryout CPNS, plus bank soal PCPM BI, Potensi Dasar, dan TOEFL ITP</h2>
       </div>
       <div class="count-pill">
         <span>●</span><span id="statusbar">5 produk tersedia</span>
@@ -1100,13 +1102,13 @@ img, svg { display: block; }
   <!-- ============ CARA PAKAI ============ -->
   <section id="cara" class="band-section" aria-labelledby="h-cara">
     <div class="wrap">
-      <h2 class="poster-h2" id="h-cara">Udah punya filenya. Terus enaknya diapain?</h2>
+      <h2 class="poster-h2" id="h-cara">Urutan ngerjain paket biar nggak kejebak pola yang sama</h2>
       <ol class="steps-grid">
         <li class="step-card">
           <span class="step-number" aria-hidden="true">01</span>
           <div class="step-body">
             <span class="t">Kerjain dulu pakai timer, kuncinya jangan diintip</span>
-            <span class="s">Paket CPNS langsung di simulasi online 100 menit. Nggak enak, tapi ini yang bikin kelihatan bolongnya.</span>
+            <span class="s">Paket CPNS bisa langsung dikerjain di simulasi online 100 menit. Nggak enak, tapi ini yang bikin kelihatan bolongnya.</span>
           </div>
         </li>
         <li class="step-card">
@@ -1127,7 +1129,7 @@ img, svg { display: block; }
           <span class="step-number" aria-hidden="true">04</span>
           <div class="step-body">
             <span class="t">Besoknya ulang lagi, jangan hari itu</span>
-            <span class="s">Jeda semalam bikin ingatannya lebih awet sampai hari H.</span>
+            <span class="s">Jeda semalam bikin ingatannya lebih awet.</span>
           </div>
         </li>
       </ol>
@@ -1136,18 +1138,18 @@ img, svg { display: block; }
 
   <!-- ============ FAQ ============ -->
   <section id="faq" class="wrap sect" aria-labelledby="h-faq">
-    <h2 class="h2" id="h-faq">Pertanyaan yang sering ditanyakan</h2>
+    <h2 class="h2" id="h-faq">Kode akses, passing grade, cara beli, sampai refund</h2>
     <div class="faq-wrap">
       <details class="faq-box" open>
         <summary>Simulasi online CPNS-nya gimana cara masuknya?</summary>
         <div class="faq-answer">
-          <p>Kode aksesnya ada di halaman 2 PDF paket CPNS yang kamu beli. Buka halaman simulasi, masukin kodenya, paketnya langsung kebuka. Nggak perlu daftar akun. Beli bundle berarti dapat tiga kode, satu per paket.</p>
+          <p>Kode aksesnya ada di halaman 2 PDF paket CPNS yang kamu beli. Buka <a href="/simulasi/">halaman simulasi</a>, masukin kodenya, paketnya langsung kebuka. Nggak perlu daftar akun. Beli bundle berarti dapat tiga kode, satu per paket.</p>
         </div>
       </details>
       <details class="faq-box">
         <summary>Passing grade yang dipakai yang mana?</summary>
         <div class="faq-answer">
-          <p>KepmenPANRB 321/2024: TWK 65, TIU 80, TKP 166. Ambang khusus CPNS 2026 belum terbit waktu paketnya dirilis. Kalau nanti beda, angkanya berubah, tapi susunan soalnya (TWK 30, TIU 35, TKP 45, 100 menit) tetap sama.</p>
+          <p>KepmenPANRB 321/2024: TWK 65, TIU 80, TKP 166. Susunan soal paketnya juga ikut aturan itu: TWK 30, TIU 35, TKP 45, 100 menit. Ambang khusus CPNS 2026 belum terbit waktu paketnya dirilis.</p>
         </div>
       </details>
       <details class="faq-box">
@@ -1157,21 +1159,21 @@ img, svg { display: block; }
         </div>
       </details>
       <details class="faq-box">
-        <summary>Paket Potensi Dasar ini nyakup tes kepribadian juga nggak?</summary>
+        <summary>Paket Potensi Dasar nyakup tes kepribadian juga nggak?</summary>
         <div class="faq-answer">
-          <p>Nggak. Yang dilatih empat kemampuan kognitif: verbal, numerik, logika, dan figural. Bagian kuesioner kepribadian (Person-Organization Fit, Wartegg, Pauli, DISC, MBTI, Kraepelin) nggak punya jawaban benar atau salah, jadi nggak bisa dilatih pakai bank soal. Kalau itu yang kamu cari, paket ini bukan jawabannya.</p>
+          <p>Nggak. Yang dilatih kemampuan kognitif: verbal, numerik, logika, dan figural. Tes kepribadian dan tes koran (Person-Organization Fit, Wartegg, Pauli, DISC, MBTI, Kraepelin) nggak termasuk. Kalau itu yang kamu cari, paket ini bukan jawabannya.</p>
         </div>
       </details>
       <details class="faq-box">
-        <summary>Kalau nggak cocok gimana?</summary>
+        <summary>Bisa refund kalau nggak cocok?</summary>
         <div class="faq-answer">
-          <p>Produk digital jadi nggak bisa direfund. Biar kamu nggak beli buta, preview gratisnya disediain duluan. Kerjain dulu, lihat isinya, baru putuskan.</p>
+          <p>Produk digital, jadi nggak bisa direfund. Biar kamu nggak beli buta, versi gratisnya udah disediain buat CPNS, PCPM BI, dan Potensi Dasar. Kerjain dulu, baru putuskan.</p>
         </div>
       </details>
       <details class="faq-box">
         <summary>Boleh dibagi ke temen?</summary>
         <div class="faq-answer">
-          <p>Preview gratisnya emang buat disebar, silakan. Yang berbayar mending jangan: harganya udah ditekan serendah mungkin biar temenmu sanggup beli sendiri, bukan biar dibagi rame-rame.</p>
+          <p>Preview gratisnya emang buat disebar, silakan. Yang berbayar mending jangan: harganya udah dibikin murah biar temenmu sanggup beli sendiri.</p>
         </div>
       </details>
       <details class="faq-box">
@@ -1186,9 +1188,9 @@ img, svg { display: block; }
   <!-- ============ PENUTUP ============ -->
   <div class="wrap">
     <section class="outro-card" aria-labelledby="h-outro">
-      <h2 class="poster-h2" id="h-outro">Belum yakin? Wajar kok. Coba yang gratis dulu.</h2>
+      <h2 class="poster-h2" id="h-outro">Kerjain 30 soal gratis dulu sebelum beli paket</h2>
       <a class="theme-btn theme-btn--buy" href="/tryout/"><i><svg width="15" height="15"><use href="#i-chev"/></svg></i><span>Coba tryout SKD gratis</span></a>
-      <p class="outro-sub">30 soal SKD format CAT, 27 menit, skor dan pembahasan langsung keluar. Nol biaya, nol daftar akun. Preview gratis PCPM BI dan potensi dasar juga ada di katalog.</p>
+      <p class="outro-sub">Format CAT, 27 menit. Skor per subtes, pembahasan tiap nomor, dan saran materi yang perlu dilatih langsung keluar. Nggak perlu daftar akun. Preview gratis PCPM BI dan Potensi Dasar juga ada di katalog.</p>
     </section>
   </div>
 
@@ -1200,7 +1202,7 @@ img, svg { display: block; }
     <div class="footer-top">
       <div>
         <div class="wordmark">overtimeboo<span aria-hidden="true"></span></div>
-        <p class="footer-tagline">Bank soal dan tryout buat seleksi CPNS, PCPM BI, dan potensi dasar.</p>
+        <p class="footer-tagline">Bank soal dan tryout CPNS, PCPM BI, Potensi Dasar, dan TOEFL ITP.</p>
         <p class="footer-contact">Tanya-tanya: <a href="https://www.threads.com/@bukanordalpcpmbi" target="_blank" rel="noopener">Threads @bukanordalpcpmbi</a></p>
       </div>
       <nav class="footer-nav" aria-label="Navigasi footer">
@@ -1245,7 +1247,7 @@ const PRODUK = [
   /* LINI CPNS SKD. Kartu berbayar tampil otomatis begitu url Lynk diisi. */
   { judul:"Tryout Mini SKD CPNS — 30 Soal Online", harga:0, kategori:"cpns", tag:["gratis"], meta:["30 soal · 27 menit","langsung di browser"], url:"/tryout/" },
   { judul:"Bundle Tryout SKD CPNS — 3 Paket + Modul", harga:25000, kategori:"cpns", tag:["bundle","hemat"], meta:["330 soal","simulasi CAT online"], url:"https://lynk.id/overtimeboo/8mgxnzeg156j",
-    desk:"Tiga paket tryout SKD (330 soal) dengan kunci dan pembahasan tiap nomor, modul belajar, plus akses simulasi CAT online 100 menit buat ketiga paket. Skor TWK, TIU, TKP langsung keluar begitu dikumpulin.", hemat:"Hemat Rp5.000" },
+    desk:"Tiga paket tryout SKD (330 soal) dengan kunci dan pembahasan tiap nomor, modul belajar, plus akses simulasi CAT online 100 menit buat ketiga paket.", hemat:"Hemat Rp5.000" },
   { judul:"Tryout SKD CPNS — Paket 1", harga:10000, kategori:"cpns", tag:[], meta:["110 soal","PDF + simulasi online"], url:"https://lynk.id/overtimeboo/rkgqj0dq8kqr" },
   { judul:"Tryout SKD CPNS — Paket 2", harga:10000, kategori:"cpns", tag:[], meta:["110 soal","PDF + simulasi online"], url:"https://lynk.id/overtimeboo/8vrx0ejper44" },
   { judul:"Tryout SKD CPNS — Paket 3", harga:10000, kategori:"cpns", tag:[], meta:["110 soal","PDF + simulasi online"], url:"https://lynk.id/overtimeboo/rp7qnmvgk1oo" },

@@ -25,6 +25,20 @@ riwayatnya tidak dibaca sebagai jejak kerja harian.
 - Badge tryout mini: "Preview Gratis" jadi "Tryout Gratis".
 - Footer: tagline Inggris diganti kalimat Indonesia yang menyebut isi toko,
   tautan Kategori dibuang.
+- Copy direview ulang (final-review, reviewer terpisah):
+  - H1 jadi pernyataan: "Tryout SKD yang nunjukin di subtes mana skormu
+    mentok". Judul seksi yang berupa pertanyaan basa-basi diganti judul yang
+    menyebut isinya (katalog, cara pakai, FAQ, penutup).
+  - FAQ passing grade: kalimat "susunan soalnya tetap sama" dibuang karena
+    terbaca sebagai janji soal aturan 2026 yang belum terbit.
+  - FAQ tes kepribadian: alasan "nggak punya jawaban benar salah" dibuang
+    karena salah untuk Pauli, Kraepelin, dan Wartegg. Daftar pengecualian
+    tetap utuh.
+  - FAQ refund menyebut lini yang punya versi gratis (TOEFL ITP tidak punya).
+  - "Harganya ditekan serendah mungkin" jadi "udah dibikin murah".
+  - Meta deskripsi: "coba 30 soal gratis" dipindah ke depan supaya nggak
+    kepotong di hasil pencarian.
+  - "Halaman simulasi" di FAQ jadi tautan ke /simulasi/.
 
 ## v3.9 — 26 November 2026 — **fokus CPNS 2026**
 Pendaftaran CPNS 2026 dibuka 27 Nov, SKD rencana Jan sampai Mar 2027. Situs
