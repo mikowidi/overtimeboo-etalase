@@ -44,7 +44,7 @@ riwayatnya tidak dibaca sebagai jejak kerja harian.
   - Cara pakai langkah 3: pembeli satu paket diarahkan ke tryout gratis atau
     paket lain di katalog. Klaim "subtopiknya sama" dicek dari JSON: ketiga
     paket memuat 21 subtopik yang sama.
-- Deploy otomatis dari GitHub aktif (README bagian 9).
+- README bagian 9: langkah sambung deploy otomatis dari GitHub.
 
 ## v3.9 — 26 November 2026 — **fokus CPNS 2026**
 Pendaftaran CPNS 2026 dibuka 27 Nov, SKD rencana Jan sampai Mar 2027. Situs

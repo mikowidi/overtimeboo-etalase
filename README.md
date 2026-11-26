@@ -254,13 +254,20 @@ bebas.
 
 ---
 
-## 9. Deploy otomatis dari Git (aktif sejak 26 Nov 2026)
+## 9. Deploy otomatis dari Git
 
-Worker `overtime-boo` sudah tersambung ke repo GitHub ini. Setiap push ke `main`
-langsung naik ke produksi, jadi `wrangler deploy` manual nggak perlu lagi.
+Tujuannya: setiap push ke `main` langsung naik ke produksi, tanpa
+`wrangler deploy` manual.
+
+Cara menyambungkan (sekali saja): dasbor Cloudflare → Worker `overtime-boo` →
+Settings → Builds → Git repository → Connect. Akun GitHub yang dipilih harus
+akun yang **memiliki** repo ini (`mikowidi`). Kalau belum ada di daftar, pilih
+"New GitHub connection", login GitHub sebagai `mikowidi`, pasang aplikasi
+Cloudflare hanya untuk repo `overtimeboo-etalase`. Lalu pilih repo, branch
+`main`, build command kosong, deploy command `npx wrangler deploy`.
 
 Konsekuensinya: yang di-push ke `main` langsung tayang tanpa langkah cek. Kalau
-ada yang salah, rollback dari dasbor Cloudflare (Worker → Deployments) atau
+ada yang salah, rollback dari dasbor (Worker → Deployments) atau
 `npx wrangler rollback`, lalu perbaiki dan push lagi.
 
 ---
